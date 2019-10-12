@@ -1,0 +1,28 @@
+html, body, #app {
+    height: 100%;
+    min-height: 100%;
+}
+#app {
+    display: flex;
+    flex-direction: column;
+}
+#content {
+    flex-grow: 1;
+}
+
+nav#footer > div.container{
+    display: block;
+}
+ul.footer-menu{
+    min-height: 2em;
+    padding: 0;
+}
+ul.footer-menu li {
+    float: left;
+    margin-right: 23px;
+    display: inline-block;
+}
+
+img{
+    max-width: 100%;
+}

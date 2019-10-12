@@ -1,0 +1,12 @@
+div.comment-content{
+    padding: 10px;
+}
+div.comment{
+    padding-bottom: 20px;
+}
+div.comment span{
+    padding-left: 20px;
+}
+div.comment-header{
+    font-size: smaller;
+}

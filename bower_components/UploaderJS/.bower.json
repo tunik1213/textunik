@@ -1,0 +1,23 @@
+{
+  "name": "UploaderJS",
+  "version": "0.9.2",
+  "main": "uploader.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "package.json",
+    ".gitignore"
+  ],
+  "homepage": "https://github.com/tamaspap/uploader",
+  "_release": "0.9.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.9.2",
+    "commit": "cc056d696888e3e512a9bf9d2534896c3cf5a748"
+  },
+  "_source": "https://github.com/tamaspap/uploader.git",
+  "_target": "^0.9.2",
+  "_originalSource": "uploader",
+  "_direct": true
+}
