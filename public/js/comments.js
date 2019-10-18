@@ -9,14 +9,29 @@ $( document ).ready(function() {
         async: true,
         data: "article="+article_id,
         success: function(comments){
-            comments_list_container.append(comments);
+            if (comments.length>0) {
+                comments_list_container.append('<h3>Комментарии:</h3>');
+                comments_list_container.append(comments);
+            }
+
         }
     }).responseText;
 
 
     $('#comments-container, #comments-list').on('click','button.post-comment',function (e) {
-        var comment = $(this).parent().find('textarea').val();
-        var parent_id = 0;
+        e.stopPropagation();
+        e.preventDefault();
+
+        var textarea = $(this).parent().find('textarea');
+        var comment = textarea.val();
+        textarea.val('').blur();
+        var parent_id = $(this).closest('.comment').attr('comment-id');
+        if (parent_id === undefined) parent_id = 0;
+
+        parent_container = $('[comment-id="' + parent_id + '"] > .comment-children');
+        if (parent_container.length === 0)
+            parent_container = $('#comments-list');
+
         $.ajax({
             url: "/comments/add",
             async: false,
@@ -28,9 +43,25 @@ $( document ).ready(function() {
             },
             method: "POST",
             success: function (response) {
-                $('[comment-parent="' + parent_id + '"]')
+                parent_container
                     .append(response);
+                $('#comments-list .add-comment-form')
+                    .remove();
             }
         })
     });
+
+    $('#comments-list').on('click','.comment-response',function (e) {
+        e.preventDefault();
+
+        $('#comments-list .add-comment-form').remove();
+
+        $('#comments-container > .add-comment-form')
+            .clone()
+            .appendTo(this)
+            .find('textarea')
+            .focus();
+    });
+
+
 });

@@ -16,7 +16,12 @@ class CommentsController extends Controller
             ->where('parentId',$parentId)
             ->orderBy('id', 'asc')
             ->get();
-        return view('article.comments',['comments' => $comments]);
+
+        $result = [
+            'comments' => $comments,
+        ];
+
+        return view('article.comments',$result);
     }
 
     public function addComment()

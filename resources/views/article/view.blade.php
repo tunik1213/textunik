@@ -36,7 +36,7 @@
 
             <div class="container" id="comments-container" article-id="{{$article->id}}">
 
-                <div class="md-form">
+                <div class="md-form add-comment-form">
                     <i class="fas fa-pencil-alt prefix"></i>
                     <textarea id="form10" class="md-textarea form-control" rows="3"></textarea>
                     <label for="form10">Оставить комментарий</label>
@@ -45,11 +45,8 @@
 
                 <br>
 
-                <h3>Комментарии:</h3>
 
-                <br>
-
-                <div id="comments-list" comment-parent="0"></div>
+                <div id="comments-list" class="container"></div>
 
             </div>
 
