@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('head')
-    <link href="{{ asset('css/footer-bottom.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -83,9 +79,5 @@
         </div>
     </div>
 </div>
-
-
-    @php( var_dump($errors))
-
 
 @endsection

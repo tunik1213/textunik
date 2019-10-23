@@ -24,7 +24,15 @@
     <link href="{{ asset('css/lib/mdb.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
     @yield('head')
+
+    @guest
+        <script src="{{ asset('js/guest.js') }}"></script>
+    @endguest
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -51,7 +59,8 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Вход</a>
+{{--                                <a class="nav-link" href="{{ route('login') }}">Вход</a>--}}
+                                <a class="nav-link" href="/login_form" rel="modal:open">Вход</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">

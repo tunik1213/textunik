@@ -10,4 +10,9 @@ class AccessController extends Controller
     {
         return view('staticPages.forbidden');
     }
+
+    public function loginForm()
+    {
+        return view('auth.login_form');
+    }
 }

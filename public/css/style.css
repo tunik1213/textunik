@@ -26,3 +26,7 @@ ul.footer-menu li {
 img{
     max-width: 100%;
 }
+.modal{
+    padding: 0 !important;
+    overflow: visible;
+}

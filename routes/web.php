@@ -40,4 +40,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::get('/login_form', 'AccessController@loginForm')->middleware('guest');

@@ -37,5 +37,13 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    protected function sendFailedLoginResponse($request)
+    {
+        return redirect()->to('/login')
+            ->withInput($request->only($this->username(), 'remember'))
+            ->withErrors([
+                $this->username() => 'Ошибка авторизации: введенные данные не соответствуют ни одному пользователю',
+            ]);
+    }
 
 }
