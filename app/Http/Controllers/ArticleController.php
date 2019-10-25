@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Image;
 use Illuminate\Http\Request;
 use Auth;
+use Intervention\Image\ImageManagerStatic as LibImage;
 
 class ArticleController extends Controller
 {
@@ -15,14 +17,15 @@ class ArticleController extends Controller
 
     public function addPost()
     {
-        $article = new Article();
-        $article->authorId = Auth::user()->id;
+        $article = Article::firstOrCreate([
+            'authorId'=>Auth::user()->id,
+            'finished'=>false
+        ]);
         $article->title = $_POST['title'];
         $article->annotation = $_POST['annotation'];
         $article->content = $_POST['content'];
+        $article->finished = true;
         $article->save();
-
-        // TODO перенести загруженные картинки в папку с id статьи и переназначить ссылки в тексте статьи
 
         return redirect('article/' . $article->id);
     }
@@ -35,17 +38,28 @@ class ArticleController extends Controller
 
     public function uploadImage()
     {
+
+
         $result = ['success' => false];
 
-        $file = $_FILES['filename'];
-        $dir = '/article_images/tmp';
-        $upload_dir = public_path() . $dir;
-        if (!file_exists($upload_dir)) {
-            mkdir($upload_dir, 0777, true);
+        //$article = Auth::user()->getEditingArticle();
+
+        $article = Article::firstOrCreate([
+            'authorId'=>Auth::user()->id,
+            'finished'=>false
+        ]);
+
+        if (!empty($_FILES['filename']['tmp_name'])){
+            $img = new Image();
+            $img->image = LibImage::make($_FILES['filename']['tmp_name'])
+                ->encode('jpg', 75);
+            $img->articleId = $article->id;
+
+            $img->save();
+
+            $result['url'] = '/images/'.$img->articleId.'/'.$img->id;
+            $result['success'] = true;
         }
-        $upload_file = $upload_dir . '/' . basename($file['name']);
-        $result['success'] = move_uploaded_file($file['tmp_name'], $upload_file);
-        $result['url'] = url($dir . '/' . $file['name']);
 
         echo json_encode($result);
 
@@ -54,5 +68,19 @@ class ArticleController extends Controller
     public function moderation ($id=null)
     {
         var_dump($id);
+    }
+
+    public function getImage($articleId, $imageId)
+    {
+        $img = Image::where('articleId',$articleId)
+            ->where('id',$imageId)
+            ->first()
+            ->image;
+
+        header("Content-Type: image/jpg");
+        header("Content-Length: " . strlen($img));
+
+        echo($img);
+        exit;
     }
 }

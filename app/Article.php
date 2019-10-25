@@ -11,7 +11,8 @@ class Article extends Model
         'authorId',
         'title',
         'annotation',
-        'content'
+        'content',
+        'finished'
     );
 
     public function getCreatedAtAttribute($val)
@@ -29,4 +30,5 @@ class Article extends Model
     {
         return $this->belongsTo('App\User', 'authorId');
     }
+
 }

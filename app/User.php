@@ -54,6 +54,7 @@ class User extends Authenticatable
 
     public function profile_url()
     {
-        return '/profile/'.$this->id;
+        return '/profile/' . $this->id;
     }
+
 }
