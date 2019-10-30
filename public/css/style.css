@@ -17,6 +17,8 @@ nav#footer > div.container{
 ul.footer-menu{
     min-height: 2em;
     padding: 0;
+    display: flex;
+    line-height: 2.5em;
 }
 ul.footer-menu li {
     float: left;
@@ -42,4 +44,11 @@ ul.navbar-nav > li {
 }
 h2, #content img{
     margin-bottom: 15px;
+}
+
+/* ======= mobile */
+@media screen and (max-width: 767px) {
+    ul.footer-menu {
+        flex-direction: column;
+    }
 }
