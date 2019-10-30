@@ -38,16 +38,14 @@ class ArticleController extends Controller
 
     public function uploadImage()
     {
-
-
         $result = ['success' => false];
-
-        //$article = Auth::user()->getEditingArticle();
 
         $article = Article::firstOrCreate([
             'authorId'=>Auth::user()->id,
             'finished'=>false
         ]);
+
+        error_log($_FILES['filename']['tmp_name']);
 
         if (!empty($_FILES['filename']['tmp_name'])){
             $img = new Image();

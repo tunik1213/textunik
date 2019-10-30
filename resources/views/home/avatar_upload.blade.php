@@ -5,7 +5,7 @@
         <div class="input-group">
             <span class="input-group-btn">
                 <div class="form-group">
-                    <span class="btn btn-primary btn-file">
+                    <span class="btn btn-file">
                         {{(empty($user->avatar)) ? 'Загрузить' : 'Изменить'}}
                         <input type="file" id="imgInp" name="avatar">
                     </span>
