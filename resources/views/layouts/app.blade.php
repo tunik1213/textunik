@@ -135,7 +135,7 @@
                 <div id="footer-text">
                     <p>© {{date("Y")}}, при копировании материалов ссылка обязательна.</p>
                     <p>Если Вы заметили ошибку на сайте, пожалуйста,
-                        <a href="mailto:falber77@gmail.com">сообщите нам</a>
+                        <a href="mailto:falber77@gmail.com">сообщите&nbsp;нам</a>
                     </p>
                 </div>
             </div>

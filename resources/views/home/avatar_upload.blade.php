@@ -1,23 +1,17 @@
-<div class="container">
-    <div class="col-md-12">
-
-        <label>Аватар</label>
-        <div class="input-group">
-            <span class="input-group-btn">
-                <div class="form-group">
-                    <span class="btn btn-file">
-                        {{(empty($user->avatar)) ? 'Загрузить' : 'Изменить'}}
-                        <input type="file" id="imgInp" name="avatar">
-                    </span>
-                    <img src="/user/getMiniAvatarImage"/>
-                </div>
+<label>Аватар</label>
+<div class="input-group">
+    <span class="input-group-btn">
+        <div class="form-group">
+            <span class="btn btn-file">
+                {{(empty($user->avatar)) ? 'Загрузить' : 'Изменить'}}
+                <input type="file" id="imgInp" name="avatar">
             </span>
-            <input type="text" class="form-control" name="avatar2" readonly>
+            <img src="/user/getMiniAvatarImage"/>
         </div>
-        <img id="img-upload" src="/user/getAvatarImage"/>
-
-    </div>
+    </span>
+    <input type="text" class="form-control" name="avatar2" readonly>
 </div>
+<img id="img-upload" src="/user/getAvatarImage"/>
 
 <script>
     $(document).ready(function () {

@@ -10,7 +10,10 @@
                     <div class="card-body">
                         <form method="POST" action="/home" enctype="multipart/form-data">
                             @csrf
-                            <div id="main-form" class="col-md-8 col-sm-12 float-left">
+
+
+
+                            <div id="main-form" class="col-md-6 col-sm-12 float-left">
                                 <div class="form-group">
 
                                     <label for="name">Настоящее имя:</label>
@@ -40,17 +43,13 @@
                                     <input class="browser-default custom-select" type="date" name="birthdate"
                                            value="{{$user->birthdate}}"/>
                                 </div>
-
-                                <button type="submit" class="btn btn-primary">Сохранить</button>
                             </div>
 
-                            <div id="avatar-upload" class="col-md-4 col-sm-12 float-left">
+                            <div id="avatar-upload" class="col-md-6 col-sm-12 float-left">
                                 @include('home.avatar_upload')
                             </div>
 
-
-
-
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
 
                         </form>
                     </div>
