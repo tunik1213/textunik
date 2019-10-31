@@ -4,8 +4,8 @@ div.comment-content{
 div.comment{
     padding-top: 1em;
 }
-div.comment span{
-    padding-left: 20px;
+div.comment-header > * {
+    margin: 0 0.2em;
 }
 div.comment-header{
     font-size: smaller;
