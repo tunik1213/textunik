@@ -10,7 +10,8 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('getMiniAvatarImage');
+        $this->middleware('auth')
+            ->except(['getMiniAvatarImage','profile']);
     }
 
     public function index()

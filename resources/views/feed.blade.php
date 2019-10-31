@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@section('head')
+
+    <title>ТекСТиль - все о работе копирайтера</title>
+
+@endsection
 
 @section('content')
     <div class="container">

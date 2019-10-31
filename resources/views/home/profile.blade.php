@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@section('head')
+
+    <title>Профиль пользователя {{ $user->nick_name }}</title>
+
+@endsection
 
 @section('content')
 

@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('head')
+
+    <title>Личный кабинет пользователя {{$user->nick_name}}</title>
+
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
