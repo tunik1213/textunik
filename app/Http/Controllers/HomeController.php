@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
+use App\Comment;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\User;
@@ -73,7 +75,24 @@ class HomeController extends Controller
     public function profile($userId)
     {
         $user = User::find($userId);
-        return view('home.profile', ['user' => $user]);
+
+        $articles = Article::where('moderatedBy','<>',null)
+            ->where('authorId','=',$user->id)
+            ->orderBy('id', 'desc')
+            ->simplePaginate(10);
+
+        $comments = Comment::where('authorId','=',$user->id)
+            ->where('parentId',0)
+            ->orderBy('id', 'desc')
+            ->simplePaginate(50);
+
+        return view('home.profile',
+            [
+                'user' => $user,
+                'articles' => $articles,
+                'comments' => $comments
+            ]
+        );
     }
 
 }

@@ -13,33 +13,23 @@
         <h1>Профиль пользователя {{ $user->nick_name }}</h1>
 
         <ul class="nav nav-tabs">
-            <li class="active">
-                <a data-toggle="tab" href="#articles">
+            <li class="nav-item">
+                <a data-toggle="tab" href="#articles" class="nav-link active">
                     Публикации ({{$user->articles->count()}})
                 </a>
             </li>
-            <li>
-                <a data-toggle="tab" href="#comments">
+            <li class="nav-item">
+                <a data-toggle="tab" href="#comments" class="nav-link">
                     Комментарии ({{$user->comments->count()}})
                 </a>
             </li>
         </ul>
         <div class="tab-content">
             <div id="articles" class="tab-pane fade in active show">
-                @foreach($user->articles as $article)
-                    <div class="container">
-                        <a href="{{ $article->url() }}">{{ $article->title }}</a>
-                    </div>
-                    <br>
-                @endforeach
+                @include('article.list',['articles'=>$articles])
             </div>
             <div id="comments" class="tab-pane fade">
-                @foreach($user->comments as $comment)
-                    <div class="container">
-                        {{ $comment->text }}
-                    </div>
-                    <br>
-                @endforeach
+                @include('article.comments',['comments'=>$comments])
             </div>
         </div>
     </div>
