@@ -15,12 +15,6 @@ class Article extends Model
         'finished'
     );
 
-    public function getCreatedAtAttribute($val)
-    {
-
-        return Carbon::parse($val)->formatLocalized('%c');
-    }
-
     public function url()
     {
         return '/article/'.$this->id;
