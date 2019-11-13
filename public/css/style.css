@@ -3,6 +3,33 @@ html, body, #app {
     min-height: 100%;
     min-width: 320px;
 }
+/* logo */
+.navbar-brand{
+    position:relative;
+    height: 80px;
+    margin-top: -10px;
+}
+#logo1{
+    font-size: xx-large;
+    float: left;
+}
+#logo2{
+    color: #C45911;
+    font-size: xx-large;
+}
+#logo3{
+    position:absolute;
+    top: 2.8rem;
+    font-size: small;
+    padding-left: 15px;
+}
+#logo4{
+    color: #C45911;
+    font-size: medium;
+    padding-left: 27px;
+    padding-top: 5px;
+}
+/* /logo */
 h1{
     padding: 1rem 0;
 }

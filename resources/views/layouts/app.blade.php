@@ -40,7 +40,6 @@
 
 
     @yield('css');
-    @yield('js')
 
 </head>
 <body>
@@ -48,7 +47,10 @@
     <nav id="header" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="/images/Textile_logo.png"/>
+                <div id="logo1">TEXT-</div>
+                <div id="logo2">уник</div>
+                <div id="logo3">уникальная информация</div>
+                <div id="logo4">О КОПИРАЙТИНГЕ</div>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -150,5 +152,8 @@
     </nav>
 
 </div>
+
+@yield('js')
+
 </body>
 </html>
