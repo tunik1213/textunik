@@ -30,6 +30,12 @@ html, body, #app {
     padding-top: 5px;
 }
 /* /logo */
+img[src^="/images/"]{
+    padding-bottom: 10px;
+}
+.article-author > *{
+    margin-right: 5px;
+}
 h1{
     padding: 1rem 0;
 }
