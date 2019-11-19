@@ -6,7 +6,9 @@
             @include('article.annotation')
             <br/>
 
-            <a href="{{$article->url()}}#cut">Читать дальше →</a>
+            @if(!empty(trim($article->content)))
+                <a href="{{$article->url()}}#cut">Читать дальше →</a>
+            @endif
 
         </div>
 
