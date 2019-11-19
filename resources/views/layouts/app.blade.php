@@ -82,24 +82,26 @@
                         {{--                                <a href="/moderation/" class="btn">Модерация</a>--}}
                         {{--                            @endif--}}
                         <li>
-                            <a href="/article/add/" class="btn">Написать в блог</a>
+                            <a href="/article/add/" id="write-article-button">
+                                <i class="fas fa-pencil-alt prefix"></i>
+                                Написать статью
+                            </a>
                         </li>
 
                         <li class="nav-item dropdown">
 
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <img src="/user/getMiniAvatarImage" width="40" height="40"/>
-                                {{ Auth::user()->nick_name }} <span class="caret"></span>
+                                <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('home') }}">Личный кабинет</a>
 
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Выйти') }}
+                                <a id="logout-link" class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt"></i>Выйти
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
