@@ -39,7 +39,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
 
-    @yield('css');
+    @yield('css')
 
 </head>
 <body>
@@ -126,7 +126,7 @@
                     <a href="/">Главная</a>
                 </li>
                 <li>
-                    <a href="/about">О сайте</a>
+                    <a href="/about">О проекте</a>
                 </li>
                 <li>
                     <a href="http://natunik.net">Заказать статью</a>
