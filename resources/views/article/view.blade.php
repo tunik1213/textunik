@@ -2,7 +2,10 @@
 
 @section('head')
 
-    <title>{{$article->title}}</title>
+    <title>{{$article->title}} / Text-уник</title>
+
+    <meta name="description" content="{{$article->meta_description}}">
+    <meta name="keywords" content="{{$article->meta_keywords}}">
 
     <script src="{{ asset('js/comments.js') }}"></script>
 
