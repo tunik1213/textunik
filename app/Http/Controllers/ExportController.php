@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use DevDojo\Chatter\Models\Category;
+use DevDojo\Chatter\Models\Discussion;
 use Illuminate\Http\Request;
 
 class ExportController extends Controller
@@ -12,8 +14,15 @@ class ExportController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
+        $forum_categories = Category::all();
+
+        $forum_discussions = Discussion::all();
+
+
         return view('sitemap', [
-            'articles' => $articles
+            'articles' => $articles,
+            'forum_categories' => $forum_categories,
+            'forum_discussions' => $forum_discussions
         ]);
     }
 }
