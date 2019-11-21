@@ -31,6 +31,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
 
     @yield('head')
+    @if( Request::is( Config::get('chatter.routes.home')) )
+        <title>Форум копирайтеров / TEXT-уник</title>
+    @elseif( Request::is( Config::get('chatter.routes.home') . '/' . Config::get('chatter.routes.category') . '/*' ) && isset( $discussion ) )
+        <title>{{ $discussion->category->name }} / форум копирайтеров TEXT-уник</title>
+    @elseif( Request::is( Config::get('chatter.routes.home') . '/*' ) && isset($discussion->title))
+        <title>{{ $discussion->title }} / форум копирайтеров TEXT-уник</title>
+    @endif
 
     @guest
         <script src="{{ asset('js/guest.js') }}"></script>
