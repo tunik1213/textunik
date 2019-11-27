@@ -28,7 +28,10 @@ class HomeController extends Controller
         $user->name = $_POST['name'];
         $user->specialization = $_POST['specialization'];
         $user->gender = ($_POST['gender']=='') ? null : (bool)$_POST['gender'];
-        $user->birthdate = $_POST['birthdate'];
+
+        if (strtotime($_POST['birthdate']))
+            $user->birthdate = $_POST['birthdate'];
+
         if (!empty($_FILES['avatar']['tmp_name'])){
             $user->avatar = Image::make($_FILES['avatar']['tmp_name'])
                 ->fit(800)
