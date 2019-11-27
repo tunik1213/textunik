@@ -12,3 +12,4 @@ yarn-error.log
 .idea
 /config
 app/Http/Controllers/TestController.php
+vendor/bin
