@@ -138,13 +138,13 @@
                     <a href="/about">О проекте</a>
                 </li>
                 <li>
-                    <a href="http://natunik.net">Заказать статью</a>
+                    <a href="/order">Заказать статью</a>
                 </li>
                 <li>
                     <a href="/contacts">Контакты</a>
                 </li>
                 <li>
-                    <a href="#reformal">Отзывы и предложения</a>
+                    <a href="/reformal">Отзывы и предложения</a>
                 </li>
                 <li>
                     <a href="/forums">Форум</a>
