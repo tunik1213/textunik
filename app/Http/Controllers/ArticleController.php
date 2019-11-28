@@ -25,6 +25,7 @@ class ArticleController extends Controller
         $article->annotation = remove_html_comments($_POST['annotation']);
         $article->content = remove_html_comments($_POST['content']);
         $article->finished = true;
+	$article->created_at = time()-1;
         $article->save();
 
         return redirect('article/' . $article->id);
