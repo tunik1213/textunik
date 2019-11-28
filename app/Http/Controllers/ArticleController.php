@@ -21,9 +21,9 @@ class ArticleController extends Controller
             'authorId'=>Auth::user()->id,
             'finished'=>false
         ]);
-        $article->title = $_POST['title'];
-        $article->annotation = $_POST['annotation'];
-        $article->content = $_POST['content'];
+        $article->title = remove_html_comments($_POST['title']);
+        $article->annotation = remove_html_comments($_POST['annotation']);
+        $article->content = remove_html_comments($_POST['content']);
         $article->finished = true;
         $article->save();
 

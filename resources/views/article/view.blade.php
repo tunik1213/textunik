@@ -25,7 +25,10 @@
             @endif
 
             <p>Публикация отправлена на модерацию. Она появится в ленте как только будет проверена сотрудником сайта</p>
-        @else
+
+        @endif
+
+        @if (($article->moderatedBy <> null) or (Auth::user()->moderator))
 
             @include('article.annotation')
 
