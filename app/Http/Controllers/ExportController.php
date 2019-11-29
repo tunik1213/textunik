@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Article;
 use DevDojo\Chatter\Models\Category;
 use DevDojo\Chatter\Models\Discussion;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\View;
 
 class ExportController extends Controller
 {
@@ -18,11 +19,15 @@ class ExportController extends Controller
 
         $forum_discussions = Discussion::all();
 
-
-        return view('sitemap', [
-            'articles' => $articles,
-            'forum_categories' => $forum_categories,
-            'forum_discussions' => $forum_discussions
-        ]);
+        $contents = View::make('sitemap')->with(
+            [
+                'articles' => $articles,
+                'forum_categories' => $forum_categories,
+                'forum_discussions' => $forum_discussions
+            ]
+        );
+        $response = Response::make($contents, 200);
+        $response->header('Content-Type', 'application/xml');
+        return $response;
     }
 }
