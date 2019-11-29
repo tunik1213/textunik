@@ -45,9 +45,29 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Опубликовать</button>
+            <button type="button" id="btn-preview" class="btn btn-secondary" data-toggle="modal" data-target="#preview-content">Предпросмотр</button>
 
         </form>
 
+    </div>
+
+    <div class="modal fade" id="preview-content" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLongTitle">Предпросмотр</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -79,6 +99,17 @@
                     }
                 }
             });
+
+
+            $('#btn-preview').click(function (e) {
+                e.preventDefault();
+                $('.modal-title').html('Предпросмотр: '+$('[name="title"]').val());
+                $('.modal-body').html(
+                    $('[name="annotation"]').val()
+                    + '<br />' +
+                    $('[name="content"]').val()
+                );
+            });
         });
 
     </script>
@@ -88,6 +119,15 @@
             border-bottom: 1px black dashed;
             margin-top: -10px;
             margin-left: 15px;
+        }
+        .modal{
+            width: 90%;
+            z-index: 9999;
+            margin-left: 5%;
+            max-width: initial;
+        }
+        .modal-dialog{
+            max-width: 90%;
         }
     </style>
 
