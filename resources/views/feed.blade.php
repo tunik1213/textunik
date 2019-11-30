@@ -7,5 +7,7 @@
 @endsection
 
 @section('content')
-    @include('article.list',['articles'=>$articles])
+    <div class="container col-md-8">
+        @include('article.list',['articles'=>$articles])
+    </div>
 @endsection

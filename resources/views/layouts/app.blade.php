@@ -52,7 +52,7 @@
 <body>
 <div id="app">
     <nav id="header" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
+        <div class="container col-md-8">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <div id="logo1">TEXT-</div>
                 <div id="logo2">уник</div>

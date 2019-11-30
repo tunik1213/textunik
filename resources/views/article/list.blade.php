@@ -1,16 +1,13 @@
-<div class="container">
+<div class="container article-content col-md-12">
 
     @foreach ($articles as $article)
 
-        <div class="container col-md-8 article-content">
-            @include('article.annotation')
-            <br/>
+        @include('article.annotation')
+        <br/>
 
-            @if(!empty(trim($article->content)))
-                <a href="{{$article->url()}}#cut">Читать дальше →</a>
-            @endif
-
-        </div>
+        @if(!empty(trim($article->content)))
+            <a href="{{$article->url()}}#cut">Читать дальше →</a>
+        @endif
 
         <br>
     @endforeach
