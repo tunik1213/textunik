@@ -16,7 +16,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container col-md-8 article-content">
 
         @if ($article->moderatedBy == null)
 
