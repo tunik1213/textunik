@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Moderation
+class SuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,8 @@ class Moderation
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::user()->moderator){
+        $u = Auth::user();
+        if (($u === null) || ($u->id != 1)) {
             //return view('staticPages.forbidden');
             abort(403, 'Доступ запрещен');
         }

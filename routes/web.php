@@ -47,6 +47,8 @@ Route::get('/images/{articleId}/{imgId}','ArticleController@getImage');
 
 Route::get('sitemap.xml', 'ExportController@sitemap');
 
+Route::get('convertAllImages', 'ServiceController@convertAllImages');
+
 Route::get('/about', function () {
     return view('staticPages.about');
 });
