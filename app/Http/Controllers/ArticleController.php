@@ -51,7 +51,9 @@ class ArticleController extends Controller
         if (!empty($_FILES['filename']['tmp_name'])){
             $img = new Image();
             $img->image = LibImage::make($_FILES['filename']['tmp_name'])
-                ->encode('jpg', 75);
+                    ->fit(1024,680, function ($constraint) {
+                        $constraint->upsize();
+                    })->encode('jpg', 75);
             $img->articleId = $article->id;
 
             $img->save();
