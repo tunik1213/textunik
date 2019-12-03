@@ -11,4 +11,6 @@
 
 <h2><a href="{{$article->url()}}">{{ $article->title }}</a></h2>
 
-{!! $article->annotation !!}
+<div class="article-annotation">
+    {!! $article->annotation !!}
+</div>

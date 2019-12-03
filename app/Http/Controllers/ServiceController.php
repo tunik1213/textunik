@@ -19,8 +19,9 @@ class ServiceController extends Controller
         foreach (Image::all() as $image) {
 
             $image->image = LibImage::make($image->image)
-                ->fit(600)
-                ->encode('jpg', 75);
+                ->fit(1024,680, function ($constraint) {
+                    $constraint->upsize();
+                })->encode('jpg', 75);
             $image->save();
         }
     }

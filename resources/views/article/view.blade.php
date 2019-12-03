@@ -36,7 +36,9 @@
 
                 <div id="cut"></div>
 
-                {!! $article->content !!}
+                <div class="article-text">
+                    {!! $article->content !!}
+                </div>
 
                 <hr/>
 
