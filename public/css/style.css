@@ -47,10 +47,22 @@ h1{
     display: flex;
     flex-direction: column;
 }
-#write-article-button{
+.accurate-button{
     border: 1px solid #C45911;
     border-radius: 10px;
     padding: 10px;
+}
+.accurate-button:hover{
+    border-color:#9A4913;
+    color: #9A4913;
+    transition: all 0.2s ease-in-out;
+}
+.read-next-link{
+    margin-bottom: 20px;
+    display: inline-block;
+}
+.read-next-link > span{
+    padding: 0 20px;
 }
 #write-article-button > i {
     padding-right: 10px;
@@ -76,6 +88,7 @@ h1{
 }
 .article-content{
     background-color: white;
+    padding-bottom: 20px;
 }
 
 .center{

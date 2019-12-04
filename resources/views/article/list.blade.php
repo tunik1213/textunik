@@ -6,7 +6,7 @@
         <br/>
 
         @if(!empty(trim($article->content)))
-            <a href="{{$article->url()}}#cut">Читать дальше →</a>
+            <a class="accurate-button read-next-link" href="{{$article->url()}}#cut"><span>Читать дальше →</span></a>
         @endif
 
         <br>

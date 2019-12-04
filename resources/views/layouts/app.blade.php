@@ -89,7 +89,7 @@
                         {{--                                <a href="/moderation/" class="btn">Модерация</a>--}}
                         {{--                            @endif--}}
                         <li>
-                            <a href="/article/add/" id="write-article-button">
+                            <a href="/article/add/" id="write-article-button" class="accurate-button">
                                 <i class="fas fa-pencil-alt prefix"></i>
                                 Написать статью
                             </a>
@@ -129,22 +129,13 @@
 
 
     <nav id="footer" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
+        <div class="container col-md-8">
             <ul class="footer-menu">
                 <li>
                     <a href="/">Главная</a>
                 </li>
                 <li>
                     <a href="/about">О проекте</a>
-                </li>
-                <li>
-                    <a href="/order">Заказать статью</a>
-                </li>
-                <li>
-                    <a href="/contacts">Контакты</a>
-                </li>
-                <li>
-                    <a href="/reformal">Отзывы и предложения</a>
                 </li>
                 <li>
                     <a href="/forums">Форум</a>
