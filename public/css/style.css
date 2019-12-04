@@ -85,8 +85,12 @@ h1{
     color: #C45911;
     font-size: larger;
 }
+nav#header{
+    display: block;
+}
 nav#footer{
     font-size: smaller;
+    display: block;
 }
 nav#footer p {
     margin-bottom: 0.5rem;
