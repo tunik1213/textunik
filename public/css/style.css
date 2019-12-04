@@ -57,7 +57,7 @@ h1{
 }
 .article-annotation img, .article-text img {
     display:block;
-    width: 100%;
+    margin: 10px auto;
 }
 #navbarDropdown{
     color: #000;
