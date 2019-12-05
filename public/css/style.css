@@ -42,6 +42,7 @@ img[src^="/images/"]{
 }
 h1{
     padding: 1rem 0;
+    font-size: 1.75rem;
 }
 #app {
     display: flex;
