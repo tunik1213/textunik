@@ -28,6 +28,8 @@ class ExportController extends Controller
             max(a.updated_at) updated_at
         from
             articles a
+        where 
+            a.finished = 1
         group by 
             a.authorId
         "));
