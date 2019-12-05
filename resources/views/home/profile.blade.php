@@ -2,7 +2,7 @@
 @section('head')
 
     <title>Профиль пользователя {{ $user->nick_name }}</title>
-
+    <meta name="description" content="{{$user->short_info}}">
 @endsection
 
 @section('content')

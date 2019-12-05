@@ -49,6 +49,12 @@
                                     <input class="browser-default custom-select" type="date" name="birthdate"
                                            value="{{$user->birthdate}}"/>
                                 </div>
+                                <div class="form-group">
+                                    <label for="short_info">Краткая информация:</label>
+                                    <input type="text" name="short_info" value="{{$user->short_info}}"
+                                           class="form-control"/>
+                                    <small class="form-text text-muted">Напишите вкратце о себе, эта информация будет выводиться в описании профиля</small>
+                                </div>
                             </div>
 
                             <div id="avatar-upload" class="col-md-6 col-sm-12 float-left">

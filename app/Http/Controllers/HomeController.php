@@ -28,6 +28,7 @@ class HomeController extends Controller
         $user->name = $_POST['name'];
         $user->specialization = $_POST['specialization'];
         $user->gender = ($_POST['gender']=='') ? null : (bool)$_POST['gender'];
+        $user->short_info = $_POST['short_info'];
 
         if (strtotime($_POST['birthdate']))
             $user->birthdate = $_POST['birthdate'];

@@ -51,5 +51,13 @@
         </url>
     @endforeach
 
+    @foreach($authors as $author)
+        <url>
+            <loc>{{ url( '/profile/'.$author->id )}}</loc>
+            <lastmod>{{ $author->lastmod->tz('GMT')->toAtomString() }}</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.1</priority>
+        </url>
+    @endforeach
 
 </urlset>
