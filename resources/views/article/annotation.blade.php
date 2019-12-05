@@ -9,7 +9,7 @@
     <span>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($article->created_at))->diffForHumans() }}</span>
 </div>
 
-<h2><a href="{{$article->url()}}">{{ $article->title }}</a></h2>
+<h1><a href="{{$article->url()}}">{{ $article->title }}</a></h1>
 
 <div class="article-annotation">
     {!! $article->annotation !!}
