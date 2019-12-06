@@ -18,7 +18,7 @@
 
         <h1>Добавление новой публикации</h1>
 
-        <form method="POST" action="/article/add/">
+        <form method="POST" action="/article/add">
             @csrf
 
             <div class="form-group">
