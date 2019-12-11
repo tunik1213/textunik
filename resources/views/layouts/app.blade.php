@@ -89,7 +89,7 @@
                         {{--                                <a href="/moderation/" class="btn">Модерация</a>--}}
                         {{--                            @endif--}}
                         <li>
-                            <a href="/article/add/" id="write-article-button" class="accurate-button">
+                            <a href="{{ route('article.edit') }}" id="write-article-button" class="accurate-button">
                                 <i class="fas fa-pencil-alt prefix"></i>
                                 Написать статью
                             </a>
@@ -104,7 +104,9 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('home') }}">Личный кабинет</a>
+                                <a class="dropdown-item" href="{{ route('home') }}">Мои настройки</a>
+
+                                <a class="dropdown-item" href="{{ route('profile', ['userId' => Auth::user()->id]) }}">Мой профиль</a>
 
                                 <a id="logout-link" class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">

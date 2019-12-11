@@ -17,9 +17,8 @@ class SuperAdmin
     public function handle($request, Closure $next)
     {
         $u = Auth::user();
-        if (($u === null) || ($u->id != 1)) {
-            //return view('staticPages.forbidden');
-            abort(403, 'Доступ запрещен');
+        if (($u === null) || (!$u->superAdmin())) {
+            abort(403);
         }
 
         return $next($request);

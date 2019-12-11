@@ -19,31 +19,31 @@
     <div class="container col-md-8">
         <div class="container col-md-12 article-content">
 
-            @if ($article->moderatedBy == null)
+            @if (!$article->finished)
+
+                <span class="badge badge-secondary">Черновик</span>
+
+            @elseif (!$article->public())
 
                 @if ($article->authorId == Auth::id())
-                    <p>Спасибо!</p>
+                    <h1>Спасибо!</h1>
                 @endif
 
-                <p>Публикация отправлена на модерацию. Она появится в ленте как только будет проверена сотрудником
-                    сайта</p>
+                <span class="badge badge-warning">Публикация отправлена на модерацию. Она появится в ленте как только будет проверена сотрудником сайта</span>
 
             @endif
 
-            @if (($article->moderatedBy <> null) or (Auth::user()->moderator))
+            @include('article.annotation')
 
-                @include('article.annotation')
+            <div id="cut"></div>
 
-                <div id="cut"></div>
+            <div class="article-text">
+                {!! $article->content !!}
+            </div>
 
-                <div class="article-text">
-                    {!! $article->content !!}
-                </div>
+            <hr/>
 
-                <hr/>
-
-
-
+            @if($article->public())
                 <div class="container" id="comments-container" article-id="{{$article->id}}">
 
                     <div class="md-form add-comment-form">
@@ -59,8 +59,9 @@
                     <div id="comments-list" class="container"></div>
 
                 </div>
-
             @endif
+
+
         </div>
     </div>
 

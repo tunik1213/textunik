@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\User;
 
@@ -80,7 +81,7 @@ class HomeController extends Controller
     {
         $user = User::find($userId);
 
-        $articles = Article::where('moderatedBy','<>',null)
+        $articles['public'] = Article::where('moderatedBy','<>',null)
             ->where('authorId','=',$user->id)
             ->orderBy('id', 'desc')
             ->simplePaginate(10);
@@ -89,6 +90,21 @@ class HomeController extends Controller
             ->where('parentId',0)
             ->orderBy('id', 'desc')
             ->simplePaginate(50);
+
+        if (Auth::user())
+        if ($userId == Auth::user()->id){
+            $articles['moderation'] = Article::where('moderatedBy','=',null)
+                ->where('authorId','=',$user->id)
+                ->where('finished','=',1)
+                ->orderBy('id', 'desc')
+                ->simplePaginate(10);
+
+            $articles['draft'] = Article::where('moderatedBy','=',null)
+                ->where('authorId','=',$user->id)
+                ->where('finished','=',0)
+                ->orderBy('id', 'desc')
+                ->simplePaginate(10);
+        }
 
         return view('home.profile',
             [

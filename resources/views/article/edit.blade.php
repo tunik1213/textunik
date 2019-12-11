@@ -2,7 +2,9 @@
 
 @section('head')
 
-    <title>Добавление новой публикации</title>
+    <title>{{$pageTitle}}</title>
+
+    <meta name="article-id" content="{{$article->id}}"/>
 
 @endsection
 
@@ -16,15 +18,15 @@
 
     <div class="container">
 
-        <h1>Добавление новой публикации</h1>
+        <h1>{{$pageTitle}}</h1>
 
-        <form method="POST" action="/article/add">
+        <form method="POST" action="{{route('article.post', ['id'=>$article->id])}}">
             @csrf
 
             <div class="form-group">
 
                 <label for="title">Заголовок:</label>
-                <input type="text" name="title" value="" class="form-control" AUTOCOMPLETE="off"/>
+                <input type="text" name="title" value="{{$article->title}}" class="form-control" AUTOCOMPLETE="off"/>
                 <small class="form-text text-muted">Заголовок должен быть наполнен смыслом, чтобы можно было понять, о чем будет публикация.</small>
             </div>
 
@@ -41,11 +43,14 @@
 
             <div class="form-group">
                 <label for="content">Текст после ката</label>
-                <div class="htmleditor" id="content"></div>
+                <div class="htmleditor" id="trymbowyg-content"></div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Опубликовать</button>
-            <button type="button" id="btn-preview" class="btn btn-secondary" data-toggle="modal" data-target="#preview-content">Предпросмотр</button>
+            <button type="submit" name="finished" value="1" class="btn btn-primary">Опубликовать</button>
+            @if(!$article->public())
+                <button type="submit" name="save-draft" class="btn btn-secondary">Сохранить в черновики</button>
+            @endif
+            <button type="button" id="btn-preview" class="btn float-right" data-toggle="modal" data-target="#preview-content">Предпросмотр</button>
 
         </form>
 
@@ -100,6 +105,8 @@
                 }
             });
 
+            $('#annotation').trumbowyg('html',`{!!$article->annotation!!}`);
+            $('#trymbowyg-content').trumbowyg('html',`{!!$article->content!!}`);
 
             $('#btn-preview').click(function (e) {
                 e.preventDefault();
@@ -107,7 +114,7 @@
                 $('.modal-body').html(
                     $('[name="annotation"]').val()
                     + '<br />' +
-                    $('[name="content"]').val()
+                    $('[name="trymbowyg-content"]').val()
                 );
             });
         });

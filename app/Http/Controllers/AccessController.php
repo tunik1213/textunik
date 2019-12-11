@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
 
 class AccessController extends Controller
 {
-    public function forbiddenPage()
-    {
-        return view('staticPages.forbidden');
-    }
-
     public function loginForm()
     {
         return view('auth.login_form');
