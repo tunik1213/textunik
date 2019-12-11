@@ -30,6 +30,7 @@ class ExportController extends Controller
             articles a
         where 
             a.finished = 1
+            and a.moderatedBy is not null
         group by 
             a.authorId
         "));
