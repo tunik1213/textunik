@@ -12,6 +12,7 @@ yarn-error.log
 .idea
 /config
 app/Http/Controllers/TestController.php
-vendor/
+/vendor/
+/public/vendor/
 /public/google43e01675dcb5e57e.html
 composer.phar
