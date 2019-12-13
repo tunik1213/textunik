@@ -117,6 +117,13 @@
                     $('[name="trymbowyg-content"]').val()
                 );
             });
+
+            // блокируем Tab т.к. пользователь нечаянно нажимает опубликовать статью, пока набирает
+            $(document).keydown(function (e) {
+                if(e.keyCode == 9) {
+                    e.preventDefault();
+                }
+            });
         });
 
     </script>
