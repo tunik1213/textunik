@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 Use Carbon\Carbon;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

@@ -98,7 +98,10 @@ h3{
     padding-bottom: 20px;
     padding-top: 10px;
 }
-
+.page-link{
+    font-size: 2rem !important;
+    margin: 0 15px;
+}
 .center{
     text-align: center;
 }
@@ -152,5 +155,8 @@ ul.navbar-nav > li {
 @media screen and (max-width: 767px) {
     ul.footer-menu {
         flex-direction: column;
+    }
+    .page-link{
+        font-size: 1rem !important;
     }
 }

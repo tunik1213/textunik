@@ -10,6 +10,14 @@ use Intervention\Image\ImageManagerStatic as LibImage;
 
 class ArticleController extends Controller
 {
+    public function feed()
+    {
+        $articles = Article::where('moderatedBy','<>',null)
+            ->orderBy('id', 'desc')
+            ->simplePaginate(10);
+        return view('feed', ['articles' => $articles]);
+    }
+
     public function editForm(int $articleId = null)
     {
         if ($articleId == null) {
