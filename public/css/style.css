@@ -150,6 +150,18 @@ ul.navbar-nav > li {
 .article-author, .comment-header{
     padding: 1em 0;
 }
+.social-entrance.fb {
+    background: #4867aa none repeat scroll 0 0;
+}
+.social-entrance {
+    margin-left: 15px;
+    padding: 10px 25px;
+    color: #fff;
+    transition: all .5s ease 0s;
+}
+.social-entrance:hover{
+    color:#fff;
+}
 
 /* ======= mobile */
 @media screen and (max-width: 767px) {

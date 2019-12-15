@@ -74,11 +74,13 @@
                             </div>
                         </div>
                     </form>
-
+<br/>
                     <div class="container">
                         <p>Уже зарегистрированы? <a href="{{ route('login') }}">Войдите</a></p>
                     </div>
-
+                    <div class="container">
+                        @include('auth.social')
+                    </div>
                 </div>
             </div>
         </div>

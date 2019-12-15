@@ -1,3 +1,5 @@
-<a href="{{ route('auth.social', 'facebook') }}" title="Facebook">
-    <i class="fa fa-2x fa-facebook-square"></i>Войти через Facebook
-</a>
+<p>Или
+    <a class="social-entrance fb" href="{{ route('auth.social', 'facebook') }}" title="Facebook">
+        Войдите через Facebook
+    </a>
+</p>
