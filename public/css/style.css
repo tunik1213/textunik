@@ -171,4 +171,11 @@ ul.navbar-nav > li {
     .page-link{
         font-size: 1rem !important;
     }
+    .social-entrance {
+        font-size: smaller;
+        padding: 10px 10px;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+    }
 }
