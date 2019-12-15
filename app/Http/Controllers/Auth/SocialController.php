@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\SocialAccount;
+use App\User;
+use Intervention\Image\ImageManagerStatic as Image;
 use Laravel\Socialite\Facades\Socialite;
 
 class SocialController extends Controller
@@ -39,6 +42,13 @@ class SocialController extends Controller
             'name' => $socialiteUser->getName(),
             'email' => $socialiteUser->getEmail(),
             'password' => bcrypt(str_random(25)),
+            'nick_name' => $socialiteUser->nickname,
+            'avatar' => Image::make($socialiteUser->avatar_original)
+                ->fit(800)
+                ->encode('jpg', 75),
+            'avatar_mini' => Image::make($socialiteUser->avatar)
+                ->fit(50)
+                ->encode('jpg', 75),
         ]);
 
         $this->addSocialAccount($provider, $user, $socialiteUser);
