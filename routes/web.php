@@ -37,6 +37,9 @@ Route::get('convertAllImages', 'ServiceController@convertAllImages');
 Route::get('/about', function () {
     return view('staticPages.about');
 });
+Route::get('/privacy', function() {
+    return view('staticPages.privacy');
+});
 
 Route::get('/social-auth/{provider}', 'Auth\SocialController@redirectToProvider')->name('auth.social');
 Route::get('/social-auth/{provider}/callback', 'Auth\SocialController@handleProviderCallback')->name('auth.social.callback');
