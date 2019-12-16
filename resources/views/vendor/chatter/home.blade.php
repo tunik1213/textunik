@@ -13,6 +13,7 @@
 			}
 		</style>
 	@endif
+	<link href="{{url('/css/forums.css')}}" rel="stylesheet">
 @stop
 
 @section('content')
