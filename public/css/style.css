@@ -168,6 +168,9 @@ ul.navbar-nav > li {
 }
 .right-banner{
     float:right;
+    padding: 0 20px;
+}
+.right-banner-content{
     background-color: #fbf0d0;
     padding: 20px;
 }
