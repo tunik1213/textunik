@@ -9,7 +9,7 @@
 
 
 
-    <div class="container col-md-8">
+    <div class="container col-md-9">
         <h1>Профиль пользователя {{ $user->nick_name }}</h1>
 
         <ul class="nav nav-tabs">

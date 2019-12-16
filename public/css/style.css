@@ -164,6 +164,7 @@ ul.navbar-nav > li {
 }
 .feed{
     float:left;
+    padding:0;
 }
 .right-banner{
     float:right;

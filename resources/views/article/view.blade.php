@@ -16,7 +16,7 @@
 
 @section('content')
 
-    <div class="container col-md-8">
+    <div class="container col-md-9">
         <div class="container col-md-12 article-content">
 
             @if (!$article->finished)

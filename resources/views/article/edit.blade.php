@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('js/lib/ui/trumbowyg.css') }}">
 
 
-    <div class="container">
+    <div class="container col-md-9">
 
         <h1>{{$pageTitle}}</h1>
 

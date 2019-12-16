@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container col-md-8">
 
         <h1>О проекте</h1>
 

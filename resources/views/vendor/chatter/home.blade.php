@@ -48,7 +48,7 @@
 		@endif
 	@endif
 
-	<div class="container chatter_container">
+	<div class="container chatter_container col-md-9">
 
 	    <div class="row">
 
