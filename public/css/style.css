@@ -162,7 +162,14 @@ ul.navbar-nav > li {
 .social-entrance:hover{
     color:#fff;
 }
-
+.feed{
+    float:left;
+}
+.right-banner{
+    float:right;
+    background-color: #fbf0d0;
+    padding: 20px;
+}
 /* ======= mobile */
 @media screen and (max-width: 767px) {
     ul.footer-menu {
