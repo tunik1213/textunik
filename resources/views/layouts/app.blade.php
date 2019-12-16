@@ -64,7 +64,7 @@
 <body>
 <div id="app">
     <nav id="header" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container col-md-8">
+        <div class="container col-md-9">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <div id="logo1">TEXT-</div>
                 <div id="logo2">уник</div>
@@ -143,7 +143,7 @@
 
 
     <nav id="footer" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container col-md-8">
+        <div class="container col-md-9">
             <ul class="footer-menu">
                 <li>
                     <a href="/">Главная</a>
