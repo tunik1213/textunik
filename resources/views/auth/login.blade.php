@@ -3,6 +3,7 @@
 @section('head')
 
     <title>Вход на сайт</title>
+    <meta name="robots" content="noindex">
 
 @endsection
 

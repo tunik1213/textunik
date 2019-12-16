@@ -2,6 +2,7 @@
 @section('head')
 
     <title>Регистрация нового пользователя</title>
+    <meta name="robots" content="noindex">
 
 @endsection
 

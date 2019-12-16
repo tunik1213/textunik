@@ -89,7 +89,7 @@
                     @guest
                         <li class="nav-item">
                             {{--                                <a class="nav-link" href="{{ route('login') }}">Вход</a>--}}
-                            <a class="nav-link" href="/login_form" rel="modal:open">Вход</a>
+                            <noindex><a class="nav-link" href="/login_form" rel="modal:open nofollow">Вход</a></noindex>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">

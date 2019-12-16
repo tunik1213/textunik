@@ -1,4 +1,2 @@
 User-agent: *
 Sitemap: https://textunik.com/sitemap.xml
-Disallow: /login
-Disallow: /register
