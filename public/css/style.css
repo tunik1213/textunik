@@ -5,7 +5,7 @@ html, body, #app {
     font-size: 18px;
 }
 body{
-    background-color:#f5f5f5;
+    background-color:#f5ebdbb0;
 }
 /* logo */
 .navbar-brand{
@@ -171,7 +171,7 @@ ul.navbar-nav > li {
     padding: 0 20px;
 }
 .right-banner-content{
-    background-color: #f5ebdbb0;
+    background-color: #fff;
     padding: 20px;
     margin-bottom: 20px;
 }

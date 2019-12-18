@@ -36,15 +36,17 @@
             </div>
             <div class="right-banner-content">
                 <span class="text-main">Пожелания к статьям о копирайтинге: ЧТО и КАК писать</span>
-                <ul>
-                    <li>Решили рассказать, как вы пишете тексты для разных рекламных целей?</li>
-                    <li>Хотите сообщить, какими инструментами шлифуете статьи?</li>
-                    <li>А может имеете смелость поведать о проколе и как ловко потом вышли из ситуации?</li>
-                </ul>
+
                 <p><strong>Пишите статьи о копирайтинге и размещайте их на
                         &laquo;</strong><strong>TEXT</strong><strong>-уник&raquo;!&nbsp; </strong></p>
-                <span class="expand-read-more" for="write-invite">Каким статьям будут рады пользователи&nbsp;<i class="fas fa-caret-down"></i></span>
+                <span class="expand-read-more" for="write-invite">Подробнее&nbsp;<i class="fas fa-caret-down"></i></span>
                 <div id="write-invite">
+                    <ul>
+                        <li>Решили рассказать, как вы пишете тексты для разных рекламных целей?</li>
+                        <li>Хотите сообщить, какими инструментами шлифуете статьи?</li>
+                        <li>А может имеете смелость поведать о проколе и как ловко потом вышли из ситуации?</li>
+                    </ul>
+                    <p class="text-main">Каким статьям будут рады пользователи</p>
                     <ol>
                         <li><strong>Полезным</strong></li>
                     </ol>
