@@ -36,7 +36,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/lib/mdb.css') }}" rel="stylesheet">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=B612&display=swap" rel="stylesheet">
 
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
@@ -66,7 +68,7 @@
     <nav id="header" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container col-md-9">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <div id="logo1">TEXT-</div>
+                <div id="logo1">TEXT</div>
                 <div id="logo2">уник</div>
                 <div id="logo3">уникальная информация</div>
                 <div id="logo4">О КОПИРАЙТИНГЕ</div>
@@ -74,7 +76,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
+                <i style="font-size: 1.5rem;" class="fas fa-bars"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">

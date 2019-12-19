@@ -19,8 +19,7 @@
             размещать свои <u>авторские статьи о копирайтинге</u> и общаться, чтобы
             делиться знаниями и продвигаться в профессии. <o:p></o:p></p>
 
-        <h2 style="text-align: center;"><span style="color:#C45911;
-mso-themecolor:accent2;mso-themeshade:191">Для кого наш ресурс <o:p></o:p></span></h2>
+        <h2 style="text-align: center;"><span class="text-main">Для кого наш ресурс <o:p></o:p></span></h2>
 
         <p class="MsoNormal">Целевая аудитория «<strong><em><span lang="EN-US">TEXT</span></em></strong>-уник» – копирайтеры, а также владельцы среднего и
             малого бизнеса, которым нужен думающий толковый копирайтер не из биржи. <o:p></o:p></p>
@@ -55,7 +54,7 @@ Symbol">·<span style="font-variant-numeric: normal; font-variant-east-asian: no
             настраивайтесь морально. Читайте истории из первых уст, чтобы не наступить на
             те же грабли. Думайте, задавайте вопросы – делайте шаги навстречу мечте!<o:p></o:p></p>
 
-        <p class="MsoNormal"><strong><span style="color:#C45911;mso-themecolor:accent2;mso-themeshade:191">Зарегистрированные
+        <p class="MsoNormal"><strong><span class="text-main">Зарегистрированные
 пользователи смогут <u>самостоятельно разместить тексты</u> о копирайтинге и
 поймать таким образом два зайца: наполнить портфолио и «засветиться» в глазах
 заказчика. <o:p></o:p></span></strong></p>
