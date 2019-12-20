@@ -12,6 +12,10 @@
     <div class="container col-md-9">
         <h1>Профиль пользователя {{ $user->displayName() }}</h1>
 
+        @if(!empty(trim($user->short_info)))
+            <div id="user-info">{{$user->short_info}}</div>
+        @endif
+
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a data-toggle="tab" href="#articles" class="nav-link active">

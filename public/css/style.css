@@ -209,6 +209,11 @@ ul.navbar-nav > li {
     margin-bottom: 10px;
     display: block;
 }
+#user-info{
+    padding: 1rem;
+    border: 1px solid #212529;
+    margin-bottom: 1rem;
+}
 /* ======= mobile */
 @media screen and (max-width: 767px) {
     ul.footer-menu {
