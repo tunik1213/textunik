@@ -77,6 +77,8 @@
 
 
     <script>
+        var submit = false;
+
         $( document ).ready(function() {
             $('.htmleditor').trumbowyg({
                 lang: 'ru',
@@ -124,6 +126,14 @@
                     e.preventDefault();
                 }
             });
+        });
+
+        $('button[type=submit]').on('click',function () {
+            submit = true;
+        });
+
+        $(window).on('beforeunload', function(){
+            if (!submit) return confirm();
         });
 
     </script>
