@@ -48,7 +48,7 @@
 
             <button type="submit" name="finished" value="1" class="btn btn-primary">Опубликовать</button>
             @if(!$article->public())
-                <button type="submit" name="save-draft" class="btn btn-secondary">Сохранить в черновики</button>
+                <button type="submit" name="finished" value="0" name="save-draft" class="btn btn-secondary">Сохранить в черновики</button>
             @endif
             <button type="button" id="btn-preview" class="btn float-right" data-toggle="modal" data-target="#preview-content">Предпросмотр</button>
 

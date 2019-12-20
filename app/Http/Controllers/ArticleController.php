@@ -51,7 +51,9 @@ class ArticleController extends Controller
         $article->content = remove_html_comments($_POST['trymbowyg-content']);
         if (isset($_POST['finished']))
             $article->finished = (bool)$_POST['finished'];
-        $article->moderatedBy = ($author->moderator) ? $author->id : null;
+        if ($article->finished) {
+            $article->moderatedBy = ($author->moderator) ? $author->id : null;
+        }
 	    $article->created_at = time()-1;
         $article->save();
 
