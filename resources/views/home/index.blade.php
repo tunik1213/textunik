@@ -2,7 +2,7 @@
 
 @section('head')
 
-    <title>Личный кабинет пользователя {{$user->nick_name}}</title>
+    <title>Личный кабинет пользователя {{$user->displayName()}}</title>
 
 @endsection
 
@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{$user->nick_name}}</div>
+                    <div class="card-header">{{$user->displayName()}}</div>
 
                     <div class="card-body">
                         <form method="POST" action="/home" enctype="multipart/form-data">

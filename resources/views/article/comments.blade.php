@@ -5,7 +5,7 @@
     <div class="comment" comment-id="{{$comment->id}}">
         <div class="comment-header">
             <img src="/user/getMiniAvatarImage/{{$author->id}}" width="30" height="30" >
-            <a href="{{$author->profile_url()}}">{{$author->nick_name}}</a>
+            <a href="{{$author->profile_url()}}">{{$author->displayName()}}</a>
             <span>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($comment->created_at))->diffForHumans() }}</span>
         </div>
         <div class="comment-content">

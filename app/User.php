@@ -67,4 +67,12 @@ class User extends Authenticatable
         return in_array(Auth::user()->id, $ids);
     }
 
+    public function displayName()
+    {
+        if (empty(trim($this->nick_name)))
+            return $this->name;
+
+        return $this->nick_name;
+    }
+
 }

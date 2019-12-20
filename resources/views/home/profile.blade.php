@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('head')
 
-    <title>Профиль пользователя {{ $user->nick_name }}</title>
+    <title>Профиль пользователя {{ $user->displayName() }}</title>
     <meta name="description" content="{{$user->short_info}}">
 @endsection
 
@@ -10,7 +10,7 @@
 
 
     <div class="container col-md-9">
-        <h1>Профиль пользователя {{ $user->nick_name }}</h1>
+        <h1>Профиль пользователя {{ $user->displayName() }}</h1>
 
         <ul class="nav nav-tabs">
             <li class="nav-item">
