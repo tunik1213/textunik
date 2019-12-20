@@ -27,6 +27,7 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $user->name = $_POST['name'];
+        $user->nick_name = $_POST['nick_name'];
         $user->specialization = $_POST['specialization'];
         $user->gender = ($_POST['gender']=='') ? null : (bool)$_POST['gender'];
         $user->short_info = $_POST['short_info'];

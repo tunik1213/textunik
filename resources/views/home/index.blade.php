@@ -29,6 +29,11 @@
                                     </small>
                                 </div>
                                 <div class="form-group">
+
+                                    <label for="name">Никнейм:</label>
+                                    <input type="text" name="nick_name" value="{{$user->nick_name}}" class="form-control"/>
+                                </div>
+                                <div class="form-group">
                                     <label for="specialization">Специализация:</label>
                                     <input type="text" name="specialization" value="{{$user->specialization}}"
                                            class="form-control"/>
