@@ -61,7 +61,7 @@ class User extends Authenticatable
     public function superAdmin()
     {
         $ids = [
-            1,
+            1,6
         ];
 
         return in_array(Auth::user()->id, $ids);
