@@ -54,7 +54,7 @@ class ArticleController extends Controller
         if ($article->finished) {
             $article->moderatedBy = ($author->moderator) ? $author->id : null;
         }
-	    $article->created_at = time()-1;
+	    //$article->created_at = time()-1;
         $article->save();
 
         return redirect('article/' . $article->id);
