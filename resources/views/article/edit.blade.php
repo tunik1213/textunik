@@ -58,7 +58,7 @@
 
     <div class="modal fade" id="preview-content" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content article-content">
                 <div class="modal-header">
                     <h2 class="modal-title" id="exampleModalLongTitle">Предпросмотр</h2>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
