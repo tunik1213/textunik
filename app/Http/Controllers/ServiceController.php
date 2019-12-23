@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,8 @@ class ServiceController extends Controller
         $this->middleware('superAdmin');
     }
 
-    public function convertAllImages(){
+    public function convertAllImages()
+    {
         foreach (Image::all() as $image) {
 
             $image->image = LibImage::make($image->image)
@@ -23,6 +25,17 @@ class ServiceController extends Controller
                     $constraint->upsize();
                 })->encode('jpg', 75);
             $image->save();
+        }
+    }
+
+    public function editAllArticles()
+    {
+        foreach (Article::all() as $article){
+
+            $article->annotation = str_replace('<h2  class="text-main"','<h2 ',$article->annotation);
+            $article->content = str_replace('<h2  class="text-main"','<h2 ',$article->content);
+            $article->save();
+
         }
     }
 }
