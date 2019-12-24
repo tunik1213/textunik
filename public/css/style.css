@@ -264,4 +264,7 @@ ul.navbar-nav > li {
     #reformal_tab{
         display: none !important;
     }
+    .right-banner-content{
+        display: none;
+    }
 }
