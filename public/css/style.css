@@ -14,6 +14,31 @@ body{
 strong,b{
     font-weight: bold;
 }
+#scroll-top-button{
+    display: none;
+    background-color: #ffc220;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 4px;
+    margin: 30px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s;
+    z-index: 1000;
+}
+#scroll-top-button:hover {
+    cursor: pointer;
+    background-color: #041e42;
+}
+#scroll-top-button::after {
+    content: "\f077";
+    font-family: FontAwesome;
+    font-size: 2em;
+    line-height: 60px;
+    color: #fff;
+}
 /* logo */
 .navbar-brand{
     position:relative;
