@@ -59,7 +59,6 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-
     @yield('css')
 
 </head>
@@ -157,6 +156,9 @@
                 <li>
                     <a href="/forums">Форум</a>
                 </li>
+                <li>
+                    <a href="http://textunik.reformal.ru/" onclick="Reformal.widgetOpen();return false;" rel="nofollow" target="_blank">Оставить отзыв</a>
+                </li>
             </ul>
 
             <div id="footer-text">
@@ -171,6 +173,29 @@
 </div>
 
 @yield('js')
+
+<script type="text/javascript">
+    if($(window).width() > 1000) {
+        var reformalOptions = {
+            project_id: 983475,
+            project_host: "textunik.reformal.ru",
+            tab_orientation: "bottom-right",
+            tab_indent: "10px",
+            tab_bg_color: "#ffffff",
+            tab_border_color: "#c45911",
+            tab_image_url: "https://tab.reformal.ru/0J7RgdGC0LDQstC40YLRjCDQvtGC0LfRi9Cy/c45911/85536f1123cad72118e097a53f3de7d1/bottom-right/1/tab.png",
+            tab_border_width: 1
+        };
+
+        (function () {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = 'https://media.reformal.ru/widgets/v3/reformal.js';
+            document.getElementsByTagName('head')[0].appendChild(script);
+        })();
+    }
+</script><noscript><a href="http://reformal.ru"><img src="http://media.reformal.ru/reformal.png" /></a><a href="http://textunik.reformal.ru" rel="nofollow">Оставить отзыв</a></noscript>
 
 </body>
 </html>

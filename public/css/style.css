@@ -169,6 +169,7 @@ nav#header .dropdown-menu *{
 nav#footer{
     font-size: smaller;
     display: block;
+    padding-bottom: 25px;
 }
 nav#footer p {
     margin-bottom: 0.5rem;
@@ -259,5 +260,8 @@ ul.navbar-nav > li {
         margin: 0 auto;
         display: block;
         text-align: center;
+    }
+    #reformal_tab{
+        display: none !important;
     }
 }
