@@ -1,3 +1,5 @@
+@php($user=\Illuminate\Support\Facades\Auth::user())
+
 @extends('layouts.app')
 
 @section('head')
@@ -24,11 +26,25 @@
             @csrf
 
             <div class="form-group">
-
                 <label for="title">Заголовок:</label>
-                <input type="text" name="title" value="{{$article->title}}" class="form-control" AUTOCOMPLETE="off"/>
+                <input type="text" name="title" value="{{$article->title}}" class="form-control" AUTOCOMPLETE="off" required/>
                 <small class="form-text text-muted">Заголовок должен быть наполнен смыслом, чтобы можно было понять, о чем будет публикация.</small>
             </div>
+
+            @if($user->moderator)
+
+                <div class="form-group">
+                    <label for="title">Keywords:</label>
+                    <input type="text" name="keywords" value="{{$article->meta_keywords}}" class="form-control" AUTOCOMPLETE="off" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Description:</label>
+                    <input type="text" name="description" value="{{$article->meta_description}}" class="form-control" AUTOCOMPLETE="off" required/>
+                </div>
+
+
+            @endif
 
             <div class="form-group">
                 <label for="annotation">Текст до ката</label>

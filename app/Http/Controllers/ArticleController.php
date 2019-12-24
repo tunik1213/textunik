@@ -38,7 +38,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function editPost(int $articleId)
+    public function editPost(request $request, int $articleId)
     {
         $article = Article::find($articleId);
         if (!$article->canEdit())
@@ -46,15 +46,18 @@ class ArticleController extends Controller
 
         $author = Auth::user();
 
-        $article->title = remove_html_comments($_POST['title']);
-        $article->annotation = remove_html_comments($_POST['annotation']);
-        $article->content = remove_html_comments($_POST['trymbowyg-content']);
-        if (isset($_POST['finished']))
-            $article->finished = (bool)$_POST['finished'];
+        $article->title = remove_html_comments($request->input('title'));
+        $article->annotation = remove_html_comments($request->input('annotation'));
+        $article->content = remove_html_comments($request->input('trymbowyg-content'));
+        $article->finished = (bool)$request->input('finished', false);
+
         if ($article->finished) {
             $article->moderatedBy = ($author->moderator) ? $author->id : null;
         }
-	    //$article->created_at = time()-1;
+	    if ($author->moderator) {
+	        $article->meta_keywords = $request->input('keywords');
+            $article->meta_description = $request->input('description');
+        }
         $article->save();
 
         return redirect('article/' . $article->id);
