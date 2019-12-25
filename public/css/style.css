@@ -27,17 +27,16 @@ strong,b{
     right: 30px;
     transition: background-color .3s;
     z-index: 1000;
+    color: #fff;
 }
 #scroll-top-button:hover {
     cursor: pointer;
     background-color: #041e42;
 }
-#scroll-top-button::after {
-    content: "\f077";
-    font-family: FontAwesome;
-    font-size: 2em;
+#scroll-top-button > i {
+    font-size: 3rem;
     line-height: 60px;
-    color: #fff;
+
 }
 /* logo */
 .navbar-brand{

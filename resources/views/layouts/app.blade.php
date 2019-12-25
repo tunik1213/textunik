@@ -142,7 +142,7 @@
         @yield('content')
     </main>
 
-    <div id="scroll-top-button"></div>
+    <div id="scroll-top-button"><i class="fas fa-angle-up"></i></div>
 
     <nav id="footer" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container col-md-9">
