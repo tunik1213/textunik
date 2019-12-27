@@ -18,6 +18,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
+Route::get('/article/howto', function () {
+    return view('staticPages.article_howto');
+})->name('article.howto');
+
 Route::get('/', 'ArticleController@feed');
 Route::get('/article/{id}', 'ArticleController@viewPost');
 Route::get('/images/{articleId}/{imgId}','ArticleController@getImage');
