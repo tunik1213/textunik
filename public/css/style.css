@@ -39,6 +39,10 @@ strong,b{
 }
 .write-article-button.display-desktop{
     margin-right: 10px;
+
+}
+#navbarSupportedContent{
+    margin-top: 15px;
 }
 /* logo */
 .navbar-brand{
