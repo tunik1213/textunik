@@ -114,6 +114,7 @@
 
 @yield('js')
 
+@if(Route::current()->getName() != 'article.edit')
 <script type="text/javascript">
     if($(window).width() > 1000) {
         var reformalOptions = {
@@ -136,6 +137,7 @@
         })();
     }
 </script><noscript><a href="http://reformal.ru"><img src="http://media.reformal.ru/reformal.png" /></a><a href="http://textunik.reformal.ru" rel="nofollow">Оставить отзыв</a></noscript>
+@endif
 
 </body>
 </html>
