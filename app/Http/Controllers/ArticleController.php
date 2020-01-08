@@ -49,7 +49,11 @@ class ArticleController extends Controller
         $article->title = remove_html_comments($request->input('title'));
         $article->annotation = remove_html_comments($request->input('annotation'));
         $article->content = remove_html_comments($request->input('trymbowyg-content'));
-        $article->finished = (bool)$request->input('finished', false);
+        $finished = (bool)$request->input('finished', false);
+        if (!$article->finished && $finished){ // это первая публикация
+            $article->created_at = time();
+        }
+        $article->finished = $finished;
 
         if ($article->finished) {
             $article->moderatedBy = ($author->moderator) ? $author->id : null;
