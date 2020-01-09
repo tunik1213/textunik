@@ -1,21 +1,10 @@
-<div class="container article-content col-md-12">
-
-    @if ($articles->count() == 0)
+@if ($articles->count() == 0)
+    <div class="container article-content col-md-12">
         <span>Нет публикаций</span>
-    @endif
+    </div>
+@endif
 
-    @foreach ($articles as $article)
+@include('article.list_data')
 
-        @include('article.annotation')
-        <br/>
+{{ $articles->links() }}
 
-        @if(!empty(trim($article->content)) && $article->public())
-            <a class="accurate-button read-next-link" href="{{$article->url()}}#cut"><span>Читать дальше →</span></a>
-        @endif
-
-        <br>
-    @endforeach
-
-    {{ $articles->links() }}
-
-</div>

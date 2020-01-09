@@ -12,6 +12,10 @@
 
         <div class="container col-xl-8 col-lg-12 feed">
             @include('article.list',['articles'=>$articles])
+
+            <div class="ajax-load text-center" style="display:none">
+                <p><img src="/images/ajax-loader.gif">Загрузка еще статей...</p>
+            </div>
         </div>
 
         <div class="container col-xl-4 hidden-lg right-banner">
@@ -106,5 +110,59 @@
             </div>
 
         </div>
+    </div>
 
+
+    <script type="text/javascript">
+
+            let current_url = new URL(window.location.href);
+            let page = current_url.searchParams.get("page");
+            if (!page) page=1;
+
+            let stopAjaxPagination = false;
+
+            $(document).ready(function() {
+
+
+                //$('body').on('touchmove', onScroll);
+                $(window).on('scroll', onScroll);
+
+                function onScroll() {
+
+                     if (stopAjaxPagination) {
+                         return;
+                     }
+
+                     if ($(window).scrollTop() >  $(document).height() - $(window).height() - 2000) {
+                         page++;
+                         ajaxPagination(page);
+                     }
+                }
+
+                function ajaxPagination(page) {
+                    $.ajax(
+                        {
+                            url: '?page=' + page,
+                            type: "get",
+                            beforeSend: function () {
+                                $('.ajax-load').show();
+                            }
+                        })
+                        .done(function (data) {
+                            $('.ajax-load').hide();
+
+                            if (data.html == "") {
+                                stopAjaxPagination = true;
+                                return;
+                            }
+
+                            $('.pagination').remove();
+                            $(".feed").append(data.html);
+                        })
+                        .fail(function (jqXHR, ajaxOptions, thrownError) {
+
+                        });
+                }
+            });
+        </script>
 @endsection
