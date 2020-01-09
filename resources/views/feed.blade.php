@@ -121,48 +121,32 @@
 
         let stopAjaxPagination = false;
 
-        $(document).ready(function() {
+        $(window).on('scroll', onScroll);
 
-            $(window).on('scroll', onScroll);
+        function onScroll() {
 
-            function onScroll() {
+             if (stopAjaxPagination) {
+                 return;
+             }
 
-                 if (stopAjaxPagination) {
-                     return;
-                 }
+             if ($(window).scrollTop() >  $(document).height() - $(window).height() - 2000) {
+                 page++;
+                 ajaxPagination(page);
+             }
+        }
 
-                 if ($(window).scrollTop() >  $(document).height() - $(window).height() - 2000) {
-                     page++;
-                     ajaxPagination(page);
-                 }
-            }
+        function ajaxPagination(page) {
+            $.ajax(
+                {
+                    url: '?page=' + page,
+                    type: "get",
+                    beforeSend: function () {
+                        $('.ajax-load').show();
+                    }
+                })
+                .done(function (data) {
+                    $('.ajax-load').hide();
 
-            function ajaxPagination(page) {
-                $.ajax(
-                    {
-                        url: '?page=' + page,
-                        type: "get",
-                        beforeSend: function () {
-                            $('.ajax-load').show();
-                        }
-                    })
-                    .done(function (data) {
-                        $('.ajax-load').hide();
-
-                            if (data.html == "") {
-                                stopAjaxPagination = true;
-                                return;
-                            }
-
-                            $('.pagination').remove();
-                            $(".feed").append(data.html);
-                        })
-                        .fail(function (jqXHR, ajaxOptions, thrownError) {
-
-                        });
-                }
-            });
-        </script>
                         if (data.html == "") {
                             stopAjaxPagination = true;
                             return;
@@ -174,7 +158,6 @@
                     .fail(function (jqXHR, ajaxOptions, thrownError) {
 
                     });
-            }
-        });
+            };
     </script>
 @endsection

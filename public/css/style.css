@@ -4,7 +4,6 @@ html, body, #app {
     min-width: 320px;
     font-size: 18px;
     font-family: 'B612', sans-serif;
-    overflow-x: hidden;
 }
 body{
     background-color:#f0f0f0;
