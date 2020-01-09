@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('head')
 
     <title>TEXT-уник: о копирайтинге из опыта и знаний</title>
@@ -149,6 +149,20 @@
                     .done(function (data) {
                         $('.ajax-load').hide();
 
+                            if (data.html == "") {
+                                stopAjaxPagination = true;
+                                return;
+                            }
+
+                            $('.pagination').remove();
+                            $(".feed").append(data.html);
+                        })
+                        .fail(function (jqXHR, ajaxOptions, thrownError) {
+
+                        });
+                }
+            });
+        </script>
                         if (data.html == "") {
                             stopAjaxPagination = true;
                             return;
