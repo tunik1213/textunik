@@ -44,6 +44,9 @@ strong,b{
 #navbarSupportedContent{
     margin-top: 15px;
 }
+.pagination > li{
+    max-width: 8%;
+}
 /* logo */
 .navbar-brand{
     position:relative;
@@ -155,7 +158,17 @@ h3{
 }
 .page-link{
     font-size: 2rem !important;
-    margin: 0 15px;
+}
+.pagination .page-item.active .page-link{
+    background-color:inherit!important;
+    color:#C45911 !important;
+    font-weight: bold;
+    box-shadow: none !important;
+}
+.ajax-load{
+    background: #e1e1e1;
+    padding: 10px 0px;
+    width: 100%;
 }
 .center{
     text-align: center;

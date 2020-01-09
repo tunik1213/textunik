@@ -10,11 +10,20 @@ use Intervention\Image\ImageManagerStatic as LibImage;
 
 class ArticleController extends Controller
 {
-    public function feed()
+    public function feed(request $request)
     {
         $articles = Article::where('moderatedBy','<>',null)
             ->orderBy('id', 'desc')
-            ->simplePaginate(10);
+            ->paginate(10);
+
+        if ($request->ajax()) {
+
+            $view = view('article.list_data',
+                ['articles' => $articles]
+            )->render();
+            return response()->json(['html'=>$view]);
+        }
+
         return view('feed', ['articles' => $articles]);
     }
 
