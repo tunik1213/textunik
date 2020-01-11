@@ -14,6 +14,27 @@ body{
 strong,b{
     font-weight: bold;
 }
+blockquote, q {
+    position: relative;
+    padding: 12px 12px 12px 60px;
+    margin: 10px;
+    color: #041e42;
+    font-style:italic;
+    font-size: 1rem;
+    background: #f8f9fa;
+    border-left: 3px solid #041e42;
+    display: block;
+    quotes: none;
+}
+blockquote:after {
+    content: '”';
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    font-size: 3em;
+    line-height: 1;
+}
+
 #scroll-top-button{
     display: none;
     background-color: #ffc220;
@@ -151,7 +172,7 @@ h3{
 #content {
     flex-grow: 1;
 }
-.article-content{
+.article-content, .trumbowyg-editor{
     background-color: white;
     padding-bottom: 20px;
     padding-top: 10px;
