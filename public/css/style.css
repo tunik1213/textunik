@@ -38,7 +38,9 @@ blockquote:after {
     line-height: 3rem;
     font-size: larger;
 }
-
+.comment-children{
+    padding-left: 2rem;
+}
 #scroll-top-button{
     display: none;
     background-color: #ffc220;

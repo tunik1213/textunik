@@ -15,7 +15,7 @@
             <a href="#" class="comment-response">Ответить</a>
         </div>
 
-        <div class="container comment-children">
+        <div class="comment-children">
         @if($comment->children->count() > 0)
                 @include('article.comments',['comments'=>$comment->children])
         @endif
