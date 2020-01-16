@@ -8,6 +8,7 @@
     <meta name="keywords" content="{{$article->meta_keywords}}">
 
     <script src="{{ asset('js/comments.js') }}"></script>
+    <script src="{{ asset('js/lib/jquery.toc.min.js') }}"></script>
 
     <link href="{{ asset('css/comments.css') }}" rel="stylesheet">
 
@@ -36,6 +37,8 @@
             @include('article.annotation')
 
             <div id="cut"></div>
+
+            <ul id="toc"></ul>
 
             <div class="article-text">
                 {!! $article->content !!}
@@ -66,5 +69,8 @@
     </div>
 
 
+{{--    <script type="text/javascript">--}}
+{{--        $("#toc").toc({content: "div.article-text", headings: "h2,h3,h4"});--}}
+{{--    </script>--}}
 
 @endsection
