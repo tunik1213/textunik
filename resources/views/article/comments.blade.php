@@ -9,7 +9,7 @@
             <span>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($comment->created_at))->diffForHumans() }}</span>
         </div>
         <div class="comment-content">
-            <span>{{ $comment->text }}</span>
+            <span>{!! $comment->text !!}</span>
         </div>
         <div class="comment-bottom-nav">
             <a href="#" class="comment-response">Ответить</a>
