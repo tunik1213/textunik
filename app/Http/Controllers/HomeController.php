@@ -85,12 +85,12 @@ class HomeController extends Controller
         $articles['public'] = Article::where('moderatedBy','<>',null)
             ->where('authorId','=',$user->id)
             ->orderBy('id', 'desc')
-            ->simplePaginate(10);
+            ->get();
 
         $comments = Comment::where('authorId','=',$user->id)
             ->where('parentId',0)
             ->orderBy('id', 'desc')
-            ->simplePaginate(50);
+            ->get();
 
         if (Auth::user())
         if ($userId == Auth::user()->id){

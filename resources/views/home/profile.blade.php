@@ -9,7 +9,7 @@
 
 
 
-    <div class="container col-md-9">
+    <div class="container col-md-9 article-content">
         <h1>Профиль пользователя {{ $user->displayName() }}</h1>
 
         @if(!empty(trim($user->short_info)))
@@ -48,7 +48,13 @@
         <div class="tab-content">
 
             <div id="articles" class="tab-pane fade in active show">
-                @include('article.list',['articles'=>$articles['public']])
+{{--                @include('article.list',['articles'=>$articles['public']])--}}
+
+                @foreach ($articles['public'] as $article)
+                    <div class="profile-article-title">
+                        <a href="{{$article->url()}}">{{ $article->title }}</a>
+                    </div>
+                @endforeach
             </div>
 
             <div id="comments" class="tab-pane fade">

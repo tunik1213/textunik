@@ -34,6 +34,10 @@ blockquote:after {
     font-size: 3em;
     line-height: 1;
 }
+.profile-article-title > a{
+    line-height: 3rem;
+    font-size: larger;
+}
 
 #scroll-top-button{
     display: none;
