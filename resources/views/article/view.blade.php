@@ -47,7 +47,7 @@
             <hr/>
 
             @if($article->public())
-                <div class="container" id="comments-container" article-id="{{$article->id}}">
+                <div id="comments-container" article-id="{{$article->id}}">
 
                     <div class="md-form add-comment-form">
                         <i class="fas fa-pencil-alt prefix"></i>
@@ -59,7 +59,7 @@
                     <br>
 
 
-                    <div id="comments-list" class="container"></div>
+                    <div id="comments-list"></div>
 
                 </div>
             @endif
