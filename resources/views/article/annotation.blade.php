@@ -11,6 +11,14 @@
     @if($article->canEdit())
         | <a class="red-text font-weight-bold" href="{{route('article.edit',['id'=>$article->id])}}">Редактировать</a>
     @endif
+
+    @php($commentsCount = $article->comments()->count())
+    @if($commentsCount > 0)
+        <a class="article-comments-count" href="{{$article->url()}}#comments-list" rel="nofollow"
+           title="{{(string)$commentsCount.' '.nouns_declension($commentsCount,'комментарий','комментария','комментариев')}}">
+            <i class="far fa-comment">&nbsp;{{$commentsCount}}</i>
+        </a>
+    @endif
 </div>
 
 

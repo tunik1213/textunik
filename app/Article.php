@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 Use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 
 class Article extends Model
@@ -23,9 +24,14 @@ class Article extends Model
         return '/article/'.$this->id;
     }
 
-    public function author() : BelongsTo
+    public function author()
     {
         return $this->belongsTo('App\User', 'authorId');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'articleId');
     }
 
     public function public() : bool

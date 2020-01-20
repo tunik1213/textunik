@@ -255,7 +255,8 @@ ul.navbar-nav > li {
     text-align: right;
 }
 .article-author, .comment-header{
-    padding: 1em 0;
+    padding: 1em 3em 0 0;
+    position:relative;
 }
 .social-entrance.fb {
     background: #4867aa none repeat scroll 0 0;
@@ -268,6 +269,12 @@ ul.navbar-nav > li {
 }
 .social-entrance:hover{
     color:#fff;
+}
+.article-comments-count{
+    position: absolute;
+    right: 0;
+    font-size: 2rem;
+    top: 10px;
 }
 .feed{
     float:left;
@@ -327,5 +334,12 @@ ul.navbar-nav > li {
     }
     .display-mobile{
         display:block;
+    }
+    .article-comments-count{
+        font-size: 1rem;
+        top: 20px;
+    }
+    .article-author > span{
+        display: block;
     }
 }
