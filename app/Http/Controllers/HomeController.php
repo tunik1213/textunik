@@ -90,7 +90,7 @@ class HomeController extends Controller
             ->get();
 
         $comments = Comment::where('authorId','=',$user->id)
-            ->where('parentId',0)
+//            ->where('parentId',0)
             ->orderBy('id', 'desc')
             ->get();
 
