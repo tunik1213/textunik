@@ -4,7 +4,11 @@
 
 
 <div class="article-author">
-    <img src="/user/getMiniAvatarImage/{{$author->id}}" width="30" height="30">
+    <div class="user-avatar-mini">
+        <img src="{{route('miniAvatarImage',['userId'=>$author->id])}}" width="30" height="30" class="avatar-img-mini">
+        <img src="{{route('avatarImage',['userId'=>$author->id])}}" class="avatar-img-full top0">
+    </div>
+
     <a href="{{$author->profile_url()}}">{{$author->displayName()}}</a>
     <span>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($article->created_at))->diffForHumans() }}</span>
 

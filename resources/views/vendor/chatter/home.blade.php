@@ -82,7 +82,7 @@
 					        			@else
 
 					        				<span class="chatter_avatar_circle">
-												<img src="/user/getMiniAvatarImage/{{$discussion->user->id}}"/>
+												<img src="{{route('miniAvatarImage',['userId'=>$discussion->user->id])}}"/>
 					        					{{ strtoupper(substr($discussion->user->{Config::get('chatter.user.database_field_with_user_name')}, 0, 1)) }}
 					        				</span>
 
