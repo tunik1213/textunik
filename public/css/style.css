@@ -46,14 +46,14 @@ blockquote:after {
     position: relative;
 }
 .user-avatar-mini > .avatar-img-full{
+    display: none;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.2s linear;
     position: absolute;
-    max-width: 300px;
+    max-width: initial;
     box-shadow: 5px 5px 20px #041e42;
     z-index: 10;
-    left: 0;
 }
 .top0{
     top: 0;
@@ -64,6 +64,7 @@ blockquote:after {
 .user-avatar-mini:hover .avatar-img-full{
     visibility: visible;
     opacity: 1;
+    display: block;
 }
 #scroll-top-button{
     display: none;
