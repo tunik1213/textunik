@@ -115,7 +115,7 @@
 
 					        			@else
 					        				<span class="chatter_avatar_circle">
-												<img src="{{route('miniAvatarImage',['userId'=>$post->user->id])}}"/>
+												<img src="/user/getMiniAvatarImage/{{$post->user->id}}"/>
 					        					{{ ucfirst(substr($post->user->{Config::get('chatter.user.database_field_with_user_name')}, 0, 1)) }}
 					        				</span>
 					        			@endif
@@ -156,7 +156,7 @@
 	            		<div class="chatter_avatar">
 
 							<span class="chatter_avatar_circle">
-								<img src="{{route('miniAvatarImage')}}"/>
+								<img src="/user/getMiniAvatarImage/"/>
 								{{ strtoupper(substr(Auth::user()->{Config::get('chatter.user.database_field_with_user_name')}, 0, 1)) }}
 							</span>
 							<span id="comment-label">Комментировать:</span>

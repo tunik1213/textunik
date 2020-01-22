@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth')
-            ->except(['getAvatarImage','getMiniAvatarImage','profile']);
+            ->except(['getMiniAvatarImage','profile']);
     }
 
     public function index()
@@ -48,11 +48,9 @@ class HomeController extends Controller
         return view('home.index',['user' => $user]);
     }
 
-    public function getAvatarImage(int $userId = null)
+    public function getAvatarImage()
     {
-        $user = ($userId == null) ? auth()->user() : User::find($userId);
-        if ($user==null) return;
-
+        $user = auth()->user();
         $avatar = $user->avatar;
         if ($avatar == null) {
             $avatar = file_get_contents(public_path().'/avatars/no_foto.jpeg');

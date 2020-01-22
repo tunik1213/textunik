@@ -41,31 +41,6 @@ blockquote:after {
 .comment-children{
     padding-left: 2rem;
 }
-.user-avatar-mini{
-    display: inline;
-    position: relative;
-}
-.user-avatar-mini > .avatar-img-full{
-    display: none;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.2s linear;
-    position: absolute;
-    max-width: initial;
-    box-shadow: 5px 5px 20px #041e42;
-    z-index: 10;
-}
-.top0{
-    top: 0;
-}
-.bottom0{
-    bottom: 0;
-}
-.user-avatar-mini:hover .avatar-img-full{
-    visibility: visible;
-    opacity: 1;
-    display: block;
-}
 #scroll-top-button{
     display: none;
     background-color: #ffc220;

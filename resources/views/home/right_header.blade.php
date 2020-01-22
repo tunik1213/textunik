@@ -40,7 +40,7 @@
 
     <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button"
        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-        <img src="{{route('miniAvatarImage')}}" width="40" height="40"/>
+        <img src="/user/getMiniAvatarImage" width="40" height="40"/>
         <span class="caret"></span>
     </a>
 

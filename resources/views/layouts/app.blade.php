@@ -114,7 +114,7 @@
 
 @yield('js')
 
-@if(Route::current()->getName() ?? '' != 'article.edit')
+@if(Route::current()->getName() != 'article.edit')
 <script type="text/javascript">
     if($(window).width() > 1000) {
         var reformalOptions = {
