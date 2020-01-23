@@ -27,10 +27,7 @@
     <script src="{{ asset('js/lib/popper.min.js') }}"></script>
     <script src="{{ asset('js/lib/mdb.js') }}"></script>
     <script src="{{ asset('js/engine.js') }}"></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="{{ asset('js/guest.js') }}"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -52,10 +49,6 @@
     @elseif( Request::is( Config::get('chatter.routes.home') . '/*' ) && isset($discussion->title))
         <title>{{ $discussion->title }} / форум копирайтеров TEXT-уник</title>
     @endif
-
-    @guest
-        <script src="{{ asset('js/guest.js') }}"></script>
-    @endguest
 
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
