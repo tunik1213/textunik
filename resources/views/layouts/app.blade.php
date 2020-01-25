@@ -2,37 +2,38 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-22119625-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-22119625-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'UA-22119625-3');
-</script>
-
+        gtag('config', 'UA-22119625-3');
+    </script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="MobileOptimized" content="320"/>
     <meta name="HandheldFriendly" content="true"/>
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/lib/jquery.js') }}"></script>
-    <script src="{{ asset('js/lib/bootstrap.bundle.js') }}"></script>
-    <script src="{{ asset('js/lib/popper.min.js') }}"></script>
-    <script src="{{ asset('js/lib/mdb.js') }}"></script>
-    <script src="{{ asset('js/engine.js') }}"></script>
-    <script src="{{ asset('js/guest.js') }}"></script>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/lib/mdb.css') }}" rel="stylesheet">
+    @if(env('APP_DEBUG'))
+        <script src="{{ asset('js/lib/jquery.js') }}"></script>
+        <script src="{{ asset('js/lib/bootstrap.bundle.js') }}"></script>
+        <script src="{{ asset('js/lib/popper.min.js') }}"></script>
+        <script src="{{ asset('js/lib/mdb.js') }}"></script>
+        <script src="{{ asset('js/engine.js') }}"></script>
+        <script src="{{ asset('js/guest.js') }}"></script>
+
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/lib/mdb.css') }}" rel="stylesheet">
+    @else
+        @include('layouts.production_asserts')
+    @endif
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=B612&display=swap" rel="stylesheet">
@@ -108,28 +109,28 @@
 @yield('js')
 
 @if(Route::current()->getName() != 'article.edit')
-<script type="text/javascript">
-    if($(window).width() > 1000) {
-        var reformalOptions = {
-            project_id: 983475,
-            project_host: "textunik.reformal.ru",
-            tab_orientation: "bottom-right",
-            tab_indent: "10px",
-            tab_bg_color: "#ffffff",
-            tab_border_color: "#c45911",
-            tab_image_url: "https://tab.reformal.ru/0J7RgdGC0LDQstC40YLRjCDQvtGC0LfRi9Cy/c45911/85536f1123cad72118e097a53f3de7d1/bottom-right/1/tab.png",
-            tab_border_width: 1
-        };
+    <script type="text/javascript">
+        if($(window).width() > 1000) {
+            var reformalOptions = {
+                project_id: 983475,
+                project_host: "textunik.reformal.ru",
+                tab_orientation: "bottom-right",
+                tab_indent: "10px",
+                tab_bg_color: "#ffffff",
+                tab_border_color: "#c45911",
+                tab_image_url: "https://tab.reformal.ru/0J7RgdGC0LDQstC40YLRjCDQvtGC0LfRi9Cy/c45911/85536f1123cad72118e097a53f3de7d1/bottom-right/1/tab.png",
+                tab_border_width: 1
+            };
 
-        (function () {
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.async = true;
-            script.src = 'https://media.reformal.ru/widgets/v3/reformal.js';
-            document.getElementsByTagName('head')[0].appendChild(script);
-        })();
-    }
-</script><noscript><a href="http://reformal.ru"><img src="http://media.reformal.ru/reformal.png" /></a><a href="http://textunik.reformal.ru" rel="nofollow">Оставить отзыв</a></noscript>
+            (function () {
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.async = true;
+                script.src = 'https://media.reformal.ru/widgets/v3/reformal.js';
+                document.getElementsByTagName('head')[0].appendChild(script);
+            })();
+        }
+    </script><noscript><a href="http://reformal.ru"><img src="http://media.reformal.ru/reformal.png" /></a><a href="http://textunik.reformal.ru" rel="nofollow">Оставить отзыв</a></noscript>
 @endif
 
 </body>
