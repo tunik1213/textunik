@@ -25,9 +25,7 @@
     "dependencies": {
         "boostrap": "^2.0.0",
         "bower": "^1.8.8",
+        "simditor": "^2.3.28",
         "trumbowyg": "^2.18.0"
-    },
-    "resolutions": {
-        "serialize-javascript": "^2.1.1"
     }
 }
