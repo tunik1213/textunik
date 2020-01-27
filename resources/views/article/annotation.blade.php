@@ -1,5 +1,5 @@
 @php
-    $author = $article->author;
+    $author = $article->author
 @endphp
 
 

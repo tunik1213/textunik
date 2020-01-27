@@ -12,7 +12,7 @@
             <span>{!! $comment->text !!}</span>
         </div>
         <div class="comment-bottom-nav">
-            <a href="#" class="comment-response">Ответить</a>
+            <a href="#" class="comment-response @guest restrict @endguest">Ответить</a>
         </div>
 
         <div class="comment-children">

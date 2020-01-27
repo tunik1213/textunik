@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="ru">
 <head>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -29,7 +29,6 @@
         <script src="{{ asset('js/lib/popper.min.js') }}"></script>
         <script src="{{ asset('js/lib/mdb.js') }}"></script>
         <script src="{{ asset('js/engine.js') }}"></script>
-        <script src="{{ asset('js/guest.js') }}"></script>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">

@@ -9,7 +9,19 @@ $(document).ready(function () {
     $('body').on('mouseenter', '.author-profile-link', show_author_popup);
     $('body').on('mouseleave', '.author-profile-link', hide_author_popup);
 
+    $('body').on('focus','textarea.restrict',login_popup);
+    $('body').on('click','a.restrict',login_popup);
 });
+
+function login_popup(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.blur();
+    $.get('/login_form', function(form) {
+        $(form).appendTo('body').modal();
+    });
+};
+
 
 function show_author_popup() {
     authorId = $(this).attr('author-id');
