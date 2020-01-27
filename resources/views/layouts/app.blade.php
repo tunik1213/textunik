@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 
@@ -20,6 +20,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     @if(env('APP_DEBUG'))
         <script src="{{ asset('js/lib/jquery.js') }}"></script>
         <script src="{{ asset('js/lib/bootstrap.bundle.js') }}"></script>
@@ -50,6 +53,10 @@
     @elseif( Request::is( Config::get('chatter.routes.home') . '/*' ) && isset($discussion->title))
         <title>{{ $discussion->title }} / форум копирайтеров TEXT-уник</title>
     @endif
+
+    @guest
+        <script src="{{ asset('js/guest.js') }}"></script>
+    @endguest
 
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
