@@ -10,7 +10,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/comments/add','CommentsController@addComment');
 
     Route::post('/home', 'HomeController@updateUser');
-    Route::get('/user/getAvatarImage', 'HomeController@getAvatarImage');
 
     Route::group(['middleware' => 'moderator'], function () {
         Route::get('/moderation/', 'ArticleController@moderation');
@@ -28,8 +27,10 @@ Route::get('/images/{articleId}/{imgId}','ArticleController@getImage');
 
 Route::get('/comments/getByParent/{parentId}','CommentsController@getByParent');
 
-Route::get('/user/getMiniAvatarImage/{userId?}', 'HomeController@getMiniAvatarImage');
+Route::get('/user/getAvatarImage/{id?}', 'HomeController@getAvatarImage')->name('avatarImage');
+Route::get('/user/getMiniAvatarImage/{userId?}', 'HomeController@getMiniAvatarImage')->name('miniAvatarImage');
 Route::get('/profile/{userId}', 'HomeController@profile')->name('profile');
+Route::get('/profile/getPreview/{userId}', 'HomeController@profilePreview')->name('profilePreview');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();

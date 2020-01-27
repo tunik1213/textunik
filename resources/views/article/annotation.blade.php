@@ -5,7 +5,7 @@
 
 <div class="article-author">
     <img src="/user/getMiniAvatarImage/{{$author->id}}" width="30" height="30">
-    <a href="{{$author->profile_url()}}">{{$author->displayName()}}</a>
+    <a class="author-profile-link" author-id="{{$author->id}}" href="{{$author->profile_url()}}">{{$author->displayName()}}</a>
     <span>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($article->created_at))->diffForHumans() }}</span>
 
     @if($article->canEdit())

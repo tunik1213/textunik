@@ -41,6 +41,12 @@ blockquote:after {
 .comment-children{
     padding-left: 2rem;
 }
+.user-preview-popup{
+    position: absolute;
+    max-width: 300px;
+    box-shadow: 5px 5px 20px #041e42;
+    z-index: 10;
+}
 #scroll-top-button{
     display: none;
     background-color: #ffc220;
