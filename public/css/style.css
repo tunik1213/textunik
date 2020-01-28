@@ -11,6 +11,10 @@ body{
 .article-content h1,.article-content h2,.article-content h3,.article-content h4,.article-content h5,.article-content h6{
     color:#C45911;
 }
+*::selection{
+    background-color: #041e42;
+    color: white;
+}
 strong,b{
     font-weight: bold;
 }

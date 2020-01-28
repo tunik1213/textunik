@@ -19,6 +19,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <meta name="theme-color" content="#041e42">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
