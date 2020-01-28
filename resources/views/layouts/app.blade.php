@@ -53,10 +53,6 @@
         <title>{{ $discussion->title }} / форум копирайтеров TEXT-уник</title>
     @endif
 
-    @guest
-        <script src="{{ asset('js/guest.js') }}"></script>
-    @endguest
-
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     @yield('css')

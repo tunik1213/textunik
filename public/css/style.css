@@ -34,6 +34,10 @@ blockquote:after {
     font-size: 3em;
     line-height: 1;
 }
+#mobile-header-about-link{
+    margin-top: -30px;
+    padding-bottom: 15px;
+}
 .profile-article-title > a{
     line-height: 3rem;
     font-size: larger;

@@ -10,6 +10,10 @@
 
         <ul class="navbar-nav ml-auto">
 
+            <li class="nav-item display-mobile" >
+                <a class="nav-link" href="/about" id="mobile-header-about-link">О проекте</a>
+            </li>
+
             <li class="nav-item">
                 <noindex>
                 <a href="{{ route('article.howto') }}" class="accurate-button write-article-button display-desktop" rel="nofollow">
