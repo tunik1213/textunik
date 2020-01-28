@@ -6,8 +6,8 @@ $(document).ready(function () {
         scroll_up_button();
     }
 
-    $('body').on('mouseenter', '.author-profile-link', show_author_popup);
-    $('body').on('mouseleave', '.author-profile-link', hide_author_popup);
+    $('body').on('mouseenter', '.user-mini-avatar', show_author_popup);
+    $('body').on('mouseleave', '.user-mini-avatar', hide_author_popup);
 
     $('body').on('focus','textarea.restrict',login_popup);
     $('body').on('click','a.restrict',login_popup);
@@ -24,10 +24,11 @@ function login_popup(event) {
 
 
 function show_author_popup() {
-    authorId = $(this).attr('author-id');
+    profile_link = $(this).parent().find('a.author-profile-link');
+    authorId = profile_link.attr('author-id');
     preview = getUserPreview(authorId);
     preview
-        .appendTo($(this))
+        .appendTo(profile_link)
         .show();
 
     if ($('#footer').offset().top - preview.offset().top < 500){
@@ -36,7 +37,7 @@ function show_author_popup() {
 }
 
 function hide_author_popup() {
-    authorId = $(this).attr('author-id');
+    authorId = $(this).parent().find('a.author-profile-link').attr('author-id');
     getUserPreview(authorId).hide();
 }
 
