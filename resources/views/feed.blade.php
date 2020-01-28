@@ -20,8 +20,9 @@
         <div class="container col-xl-4 hidden-lg right-banner">
 
             <div class="right-banner-content">
+                <p class="text-main">О проекте</p>
                 <p>Этот сайт создан, чтобы выстраивать сообщество веб-райтеров и копирайтеров. Здесь вы сможете размещать информационный, продающий, развлекательный контент и общаться, делиться знаниями и продвигаться в профессии.</p>
-                <a href="/about">Подробнее о проекте</a>
+                <a href="/about">Подробнее</a>
             </div>
 
             <div class="right-banner-content">
@@ -44,7 +45,7 @@
 
             </div>
             <div class="right-banner-content">
-                <span class="text-main">Пожелания к статьям о копирайтинге: ЧТО и КАК писать</span>
+                <span class="text-main">ЧТО и КАК писать</span>
 
                 <p>Пишите статьи о копирайтинге и размещайте их на &laquo;TEXT-уник&raquo;!</p>
                 <span class="expand-read-more" for="write-invite">Подробнее&nbsp;<i class="fas fa-caret-down"></i></span>
