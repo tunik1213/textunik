@@ -7,10 +7,10 @@
     <meta name="description" content="{{$article->meta_description}}">
     <meta name="keywords" content="{{$article->meta_keywords}}">
 
-    <script src="{{ asset('js/comments.js') }}"></script>
+    <script src="{{ asset('js/article.js') }}"></script>
     <script src="{{ asset('js/lib/jquery.toc.min.js') }}"></script>
 
-    <link href="{{ asset('css/comments.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/article.css') }}" rel="stylesheet">
 
 @endsection
 
@@ -38,7 +38,10 @@
 
             <div id="cut"></div>
 
-            <ul id="toc"></ul>
+            <ul id="toc">
+                <div id="toc-title">Содержание [<a id="toc-toggle" class="toc-visible" href="#">скрыть</a>]</div>
+
+            </ul>
 
             <div class="article-text">
                 {!! $article->content !!}
@@ -69,8 +72,8 @@
     </div>
 
 
-{{--    <script type="text/javascript">--}}
-{{--        $("#toc").toc({content: "div.article-text", headings: "h2,h3,h4"});--}}
-{{--    </script>--}}
+    <script type="text/javascript">
+        $("#toc").toc({content: "div.article-text", headings: "h2,h3,h4"});
+    </script>
 
 @endsection

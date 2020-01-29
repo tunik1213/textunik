@@ -1,0 +1,30 @@
+div.comment-content{
+    padding: 10px;
+}
+div.comment{
+    padding-top: 1em;
+}
+div.comment-header > * {
+    margin: 0 0.2em;
+}
+div.comment-header{
+    font-size: smaller;
+}
+
+#toc{
+    background-color: #f0f0f0;
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: 1px solid #041e42;
+    border-radius: 5px;
+}
+#toc-title{
+    font-size: 1.3rem;
+    padding: 0.5rem 0;
+}
+#toc li {
+    list-style: none;
+}
+#toc ul {
+    padding-left: 1rem;
+}

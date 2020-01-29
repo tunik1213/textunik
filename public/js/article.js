@@ -1,5 +1,8 @@
 $( document ).ready(function() {
 
+    $('#toc-toggle').on('click', toggle_toc);
+
+
     var comments_container = $("#comments-container");
     var article_id = comments_container.attr('article-id');
     var comments_list_container = comments_container.find('#comments-list');
@@ -65,3 +68,20 @@ $( document ).ready(function() {
 
 
 });
+
+function toggle_toc(e) {
+    e.preventDefault();
+
+    if ($(this).hasClass('toc-visible')) {
+        $(this).removeClass('toc-visible')
+            .addClass('toc-hidden')
+            .text('показать');
+
+    } else if ($(this).hasClass('toc-hidden')) {
+        $(this).removeClass('toc-hidden')
+            .addClass('toc-visible')
+            .text('скрыть');
+    }
+
+    $('#toc li').toggle();
+}
