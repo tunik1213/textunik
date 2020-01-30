@@ -22,7 +22,7 @@
 
         <h1>{{$pageTitle}}</h1>
 
-        <form method="POST" action="{{route('article.post', ['id'=>$article->id])}}">
+        <form method="POST" action="{{route('article.post', ['id'=>$article->id])}}" id="article-editor-form">
             @csrf
 
             <div class="form-group">
@@ -142,6 +142,10 @@
                     e.preventDefault();
                 }
             });
+
+            // каждую минуту сохраняем данные формы на всякий случай
+            window.setInterval(ajax_save, 60000);
+
         });
 
         $('button[type=submit]').on('click',function () {
@@ -151,6 +155,16 @@
         $(window).on('beforeunload', function(){
             if (!submit) return confirm();
         });
+        
+        function ajax_save() {
+            var form = $('#article-editor-form');
+            $.ajax({
+                type: 'POST',
+                url: form.attr('action'),
+                data: form.serialize(),
+                async: true,
+            });
+        }
 
     </script>
 
