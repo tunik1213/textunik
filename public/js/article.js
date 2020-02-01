@@ -61,7 +61,7 @@ $( document ).ready(function() {
 
         $('#comments-container > .add-comment-form')
             .clone()
-            .appendTo(this)
+            .insertAfter(this)
             .find('textarea')
             .focus();
     });
