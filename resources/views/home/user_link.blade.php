@@ -1,0 +1,2 @@
+<img class="user-mini-avatar" src="/user/getMiniAvatarImage/{{$user->id}}" width="30" height="30">
+<a class="author-profile-link" author-id="{{$user->id}}" href="{{$user->profile_url()}}">{{$user->displayName()}}</a>

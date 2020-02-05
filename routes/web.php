@@ -51,5 +51,5 @@ Route::get('/social-auth/{provider}', 'Auth\SocialController@redirectToProvider'
 Route::get('/social-auth/{provider}/callback', 'Auth\SocialController@handleProviderCallback')->name('auth.social.callback');
 
 // Email related routes
-Route::get('mail/send', 'MailController@send');
+Route::get('mail/dailyReport', 'MailController@dailyReport')->middleware('localhostOnly');
 
