@@ -15,7 +15,10 @@ class LocalhostOnly
      */
     public function handle($request, Closure $next)
     {
-        if ($request->server('SERVER_ADDR') != $request->server('REMOTE_ADDR')) {
+        if (
+	    $request->server('SERVER_ADDR') != $request->server('REMOTE_ADDR')
+	 && $request->server('REMOTE_ADDR') != '127.0.0.1'
+	) {
             abort(403);
         }
 
