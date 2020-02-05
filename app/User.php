@@ -55,7 +55,7 @@ class User extends Authenticatable
 
     public function profile_url()
     {
-        return '/profile/' . $this->id;
+        return url('/profile/' . $this->id);
     }
 
     public function superAdmin()

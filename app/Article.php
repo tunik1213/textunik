@@ -21,7 +21,7 @@ class Article extends Model
 
     public function url() : string
     {
-        return '/article/'.$this->id;
+        return url('/article/'.$this->id);
     }
 
     public function author()
