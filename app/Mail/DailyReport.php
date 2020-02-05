@@ -34,7 +34,7 @@ class DailyReport extends Mailable
     {
         $disk_usage_percent = shell_exec(" df --output=pcent /dev/sda1 |  tr -dc '0-9'");
 
-        $report_ts = strtotime("today");
+        $report_ts = strtotime("yesterday");
         $report_dt = Carbon::createFromTimestamp($report_ts);
 
         $new_users = User::where('created_at','>=',$report_dt->toDateString())->get();
