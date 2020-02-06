@@ -58,7 +58,7 @@
             </div>
 
             <div id="comments" class="tab-pane fade">
-                @include('article.comments',['comments'=>$comments])
+                @include('article.comments',['comments'=>$comments, 'suppressRecursion'=>true])
             </div>
 
             @if(isset($articles['moderation']))

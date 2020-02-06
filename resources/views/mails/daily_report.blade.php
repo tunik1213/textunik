@@ -9,7 +9,7 @@
 
 <p>
     Новые комментарии: {{$new_comments->count()}} <br/>
-    @include('article.comments',['comments'=>$new_comments])
+    @include('article.comments',['comments'=>$new_comments, 'suppressRecursion'=>true])
 </p>
 
 <p>
