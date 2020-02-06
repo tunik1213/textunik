@@ -22,4 +22,9 @@ class Comment extends Model
     {
         return $this->hasMany('app\Comment', 'parentId');
     }
+
+    public function article()
+    {
+        return $this->belongsTo('App\Article', 'articleId');
+    }
 }
