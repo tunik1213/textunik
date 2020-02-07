@@ -27,20 +27,25 @@
 
             <div class="form-group">
                 <label for="title">Заголовок:</label>
-                <input type="text" name="title" value="{{$article->title}}" class="form-control" AUTOCOMPLETE="off" required/>
-                <small class="form-text text-muted">Заголовок должен быть наполнен смыслом, чтобы можно было понять, о чем будет публикация.</small>
+                <input type="text" name="title" value="{{$article->title}}" class="form-control" AUTOCOMPLETE="off"
+                       required/>
+                <small class="form-text text-muted">Заголовок должен быть наполнен смыслом, чтобы можно было понять, о
+                    чем будет публикация.
+                </small>
             </div>
 
             @if($user->moderator)
 
                 <div class="form-group">
                     <label for="title">Keywords:</label>
-                    <input type="text" name="keywords" value="{{$article->meta_keywords}}" class="form-control" AUTOCOMPLETE="off" required/>
+                    <input type="text" name="keywords" value="{{$article->meta_keywords}}" class="form-control"
+                           AUTOCOMPLETE="off" required/>
                 </div>
 
                 <div class="form-group">
                     <label for="title">Description:</label>
-                    <input type="text" name="description" value="{{$article->meta_description}}" class="form-control" AUTOCOMPLETE="off" required/>
+                    <input type="text" name="description" value="{{$article->meta_description}}" class="form-control"
+                           AUTOCOMPLETE="off" required/>
                 </div>
 
 
@@ -64,15 +69,20 @@
 
             <button type="submit" name="finished" value="1" class="btn btn-primary">Опубликовать</button>
             @if(!$article->public())
-                <button type="submit" name="finished" value="0" name="save-draft" class="btn btn-secondary">Сохранить в черновики</button>
+                <button type="submit" name="finished" value="0" name="save-draft" class="btn btn-secondary">Сохранить в
+                    черновики
+                </button>
             @endif
-            <button type="button" id="btn-preview" class="btn float-right" data-toggle="modal" data-target="#preview-content">Предпросмотр</button>
+            <button type="button" id="btn-preview" class="btn float-right" data-toggle="modal"
+                    data-target="#preview-content">Предпросмотр
+            </button>
 
         </form>
 
     </div>
 
-    <div class="modal fade" id="preview-content" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal fade" id="preview-content" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content article-content">
                 <div class="modal-header">
@@ -95,7 +105,7 @@
     <script>
         var submit = false;
 
-        $( document ).ready(function() {
+        $(document).ready(function () {
             $('.htmleditor').trumbowyg({
                 lang: 'ru',
                 btns: [
@@ -115,7 +125,7 @@
                 plugins: {
                     upload: {
                         serverPath: '/upload',
-                        data:[{name: '_token', value: '{{ csrf_token() }}'}],
+                        data: [{name: '_token', value: '{{ csrf_token() }}'}],
                         fileFieldName: 'filename',
                         urlPropertyName: 'url',
                         imageWidthModalEdit: true
@@ -123,12 +133,12 @@
                 }
             });
 
-            $('#annotation').trumbowyg('html',`{!!$article->annotation!!}`);
-            $('#trymbowyg-content').trumbowyg('html',`{!!$article->content!!}`);
+            $('#annotation').trumbowyg('html', `{!!$article->annotation!!}`);
+            $('#trymbowyg-content').trumbowyg('html', `{!!$article->content!!}`);
 
             $('#btn-preview').click(function (e) {
                 e.preventDefault();
-                $('.modal-title').html('Предпросмотр: '+$('[name="title"]').val());
+                $('.modal-title').html('Предпросмотр: ' + $('[name="title"]').val());
                 $('.modal-body').html(
                     $('[name="annotation"]').val()
                     + '<br />' +
@@ -138,24 +148,26 @@
 
             // блокируем Tab т.к. пользователь нечаянно нажимает опубликовать статью, пока набирает
             $(document).keydown(function (e) {
-                if(e.keyCode == 9) {
+                if (e.keyCode == 9) {
                     e.preventDefault();
                 }
             });
 
+            @if ($article->authorId == \Illuminate\Support\Facades\Auth::user()->id)
             // каждую минуту сохраняем данные формы на всякий случай
             window.setInterval(ajax_save, 60000);
+            @endif
 
         });
 
-        $('button[type=submit]').on('click',function () {
+        $('button[type=submit]').on('click', function () {
             submit = true;
         });
 
-        $(window).on('beforeunload', function(){
+        $(window).on('beforeunload', function () {
             if (!submit) return confirm();
         });
-        
+
         function ajax_save() {
             var form = $('#article-editor-form');
             $.ajax({
@@ -169,18 +181,20 @@
     </script>
 
     <style>
-        #dashed-border{
+        #dashed-border {
             border-bottom: 1px black dashed;
             margin-top: -10px;
             margin-left: 15px;
         }
-        .modal{
+
+        .modal {
             width: 90%;
             z-index: 9999;
             margin-left: 5%;
             max-width: initial;
         }
-        .modal-dialog{
+
+        .modal-dialog {
             max-width: 90%;
         }
     </style>
