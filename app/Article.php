@@ -49,8 +49,8 @@ class Article extends Model
         if ($user->superAdmin())
             return true;
 
-        // модератор может редактировать завершенные неопубликованные статьи
-        if ($user->moderator && !$this->public() && $this->finished = 1)
+        // модератор может редактировать все завершенные статьи, включая уже опубликованные
+        if ($user->moderator && $this->finished = 1)
             return true;
 
         // юзер может редактировать свои незавершенные статьи (черновики)
