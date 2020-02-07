@@ -66,7 +66,7 @@ class ArticleController extends Controller
             $article->finished = $finished;
         }
 
-        if ($article->finished) {
+        if ($article->finished && $finished) {
             $article->moderatedBy = ($author->moderator) ? $author->id : null;
         }
         if ($author->moderator) {
