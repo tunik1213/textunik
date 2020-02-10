@@ -26,11 +26,14 @@ class CommentsController extends Controller
 
     public function addComment()
     {
+        $commentText = trim(htmlspecialchars($_POST['comment']));
+        if (empty($commentText)) return;
+
         $comment = new Comment([
             'authorId'=>Auth::id(),
             'articleId'=>(int)$_POST['article'],
             'parentId'=>(int)$_POST['parent_id'],
-            'text'=>htmlspecialchars($_POST['comment'])
+            'text'=>$commentText
         ]);
 
         $comment->save();
