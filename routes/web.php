@@ -37,8 +37,11 @@ Auth::routes();
 Route::get('/login_form', 'AccessController@loginForm')->middleware('guest');
 
 Route::get('sitemap.xml', 'ExportController@sitemap');
-Route::get('convertAllImages', 'ServiceController@convertAllImages');
-Route::get('editAllArticles', 'ServiceController@editAllArticles');
+
+Route::group(['middleware' => 'superAdmin'], function () {
+    Route::get('convertAllImages', 'ServiceController@convertAllImages');
+    Route::get('editAllArticles', 'ServiceController@editAllArticles');
+});
 
 Route::get('/about', function () {
     return view('staticPages.about');

@@ -122,7 +122,7 @@
                 plugins: "image, link, fullscreen, emoticons, media, lists",
                 toolbar: 'undo redo | styleselect | bold italic removeformat | alignleft aligncenter alignright alignjustify | bullist numlist | indent outdent | emoticons link image media | fullscreen',
                 menubar: false,
-                height: 300,
+                height: 500,
                 media_live_embeds: true,
                 file_picker_types: 'file image media',
                 images_upload_url: '/upload',
@@ -131,7 +131,7 @@
                 setup: function(editor) {
                     editor.on('init', fillEditorContent);
                 },
-                content_style: 'h1,h2,h3,h4,h5,h6{color:#C45911;}'
+                content_style: 'h1,h2,h3,h4,h5,h6,a{color:#C45911;}'
             });
 
 

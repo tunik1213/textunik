@@ -32,8 +32,8 @@ class ServiceController extends Controller
     {
         foreach (Article::all() as $article){
 
-            $article->annotation = str_replace('<h2  class="text-main"','<h2 ',$article->annotation);
-            $article->content = str_replace('<h2  class="text-main"','<h2 ',$article->content);
+            $article->annotation = str_replace('<img src="','<img style="display: block;margin: 10px auto;" src="',$article->annotation);
+            $article->content = str_replace('<img src="','<img style="display: block;margin: 10px auto;" src="',$article->content);
             $article->save();
 
         }
