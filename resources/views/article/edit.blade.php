@@ -132,6 +132,27 @@
                     editor.on('init', fillEditorContent);
                 },
                 content_style: 'h1,h2,h3,h4,h5,h6,a{color:#C45911;}'
+                +'blockquote, q {\n' +
+                    '    position: relative !important;\n' +
+                    '    padding: 12px 12px 12px 60px !important;\n' +
+                    '    margin: 10px !important;\n' +
+                    '    color: #041e42 !important;\n' +
+                    '    font-style:italic !important;\n' +
+                    '    font-size: 1rem !important;\n' +
+                    '    background: #f8f9fa !important;\n' +
+                    '    border-left: 3px solid #041e42 !important;\n' +
+                    '    display: block !important;\n' +
+                    '    quotes: none !important;\n' +
+                    '}\n' +
+                    'blockquote:after {\n' +
+                    '    content: \'”\';\n' +
+                    '    position: absolute !important;\n' +
+                    '    top: 15px !important;\n' +
+                    '    left: 10px !important;\n' +
+                    '    font-size: 3em !important;\n' +
+                    '    line-height: 1 !important;\n' +
+                    '}' +
+                    'html, body{font-family: \'B612\', sans-serif !important;}'
             });
 
 
