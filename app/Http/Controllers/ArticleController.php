@@ -49,6 +49,8 @@ class ArticleController extends Controller
 
     public function editPost(request $request, int $articleId)
     {
+        //var_dump($_POST);return;
+
         $article = Article::find($articleId);
         if (!$article->canEdit())
             abort(403);
@@ -57,7 +59,7 @@ class ArticleController extends Controller
 
         $article->title = remove_html_comments($request->input('title'));
         $article->annotation = remove_html_comments($request->input('annotation'));
-        $article->content = remove_html_comments($request->input('trymbowyg-content'));
+        $article->content = remove_html_comments($request->input('article-content'));
         $finished = (bool)$request->input('finished', false);
         if (!$article->finished && $finished) { // это первая публикация
             $article->created_at = time();
@@ -93,12 +95,10 @@ class ArticleController extends Controller
             'finished' => false
         ]);
 
-        error_log($_FILES['filename']['tmp_name']);
-
         if (!empty($_FILES['filename']['tmp_name'])) {
             $img = new Image();
             $img->image = LibImage::make($_FILES['filename']['tmp_name'])
-                ->fit(550, 310, function ($constraint) {
+                ->fit(1024, 800, function ($constraint) {
                     $constraint->upsize();
                 })->encode('jpg', 75);
             $img->articleId = $article->id;

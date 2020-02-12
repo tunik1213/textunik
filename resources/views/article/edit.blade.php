@@ -8,15 +8,15 @@
 
     <meta name="article-id" content="{{$article->id}}"/>
 
+    <script src="{{asset('js/lib/tinymce.js')}}" referrerpolicy="origin"></script>
 @endsection
 
 @section('content')
 
-    <script src="{{ asset('js/lib/trumbowyg.js') }}"></script>
-    <script src="{{ asset('js/lib/trumbowyg.upload.js') }}"></script>
-    <script src="{{ asset('js/lib/lang/trumbowyg-ru.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('js/lib/ui/trumbowyg.css') }}">
-
+    {{--    <script src="{{ asset('js/lib/trumbowyg.js') }}"></script>--}}
+    {{--    <script src="{{ asset('js/lib/trumbowyg.upload.js') }}"></script>--}}
+    {{--    <script src="{{ asset('js/lib/lang/trumbowyg-ru.js') }}"></script>--}}
+    {{--    <link rel="stylesheet" href="{{ asset('js/lib/ui/trumbowyg.css') }}">--}}
 
     <div class="container col-md-9">
 
@@ -53,7 +53,7 @@
 
             <div class="form-group">
                 <label for="annotation">Текст до ката</label>
-                <div class="htmleditor" id="annotation"></div>
+                <textarea class="htmleditor" name="annotation"></textarea>
             </div>
 
             <div id="cut">
@@ -64,7 +64,7 @@
 
             <div class="form-group">
                 <label for="content">Текст после ката</label>
-                <div class="htmleditor" id="trymbowyg-content"></div>
+                <textarea class="htmleditor" name="article-content"></textarea>
             </div>
 
             <button type="submit" name="finished" value="1" class="btn btn-primary">Опубликовать</button>
@@ -106,43 +106,44 @@
         var submit = false;
 
         $(document).ready(function () {
-            $('.htmleditor').trumbowyg({
-                lang: 'ru',
-                btns: [
-                    ['undo', 'redo'], // Only supported in Blink browsers
-                    ['formatting'],
-                    ['strong', 'em', 'del'],
-                    ['superscript', 'subscript'],
-                    ['link'],
-                    ['upload'],
-                    ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-                    ['unorderedList', 'orderedList'],
-                    ['horizontalRule'],
-                    ['removeformat'],
-                    ['fullscreen'],
 
-                ],
-                plugins: {
-                    upload: {
-                        serverPath: '/upload',
-                        data: [{name: '_token', value: '{{ csrf_token() }}'}],
-                        fileFieldName: 'filename',
-                        urlPropertyName: 'url',
-                        imageWidthModalEdit: true
-                    }
-                }
+            function fillEditorContent(e) {
+                if ($(this).attr('id') == 'article-content')
+                    this.setContent(`{!! $article->content !!}`);
+
+                if ($(this).attr('id') == 'annotation')
+                    this.setContent(`{!! $article->annotation !!}`);
+            }
+
+            tinymce.init({
+                selector: '.htmleditor',
+                language: 'ru',
+                language_url: '{{asset('js/lib/lang/tinymce-ru.js')}}',
+                plugins: "image, link, fullscreen, emoticons, media, lists",
+                toolbar: 'undo redo | styleselect | bold italic removeformat | alignleft aligncenter alignright alignjustify | bullist numlist | indent outdent | emoticons link image media | fullscreen',
+                menubar: false,
+                height: 300,
+                media_live_embeds: true,
+                file_picker_types: 'file image media',
+                images_upload_url: '/upload',
+                automatic_uploads: true,
+                images_upload_handler: uploadImage,
+                setup: function(editor) {
+                    editor.on('init', fillEditorContent);
+                },
+                content_style: 'h1,h2,h3,h4,h5,h6{color:#C45911;}'
             });
 
-            $('#annotation').trumbowyg('html', `{!!$article->annotation!!}`);
-            $('#trymbowyg-content').trumbowyg('html', `{!!$article->content!!}`);
+
 
             $('#btn-preview').click(function (e) {
                 e.preventDefault();
+                tinyMCE.triggerSave();
                 $('.modal-title').html('Предпросмотр: ' + $('[name="title"]').val());
                 $('.modal-body').html(
                     $('[name="annotation"]').val()
                     + '<br />' +
-                    $('[name="trymbowyg-content"]').val()
+                    $('[name="article-content"]').val()
                 );
             });
 
@@ -164,11 +165,15 @@
             submit = true;
         });
 
+        @if(!(env('APP_DEBUG')))
         $(window).on('beforeunload', function () {
             if (!submit) return confirm();
         });
 
+        @endif
+
         function ajax_save() {
+            tinyMCE.triggerSave();
             var form = $('#article-editor-form');
             $.ajax({
                 type: 'POST',
@@ -176,6 +181,38 @@
                 data: form.serialize(),
                 async: true,
             });
+        }
+
+        function uploadImage(blobInfo, success, failure) {
+            var xhr, formData;
+
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', '/upload');
+
+            xhr.onload = function() {
+                var json;
+
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+
+                json = JSON.parse(xhr.responseText);
+
+                if (!json || typeof json.url != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+
+                success(json.url);
+            };
+
+            formData = new FormData();
+            formData.append('filename', blobInfo.blob(), blobInfo.filename());
+            formData.append('_token','{{ csrf_token() }}');
+
+            xhr.send(formData);
         }
 
     </script>
@@ -196,6 +233,10 @@
 
         .modal-dialog {
             max-width: 90%;
+        }
+
+        .tox-notifications-container, .tox-statusbar {
+            display: none !important;
         }
     </style>
 
