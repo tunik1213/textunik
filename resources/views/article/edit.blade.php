@@ -152,10 +152,33 @@
                     '    font-size: 3em !important;\n' +
                     '    line-height: 1 !important;\n' +
                     '}' +
-                    'html, body{font-family: \'B612\', sans-serif !important;}'
+                    'html, body{font-family: \'B612\', sans-serif !important;}',
+                style_formats: [
+                    { title: 'Headings', items: [
+                            { title: 'Heading 1', format: 'h1' },
+                            { title: 'Heading 2', format: 'h2' },
+                            { title: 'Heading 3', format: 'h3' },
+                            { title: 'Heading 4', format: 'h4' },
+                            { title: 'Heading 5', format: 'h5' },
+                            { title: 'Heading 6', format: 'h6' }
+                        ]},
+                    { title: 'Inline', items: [
+                            { title: 'Bold', format: 'bold' },
+                            { title: 'Italic', format: 'italic' },
+                            { title: 'Underline', format: 'underline' },
+                            { title: 'Strikethrough', format: 'strikethrough' },
+                            { title: 'Superscript', format: 'superscript' },
+                            { title: 'Subscript', format: 'subscript' }
+                        ]},
+                    { title: 'Blocks', items: [
+                            { title: 'Blockquote', format: 'blockquote'},
+                            { title: 'Paragraph', format: 'p' }
+                        ]},
+                ]
             });
 
-
+            // top: 43px;
+            // left: 0px;
 
             $('#btn-preview').click(function (e) {
                 e.preventDefault();
@@ -258,6 +281,10 @@
 
         .tox-notifications-container, .tox-statusbar {
             display: none !important;
+        }
+        .tox-collection__item-label blockquote:after{
+            top: 10px !important;
+            left: 0px !important;
         }
     </style>
 
