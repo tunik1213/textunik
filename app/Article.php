@@ -50,7 +50,7 @@ class Article extends Model
             return true;
 
         // модератор может редактировать все завершенные статьи, включая уже опубликованные
-        if ($user->moderator && $this->finished = 1)
+        if ($user->moderator && $this->finished == 1)
             return true;
 
         // юзер может редактировать свои незавершенные статьи (черновики)

@@ -267,18 +267,15 @@
             margin-top: -10px;
             margin-left: 15px;
         }
-
         .modal {
             width: 90%;
             z-index: 9999;
             margin-left: 5%;
             max-width: initial;
         }
-
         .modal-dialog {
             max-width: 90%;
         }
-
         .tox-notifications-container, .tox-statusbar {
             display: none !important;
         }

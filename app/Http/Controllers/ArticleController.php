@@ -49,8 +49,6 @@ class ArticleController extends Controller
 
     public function editPost(request $request, int $articleId)
     {
-        //var_dump($_POST);return;
-
         $article = Article::find($articleId);
         if (!$article->canEdit())
             abort(403);
@@ -75,6 +73,7 @@ class ArticleController extends Controller
             $article->meta_keywords = $request->input('keywords');
             $article->meta_description = $request->input('description');
         }
+
         $article->save();
 
         return redirect('article/' . $article->id);
