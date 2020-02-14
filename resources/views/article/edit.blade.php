@@ -119,8 +119,8 @@
                 selector: '.htmleditor',
                 language: 'ru',
                 language_url: '{{asset('js/lib/lang/tinymce-ru.js')}}',
-                plugins: "image, link, fullscreen, emoticons, media, lists",
-                toolbar: 'undo redo | styleselect | bold italic removeformat | alignleft aligncenter alignright alignjustify | bullist numlist | indent outdent | emoticons link image media | fullscreen',
+                plugins: "image, link, fullscreen, emoticons, media, lists, charmap",
+                toolbar: 'undo redo | styleselect | bold italic removeformat | alignleft aligncenter alignright alignjustify | bullist numlist | indent outdent | charmap emoticons link image media | fullscreen',
                 menubar: false,
                 height: 500,
                 media_live_embeds: true,
@@ -174,7 +174,9 @@
                             { title: 'Blockquote', format: 'blockquote'},
                             { title: 'Paragraph', format: 'p' }
                         ]},
-                ]
+                ],
+                contextmenu: false,
+                browser_spellcheck: true,
             });
 
             // top: 43px;
