@@ -11,7 +11,42 @@ $(document).ready(function () {
 
     $('body').on('focus','textarea.restrict',login_popup);
     $('body').on('click','a.restrict',login_popup);
+
+    $('body').on('keydown', function (e) {
+        if (e.keyCode == 13 && e.ctrlKey) {
+            reportError();
+        }
+    });
 });
+
+function reportError() {
+    var selectedText = document.getSelection().toString();
+
+    $.get('/error_report_form', function (form) {
+        var _form = $(form);
+        _form
+            .appendTo('body')
+            .modal()
+            .find('textarea')
+            .focus();
+
+        _form
+            .find('#selected-error-text')
+            .text(selectedText);
+
+        _form.on('click','#send-error-report',function (event) {
+            $.ajax({
+                method:"POST",
+                url:"/sendErrorReport",
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    selection: selectedText,
+                    message: _form.find('textarea').val()
+                }
+            });
+        });
+    });
+}
 
 function login_popup(event) {
     event.preventDefault();

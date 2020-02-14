@@ -318,6 +318,23 @@ ul.navbar-nav > li {
 .nav-item{
     float:right;
 }
+
+/* error reporting form */
+ #error-report{
+     padding: 1rem !important;
+ }
+#error-report > #selected-error-text {
+    padding-left: 1rem;
+    border-left: 3px solid red;
+}
+#error-report > span {
+    display:block;
+    margin: 10px 0;
+}
+#error-report > textarea {
+    width: 100%;
+}
+
 /* ======= mobile */
 @media screen and (max-width: 767px) {
     ul.footer-menu {

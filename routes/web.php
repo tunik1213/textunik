@@ -35,6 +35,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 Route::get('/login_form', 'AccessController@loginForm')->middleware('guest');
+Route::get('/error_report_form', function() {
+    return view('ajaxForms.errorReport');
+});
+Route::post('/sendErrorReport', 'ArticleController@errorReport');
 
 Route::get('sitemap.xml', 'ExportController@sitemap');
 
