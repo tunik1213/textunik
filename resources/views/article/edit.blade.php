@@ -177,6 +177,7 @@
                 ],
                 contextmenu: false,
                 browser_spellcheck: true,
+		relative_urls: false,
             });
 
             // top: 43px;
