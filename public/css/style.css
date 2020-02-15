@@ -250,6 +250,7 @@ ul.footer-menu li {
 
 img{
     max-width: 100%;
+    height: auto;
 }
 .modal{
     padding: 0 !important;
