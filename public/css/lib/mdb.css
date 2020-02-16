@@ -1518,10 +1518,10 @@ button.bg-light:focus {
 
 body {
   font-family: "Roboto", sans-serif;
-  font-weight: 300; }
+  font-weight: 500; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 300; }
+  font-weight: 500; }
 
 .blockquote {
   padding: 0.5rem 1rem;
@@ -8146,7 +8146,7 @@ table.table-sm td {
   &.fixed-top,
   &.sticky-top {
     .navbar-collapse {
-      @media (min-width: 400px) and (max-width: 767px), 
+      @media (min-width: 400px) and (max-width: 767px),
       (min-width: 800px) and (max-width: 850px) {
         max-height: 340px;
         overflow-x: hidden;

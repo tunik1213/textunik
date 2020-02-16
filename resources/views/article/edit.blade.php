@@ -152,7 +152,7 @@
                     '    font-size: 3em !important;\n' +
                     '    line-height: 1 !important;\n' +
                     '}' +
-                    'html, body{font-family: \'B612\', sans-serif !important;}',
+                    'html, body{font-family: "Roboto", sans-serif !important;}',
                 style_formats: [
                     { title: 'Headings', items: [
                             { title: 'Heading 1', format: 'h1' },
