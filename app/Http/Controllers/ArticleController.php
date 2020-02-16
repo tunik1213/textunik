@@ -85,14 +85,19 @@ class ArticleController extends Controller
         return view('article.view', ['article' => $article]);
     }
 
-    public function uploadImage()
+    public function uploadImage(request $request)
     {
         $result = ['success' => false];
+        $articleId = $request->input('articleId');
 
-        $article = Article::firstOrCreate([
-            'authorId' => Auth::user()->id,
-            'finished' => false
-        ]);
+        if ($articleId == null) {
+            $article = Article::firstOrCreate([
+                'authorId' => Auth::user()->id,
+                'finished' => false
+            ]);
+        } else {
+            $article = Article::find($articleId);
+        }
 
         if (!empty($_FILES['filename']['tmp_name'])) {
             $img = new Image();

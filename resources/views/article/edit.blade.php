@@ -258,6 +258,7 @@
             formData = new FormData();
             formData.append('filename', blobInfo.blob(), blobInfo.filename());
             formData.append('_token','{{ csrf_token() }}');
+            formData.append('articleId', {{ $article->id }});
 
             xhr.send(formData);
         }
