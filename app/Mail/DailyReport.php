@@ -43,11 +43,11 @@ class DailyReport extends Mailable
 
         $moderation = Article::where('finished',1)
             ->where('moderatedBy',null)
-            ->where('title','<>', null)
+            ->where('title','<>', '')
             ->get();
 
         $drafts = Article::where('finished',0)
-            ->where('title','<>', null)
+            ->where('title','<>', '')
             ->get();
 
         return $this->from('support@textunik.com')
