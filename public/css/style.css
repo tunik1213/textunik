@@ -336,9 +336,35 @@ ul.navbar-nav > li {
 #error-report > textarea {
     width: 100%;
 }
-
+/* social buttons */
+.social-icons-container {
+    display: flex;
+    /*border-bottom: 1px #dbdbdb solid;*/
+    padding-bottom: 20px;
+}
+.social-icons-container > .social-icon {
+    border-radius: 50%;
+    font-size: 36px;
+    background-color: #041e42;
+    color: white;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    margin: 5px;
+}
+.share-title{
+    font-weight: bolder;
+    color: gray;
+    font-size: larger;
+}
 /* ======= mobile */
 @media screen and (max-width: 767px) {
+    .social-icons-container > .social-icon {
+        font-size: 26px;
+        width: 40px;
+        height: 40px;
+    }
+
     ul.footer-menu {
         flex-direction: column;
     }

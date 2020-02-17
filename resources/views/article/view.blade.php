@@ -51,6 +51,8 @@
             <hr/>
 
             @if($article->public())
+                @include('article.social_share')
+
                 <div id="comments-container" article-id="{{$article->id}}">
 
                     <div class="md-form add-comment-form">
