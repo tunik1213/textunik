@@ -14,7 +14,6 @@ class MailController extends Controller
         $report = new DailyReport();
         $receivers = User::where('moderator', 1)->pluck('email')->toArray();
         Mail::to($receivers)
-            ->subject('Ежедневный отчет')
             ->send($report);
     }
 }

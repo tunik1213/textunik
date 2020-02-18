@@ -52,6 +52,7 @@ class DailyReport extends Mailable
 
         return $this->from('support@textunik.com')
             ->view('mails.daily_report')
+	    ->subject('Ежедневный отчет')
             ->with(
                 [
                     'disk_usage_percent' => $disk_usage_percent,
