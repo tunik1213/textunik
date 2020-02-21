@@ -13,6 +13,7 @@ class Article extends Model
     protected $fillable = array(
         'authorId',
         'title',
+        'slug',
         'annotation',
         'content',
         'finished',
@@ -21,7 +22,12 @@ class Article extends Model
 
     public function url() : string
     {
-        return url('/article/'.$this->id);
+        if (empty($this->slug))
+            $p = $this->id;
+        else
+            $p = $this->slug;
+
+        return url('/article/'.$p);
     }
 
     public function author()

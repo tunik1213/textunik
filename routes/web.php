@@ -12,8 +12,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/home', 'HomeController@updateUser');
 
     Route::group(['middleware' => 'moderator'], function () {
-        Route::get('/moderation/', 'ArticleController@moderation');
-        Route::get('/moderation/{id}', 'ArticleController@moderation');
+        Route::get('/api/generateSlug/{text}',function(string $text){
+            return Str::slug($text);
+        });
     });
 });
 

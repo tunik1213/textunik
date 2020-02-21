@@ -16,10 +16,10 @@
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
-    
+
     @foreach ($articles as $article)
         <url>
-            <loc>{{ url( '/article/'.$article->id) }}</loc>
+            <loc>{{ url( $article->url()) }}</loc>
             <lastmod>{{ $article->updated_at->tz('GMT')->toAtomString() }}</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
@@ -30,7 +30,7 @@
         <loc>{{ url( '/forums' ) }}</loc>
         <lastmod>2019-11-19T06:04:41+00:00</lastmod>
         <changefreq>daily</changefreq>
-        <priority>1</priority>
+        <priority>0.2</priority>
     </url>
 
     @foreach ($forum_categories as $category)
@@ -38,7 +38,7 @@
             <loc>{{ url( '/forums/category/'.$category->slug) }}</loc>
             <lastmod>{{ $category->updated_at->tz('GMT')->toAtomString() }}</lastmod>
             <changefreq>daily</changefreq>
-            <priority>0.6</priority>
+            <priority>0.1</priority>
         </url>
     @endforeach
 
@@ -47,7 +47,7 @@
             <loc>{{ url( '/forums/discussion/'.$discussion->category->slug.'/'.$discussion->slug) }}</loc>
             <lastmod>{{ $discussion->updated_at->tz('GMT')->toAtomString() }}</lastmod>
             <changefreq>daily</changefreq>
-            <priority>0.5</priority>
+            <priority>0.1</priority>
         </url>
     @endforeach
 
@@ -56,7 +56,7 @@
             <loc>{{ url( '/profile/'.$author->id )}}</loc>
             <lastmod>{{ $author->lastmod->tz('GMT')->toAtomString() }}</lastmod>
             <changefreq>daily</changefreq>
-            <priority>0.1</priority>
+            <priority>0.3</priority>
         </url>
     @endforeach
 

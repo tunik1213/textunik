@@ -53,7 +53,7 @@ class ArticleController extends Controller
         if (!$article->canEdit())
             abort(403);
 
-        $author = Auth::user();
+        $user = Auth::user();
 
         $article->title = remove_html_comments($request->input('title'));
         $article->annotation = remove_html_comments($request->input('annotation'));
@@ -62,16 +62,22 @@ class ArticleController extends Controller
         if (!$article->finished && $finished) { // это первая публикация
             $article->created_at = time();
         }
+
+        if ($user->moderator) {
+            $article->meta_keywords = $request->input('keywords');
+            $article->meta_description = $request->input('description');
+
+            if (!$article->public()){
+                $article->slug = $request->input('slug');
+            }
+        }
+
         if (!$article->finished) {
             $article->finished = $finished;
         }
 
         if ($article->finished && $finished) {
-            $article->moderatedBy = ($author->moderator) ? $author->id : null;
-        }
-        if ($author->moderator) {
-            $article->meta_keywords = $request->input('keywords');
-            $article->meta_description = $request->input('description');
+            $article->moderatedBy = ($user->moderator) ? $user->id : null;
         }
 
         $article->save();
@@ -79,10 +85,31 @@ class ArticleController extends Controller
         return redirect('article/' . $article->id);
     }
 
-    public function viewPost(int $id)
-    {
+    private function viewPostById(int $id) {
         $article = Article::find($id);
+
+        if ($article == null) abort(404);
+
+        if ($article->public())
+            return redirect($article->url(), 301);
+        else
+            return view('article.view', ['article' => $article]);
+    }
+    private function viewPostBySlug(string $slug){
+        $article = Article::where('slug', $slug)->first();
+
+        if ($article == null) abort(404);
+
         return view('article.view', ['article' => $article]);
+    }
+
+    public function viewPost($param)
+    {
+        if (is_numeric($param)) { // so why php does not support owerloading?
+            return $this->viewPostById($param);
+        } else {
+            return $this->viewPostBySlug($param);
+        }
     }
 
     public function uploadImage(request $request)
@@ -113,11 +140,6 @@ class ArticleController extends Controller
 
         echo json_encode($result);
 
-    }
-
-    public function moderation($id = null)
-    {
-        var_dump($id);
     }
 
     public function getImage($articleId, $imageId)

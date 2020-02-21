@@ -13,11 +13,6 @@
 
 @section('content')
 
-    {{--    <script src="{{ asset('js/lib/trumbowyg.js') }}"></script>--}}
-    {{--    <script src="{{ asset('js/lib/trumbowyg.upload.js') }}"></script>--}}
-    {{--    <script src="{{ asset('js/lib/lang/trumbowyg-ru.js') }}"></script>--}}
-    {{--    <link rel="stylesheet" href="{{ asset('js/lib/ui/trumbowyg.css') }}">--}}
-
     <div class="container col-md-9">
 
         <h1>{{$pageTitle}}</h1>
@@ -36,18 +31,28 @@
 
             @if($user->moderator)
 
-                <div class="form-group">
-                    <label for="title">Keywords:</label>
-                    <input type="text" name="keywords" value="{{$article->meta_keywords}}" class="form-control"
-                           AUTOCOMPLETE="off" required/>
-                </div>
+                <div class="moderator"><span class="red-text">Модератор</span>
 
-                <div class="form-group">
-                    <label for="title">Description:</label>
-                    <input type="text" name="description" value="{{$article->meta_description}}" class="form-control"
-                           AUTOCOMPLETE="off" required/>
-                </div>
+                    <div class="form-group">
+                        <label for="slug">URL:</label>
+                        <button @if($article->public()) disabled @endif title="сгенерировать URL из заголовка" onClick="setSlug(); return false;"><span class="fas fa-arrow-circle-down"></span></button>
+                        <input type="text" name="slug" value="{{$article->slug}}" class="form-control"
+                               AUTOCOMPLETE="off" @if($article->public()) disabled @else required @endif />
+                    </div>
 
+                    <div class="form-group">
+                        <label for="title">Keywords:</label>
+                        <input type="text" name="keywords" value="{{$article->meta_keywords}}" class="form-control"
+                               AUTOCOMPLETE="off" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">Description:</label>
+                        <input type="text" name="description" value="{{$article->meta_description}}" class="form-control"
+                               AUTOCOMPLETE="off" required/>
+                    </div>
+
+                </div>
 
             @endif
 
@@ -208,6 +213,15 @@
 
         });
 
+        var setSlug = function(){
+
+            title = $('input[name=title]').val();
+            if (title == '') return;
+            $.get('/api/generateSlug/' + title, function( data ) {
+                $('input[name=slug]').val(data);
+            });
+        }
+
         $('button[type=submit]').on('click', function () {
             submit = true;
         });
@@ -286,6 +300,11 @@
         .tox-collection__item-label blockquote:after{
             top: 10px !important;
             left: 0px !important;
+        }
+        .moderator{
+            border: red 1px solid;
+            padding: 10px;
+            margin: 20px 0;
         }
     </style>
 
