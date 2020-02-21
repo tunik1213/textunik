@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="container col-md-9">
+    <div class="container col-md-9 padding-0-phone">
 
         <div class="container col-xl-8 col-lg-12 feed">
             @include('article.list',['articles'=>$articles])
