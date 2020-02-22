@@ -13,7 +13,7 @@ class ArticleController extends Controller
     public function feed(request $request)
     {
         $articles = Article::where('moderatedBy', '<>', null)
-            ->orderBy('id', 'desc')
+            ->orderBy('created_at', 'desc')
             ->paginate(10);
 
         if ($request->ajax()) {
