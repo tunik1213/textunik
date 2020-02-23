@@ -57,6 +57,8 @@
 
     @yield('css')
 
+    <link rel="shortcut icon" href="{{asset('/favicon.ico')}}">
+
 </head>
 <body>
 <div id="app">
