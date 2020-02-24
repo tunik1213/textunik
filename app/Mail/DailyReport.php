@@ -37,22 +37,22 @@ class DailyReport extends Mailable
         $report_ts = strtotime("yesterday");
         $report_dt = Carbon::createFromTimestamp($report_ts);
 
-        $new_users = User::where('created_at','>=',$report_dt->toDateString())->get();
+        $new_users = User::where('created_at', '>=', $report_dt->toDateString())->get();
 
-        $new_comments = Comment::where('created_at','>=',$report_dt->toDateString())->get();
+        $new_comments = Comment::where('created_at', '>=', $report_dt->toDateString())->get();
 
-        $moderation = Article::where('finished',1)
-            ->where('moderatedBy',null)
-            ->where('title','<>', '')
+        $moderation = Article::where('finished', 1)
+            ->where('moderatedBy', null)
+            ->where('title', '<>', '')
             ->get();
 
-        $drafts = Article::where('finished',0)
-            ->where('title','<>', '')
+        $drafts = Article::where('finished', 0)
+            ->where('title', '<>', '')
             ->get();
 
-        return $this->from('support@textunik.com')
+        return $this
             ->view('mails.daily_report')
-	    ->subject('Ежедневный отчет')
+            ->subject('Ежедневный отчет')
             ->with(
                 [
                     'disk_usage_percent' => $disk_usage_percent,

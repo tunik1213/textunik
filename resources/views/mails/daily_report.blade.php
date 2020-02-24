@@ -1,3 +1,7 @@
+@extends('mails.layout')
+
+@section('content')
+
 <h1>Отчет за {{$report_dt->format('d.m.Y')}}</h1>
 
 <p>
@@ -31,3 +35,5 @@
 <p>
     Использовано места на диске - <b>{{$disk_usage_percent}}%</b>
 </p>
+
+@endsection

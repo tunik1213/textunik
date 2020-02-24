@@ -155,9 +155,4 @@ class ArticleController extends Controller
         echo($img);
         exit;
     }
-
-    public function errorReport()
-    {
-        // TODO сгенерить письмо и поставить в очередь на отправку
-    }
 }

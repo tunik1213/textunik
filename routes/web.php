@@ -1,7 +1,5 @@
 <?php
 
-Route::get('/test', 'TestController@index');
-
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/article/edit/{id?}', 'ArticleController@editForm')->name('article.edit');
@@ -39,11 +37,12 @@ Route::get('/login_form', 'AccessController@loginForm')->middleware('guest');
 Route::get('/error_report_form', function() {
     return view('ajaxForms.errorReport');
 });
-Route::post('/sendErrorReport', 'ArticleController@errorReport');
+Route::post('/sendErrorReport', 'MailController@errorReport');
 
 Route::get('sitemap.xml', 'ExportController@sitemap');
 
 Route::group(['middleware' => 'superAdmin'], function () {
+    Route::get('/test', 'TestController@index');
     Route::get('convertAllImages', 'ServiceController@convertAllImages');
     Route::get('editAllArticles', 'ServiceController@editAllArticles');
 });
