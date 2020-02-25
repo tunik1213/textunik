@@ -33,6 +33,8 @@ class ErrorReport extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.error_report');
+        return $this
+            ->subject('Сообщение об ошибке')
+            ->view('mails.error_report');
     }
 }
