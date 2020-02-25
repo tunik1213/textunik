@@ -11,6 +11,11 @@ class ErrorReport extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user;
+    public $selection;
+    public $description;
+    public $url;
+
     /**
      * Create a new message instance.
      *
@@ -28,6 +33,6 @@ class ErrorReport extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('mails.error_report');
     }
 }

@@ -3,9 +3,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Mail\DailyReport;
-use App\Mail\DemoEmail;
+use Illuminate\Support\Facades\Auth;
+use App\Mail\ErrorReport;
 use App\User;
-use http\Env\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
@@ -13,15 +14,22 @@ class MailController extends Controller
     public function dailyReport()
     {
         $report = new DailyReport();
-        $receivers = User::where('moderator', 1)->pluck('email')->toArray();
+        $receivers = User::moderatorsEmail();
         Mail::to($receivers)
-            ->send($report);
+            ->queue($report);
     }
 
     public function errorReport(Request $requst)
     {
-        $selection = $requst->input('selection');
-        $description = $requst->input('message');
+        $receivers = User::moderatorsEmail();
 
+        $report = new ErrorReport();
+        $report->selection = $requst->input('selection');
+        $report->description = $requst->input('message');
+        $report->user = Auth::user();
+        $report->url = $_SERVER["HTTP_REFERER"];
+
+        Mail::to($receivers)
+            ->queue($report);
     }
 }

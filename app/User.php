@@ -58,7 +58,7 @@ class User extends Authenticatable
         return url('/profile/' . $this->id);
     }
 
-    public function superAdmin()
+    public function superAdmin() : bool
     {
         $ids = [
             1
@@ -67,12 +67,17 @@ class User extends Authenticatable
         return in_array(Auth::user()->id, $ids);
     }
 
-    public function displayName()
+    public function displayName() : string
     {
         if (empty(trim($this->nick_name)))
             return $this->name;
 
         return $this->nick_name;
+    }
+
+    public static function moderatorsEmail() : array
+    {
+        return self::where('moderator', 1)->pluck('email')->toArray();
     }
 
 }
