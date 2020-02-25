@@ -29,11 +29,13 @@
         <script src="{{ asset('js/lib/bootstrap.bundle.js') }}"></script>
         <script src="{{ asset('js/lib/popper.min.js') }}"></script>
         <script src="{{ asset('js/lib/mdb.js') }}"></script>
+        <script src="{{ asset('js/lib/jquery.jgrowl.js') }}"></script>
         <script src="{{ asset('js/engine.js') }}"></script>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link href="{{ asset('css/lib/mdb.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/lib/jquery.jgrowl.css') }}" rel="stylesheet">
     @else
         @include('layouts.production_asserts')
     @endif

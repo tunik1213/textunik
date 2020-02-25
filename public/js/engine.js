@@ -42,6 +42,9 @@ function reportError() {
                     _token: $('meta[name="csrf-token"]').attr('content'),
                     selection: selectedText,
                     message: _form.find('textarea').val()
+                },
+                success: function () {
+                    $.jGrowl("Спасибо! Ваше сообщение отправлено администрации");
                 }
             });
         });

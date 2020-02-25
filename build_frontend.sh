@@ -10,6 +10,7 @@ cat \
     "${css_root}/app.css"\
     "${css_root}/style.css"\
     "${css_root}/lib/mdb.css"\
+    "${css_root}/lib/jquery.jgrowl.css"\
 | yui-compressor --type css -o "${build_root}/${build_name}.css"
 
 gzip -c -1 "${build_root}/${build_name}.css" > "${build_root}/${build_name}.cssgz"
@@ -18,6 +19,7 @@ gzip -c -1 "${build_root}/${build_name}.css" > "${build_root}/${build_name}.cssg
 js_root=public/js
 cat \
     "${js_root}/lib/jquery.js"\
+    "${js_root}/lib/jquery.jgrowl.js"\
     "${js_root}/lib/bootstrap.bundle.js"\
     "${js_root}/lib/popper.min.js"\
     "${js_root}/lib/mdb.js"\
