@@ -7,18 +7,18 @@ $( document ).ready(function() {
     var article_id = comments_container.attr('article-id');
     var comments_list_container = comments_container.find('#comments-list');
 
-    $.ajax({
-        url: "/comments/getByParent/0",
-        async: true,
-        data: "article="+article_id,
-        success: function(comments){
-            if (comments.length>0) {
-                comments_list_container.append('<h3>Комментарии:</h3>');
-                comments_list_container.append(comments);
-            }
-
-        }
-    }).responseText;
+    // $.ajax({
+    //     url: "/comments/getByParent/0",
+    //     async: true,
+    //     data: "article="+article_id,
+    //     success: function(comments){
+    //         if (comments.length>0) {
+    //             comments_list_container.append('<h3>Комментарии:</h3>');
+    //             comments_list_container.append(comments);
+    //         }
+    //
+    //     }
+    // }).responseText;
 
 
     $('#comments-container, #comments-list').on('click','button.post-comment',function (e) {

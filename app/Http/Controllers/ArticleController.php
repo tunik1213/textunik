@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Comment;
 use App\Image;
 use Illuminate\Http\Request;
 use Auth;
@@ -85,7 +86,7 @@ class ArticleController extends Controller
         return redirect('article/' . $article->id);
     }
 
-    private function viewPostById(int $id) {
+    private function getPostById(int $id) {
         $article = Article::find($id);
 
         if ($article == null) abort(404);
@@ -93,23 +94,32 @@ class ArticleController extends Controller
         if ($article->public())
             return redirect($article->url(), 301);
         else
-            return view('article.view', ['article' => $article]);
+            return $article;
     }
-    private function viewPostBySlug(string $slug){
+    private function getPostBySlug(string $slug){
         $article = Article::where('slug', $slug)->first();
 
         if ($article == null) abort(404);
 
-        return view('article.view', ['article' => $article]);
+        return $article;
     }
 
     public function viewPost($param)
     {
-        if (is_numeric($param)) { // so why php does not support owerloading?
-            return $this->viewPostById($param);
+        if (is_numeric($param)) {
+            return $this->getPostById($param);
         } else {
-            return $this->viewPostBySlug($param);
+            $article = $this->getPostBySlug($param);
         }
+
+        $comments = Comment::where('articleId',$article->id)
+            ->where('parentId',0)
+            ->get();
+
+        return view('article.view', [
+            'article' => $article,
+            'comments' => $comments
+        ]);
     }
 
     public function uploadImage(request $request)

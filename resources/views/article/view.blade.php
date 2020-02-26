@@ -66,7 +66,9 @@
                     <br>
 
 
-                    <div id="comments-list"></div>
+                    <div id="comments-list">
+                        @include('article.comments',['comments'=>$comments])
+                    </div>
 
                 </div>
             @endif
