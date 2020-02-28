@@ -10,7 +10,7 @@ $( document ).ready(function() {
 
 });
 
-let commentPost = function (e) {
+var commentPost = function (e) {
     e.stopPropagation();
     e.preventDefault();
 
@@ -43,7 +43,7 @@ let commentPost = function (e) {
     })
 }
 
-let commentRespond = function (e) {
+var commentRespond = function (e) {
     e.preventDefault();
 
     $('#comments-list .add-comment-form').remove();
@@ -55,18 +55,18 @@ let commentRespond = function (e) {
         .focus();
 }
 
-let editComment = function(e) {
+var editComment = function(e) {
     e.preventDefault();
 
-    let comment = $(this).closest('.comment');
-    let commentId = comment.attr('comment-id');
-    let commentVal = comment.find('.comment-content > span').text();
+    var comment = $(this).closest('.comment');
+    var commentId = comment.attr('comment-id');
+    var commentVal = $('.comment[comment-id='+commentId+'] > .comment-content > span').text();
 
     $('#comments-list .add-comment-form').remove();
 
-    let commentForm = $('#comments-container > .add-comment-form').clone();
+    var commentForm = $('#comments-container > .add-comment-form').clone();
     commentForm
-        .insertAfter(comment)
+        .insertBefore(comment)
         .find('textarea')
         .val(commentVal)
         .focus()
@@ -80,8 +80,8 @@ let editComment = function(e) {
         .attr('commentId',commentId)
         .on('click',function (e) {
             e.stopImmediatePropagation();
-            let commentId = $(this).attr('commentId');
-            let commentText = $(this)
+            var commentId = $(this).attr('commentId');
+            var commentText = $(this)
                 .closest('.add-comment-form')
                 .find('textarea')
                 .val();
@@ -95,8 +95,7 @@ let editComment = function(e) {
                 },
                 method: "POST",
                 success: function (response) {
-                    $('.comment[comment-id='+commentId+']')
-                        .find('.comment-content > span')
+                    $('.comment[comment-id='+commentId+'] > .comment-content > span')
                         .text(commentText);
                     $('#comments-list .add-comment-form')
                         .remove();
@@ -105,7 +104,7 @@ let editComment = function(e) {
         })
 }
 
-let toggle_toc = function(e) {
+var toggle_toc = function(e) {
     e.preventDefault();
 
     if ($(this).hasClass('toc-visible')) {

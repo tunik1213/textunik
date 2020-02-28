@@ -7,10 +7,7 @@
     <meta name="description" content="{{$article->meta_description}}">
     <meta name="keywords" content="{{$article->meta_keywords}}">
 
-    <script src="{{ asset('js/article.js') }}"></script>
     <script src="{{ asset('js/lib/jquery.toc.min.js') }}"></script>
-
-    <link href="{{ asset('css/article.css') }}" rel="stylesheet">
 
 @endsection
 

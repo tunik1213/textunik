@@ -11,6 +11,7 @@ cat \
     "${css_root}/style.css"\
     "${css_root}/lib/mdb.css"\
     "${css_root}/lib/jquery.jgrowl.css"\
+    "${css_root}/article.css"\
 | yui-compressor --type css -o "${build_root}/${build_name}.css"
 
 gzip -c -1 "${build_root}/${build_name}.css" > "${build_root}/${build_name}.cssgz"
@@ -24,6 +25,7 @@ cat \
     "${js_root}/lib/popper.min.js"\
     "${js_root}/lib/mdb.js"\
     "${js_root}/engine.js"\
+    "${js_root}/article.js"\
 | uglifyjs --compress --mangle -o "${build_root}/${build_name}.js"
 
 gzip -c -1 "${build_root}/${build_name}.js" > "${build_root}/${build_name}.jsgz"
