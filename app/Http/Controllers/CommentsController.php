@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Routing\UrlGenerator;
+use Illuminate\Http\Request;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,5 +38,16 @@ class CommentsController extends Controller
 
         $comment->save();
         return view('article.comments',['comments' => [$comment]]);
+    }
+
+    public function editComment(Request $request, $id){
+        $comment = Comment::find($id);
+        if (!$comment->canEdit()) return;
+
+        $newText = $request->input('comment');
+        if (empty($newText)) return;
+
+        $comment->text = $newText;
+        $comment->save();
     }
 }

@@ -59,7 +59,7 @@
                         <i class="fas fa-pencil-alt prefix"></i>
                         <textarea id="form10" class="md-textarea form-control @guest restrict @endguest"
                                   rows="3"></textarea>
-                        <label for="form10">Оставить комментарий</label>
+                        <label for="form10" class="comment-placeholder">Оставить комментарий</label>
                         <button class="post-comment btn btn-primary">Отправить</button>
                     </div>
 

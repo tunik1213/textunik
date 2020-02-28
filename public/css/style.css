@@ -332,6 +332,9 @@ ul.navbar-nav > li {
 .nav-item{
     float:right;
 }
+.nowrap{
+    white-space: nowrap;
+}
 
 /* error reporting form */
  #error-report{
@@ -406,11 +409,17 @@ ul.navbar-nav > li {
     .article-author > span{
         display: block;
     }
+    .comment-children{
+        padding-left: 1rem;
+    }
 }
 /* ======= phone */
 @media screen and (max-width: 481px) {
     .padding-0-phone {
         padding: 0;
+    }
+    .comment-children{
+        padding-left: 0.5rem;
     }
     h1{font-size: 1.5rem;}
     h2{font-size: 1.25rem;}

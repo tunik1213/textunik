@@ -5,7 +5,10 @@
     <div class="comment" comment-id="{{$comment->id}}">
         <div class="comment-header">
             @include('home.user_link',['user'=>$author])
-            <span>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($comment->created_at))->diffForHumans() }}</span>
+            <span class="nowrap">{{ \Carbon\Carbon::createFromTimeStamp(strtotime($comment->created_at))->diffForHumans() }}</span>
+            @if($comment->canEdit())
+                <a href="#" class="edit-comment-link"><i class="fas fa-pencil-alt prefix"></i>редактировать</a>
+            @endif
         </div>
         <div class="comment-content">
             <span>{!! $comment->text !!}</span>

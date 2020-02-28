@@ -28,3 +28,14 @@ div.comment-header{
 #toc ul {
     padding-left: 1rem;
 }
+.edit-comment-link{
+    white-space: nowrap;
+    display: inline-block;
+    padding-top: 5px;
+}
+.edit-comment-link i{
+    padding: 0 5px;
+}
+.comment-placeholder{
+    white-space: nowrap;
+}

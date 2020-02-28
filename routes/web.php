@@ -6,6 +6,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/article/edit/{id}', 'ArticleController@editPost')->name('article.post');
     Route::post('/upload', 'ArticleController@uploadImage');
     Route::post('/comments/add','CommentsController@addComment');
+    Route::post('/comments/edit/{id}','CommentsController@editComment');
 
     Route::post('/home', 'HomeController@updateUser');
 
