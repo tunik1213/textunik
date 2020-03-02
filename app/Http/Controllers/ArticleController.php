@@ -57,9 +57,17 @@ class ArticleController extends Controller
         $user = Auth::user();
 
         $article->title = remove_html_comments($request->input('title'));
-        $article->annotation = remove_html_comments($request->input('annotation'));
-        $article->content = remove_html_comments($request->input('article-content'));
+
+        $annotation = $request->input('annotation');
+        if (!empty($annotation))
+            $article->annotation = remove_html_comments($annotation);
+
+        $content = $request->input('article-content');
+        if (!empty($content))
+            $article->content = remove_html_comments($content);
+
         $finished = (bool)$request->input('finished', false);
+        
         if (!$article->finished && $finished) { // это первая публикация
             $article->created_at = time();
         }
