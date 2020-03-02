@@ -7,6 +7,7 @@ use App\Comment;
 use App\Image;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Redirect;
 use Intervention\Image\ImageManagerStatic as LibImage;
 
 class ArticleController extends Controller
@@ -67,7 +68,7 @@ class ArticleController extends Controller
             $article->content = remove_html_comments($content);
 
         $finished = (bool)$request->input('finished', false);
-        
+
         if (!$article->finished && $finished) { // это первая публикация
             $article->created_at = time();
         }
@@ -100,7 +101,7 @@ class ArticleController extends Controller
         if ($article == null) abort(404);
 
         if ($article->public())
-            return redirect($article->url(), 301);
+            abort(301, '', ['Location' => $article->url()]);
         else
             return $article;
     }
