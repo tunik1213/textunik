@@ -163,10 +163,13 @@ class ArticleController extends Controller
 
     public function getImage($articleId, $imageId)
     {
-        $img = Image::where('articleId', $articleId)
+         $record = Image::where('articleId', $articleId)
             ->where('id', $imageId)
-            ->first()
-            ->image;
+            ->first();
+        if (empty($record))
+            abort(404);
+
+        $img =  $record->image;
 
         header("Content-Type: image/jpg");
         header("Content-Length: " . strlen($img));
