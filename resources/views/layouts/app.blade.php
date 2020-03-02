@@ -50,11 +50,11 @@
 
     @yield('head')
     @if( Request::is( Config::get('chatter.routes.home')) )
-        <title>Форум копирайтеров / TEXT-уник</title>
+        <title>Форум копирайтеров / Текст-уник</title>
     @elseif( Request::is( Config::get('chatter.routes.home') . '/' . Config::get('chatter.routes.category') . '/*' ) && isset( $discussion ) )
-        <title>{{ $discussion->category->name }} / форум копирайтеров TEXT-уник</title>
+        <title>{{ $discussion->category->name }} / форум копирайтеров Текст-уник</title>
     @elseif( Request::is( Config::get('chatter.routes.home') . '/*' ) && isset($discussion->title))
-        <title>{{ $discussion->title }} / форум копирайтеров TEXT-уник</title>
+        <title>{{ $discussion->title }} / форум копирайтеров Текст-уник</title>
     @endif
 
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
