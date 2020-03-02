@@ -107,7 +107,7 @@ class ArticleController extends Controller
     public function viewPost($param)
     {
         if (is_numeric($param)) {
-            return $this->getPostById($param);
+            $article = $this->getPostById($param);
         } else {
             $article = $this->getPostBySlug($param);
         }
