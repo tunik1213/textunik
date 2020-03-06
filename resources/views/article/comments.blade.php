@@ -6,8 +6,10 @@
         <div class="comment-header">
             @include('home.user_link',['user'=>$author])
             <span class="nowrap">{{ \Carbon\Carbon::createFromTimeStamp(strtotime($comment->created_at))->diffForHumans() }}</span>
-            @if($comment->canEdit())
-                <a href="#" class="edit-comment-link"><i class="fas fa-pencil-alt prefix"></i>редактировать</a>
+            @if(!($suppressRecursion ?? false))
+                @if($comment->canEdit())
+                    <a href="#" class="edit-comment-link"><i class="fas fa-pencil-alt prefix"></i>редактировать</a>
+                @endif
             @endif
         </div>
         <div class="comment-content">

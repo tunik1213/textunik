@@ -17,7 +17,26 @@ $(document).ready(function () {
             reportError();
         }
     });
+
+    accordionTabs();
 });
+
+var accordionTabs = function(){
+    $('.accordion-tabs').children('li').first().children('a').addClass('active')
+        .next().addClass('open').show();
+    $('.accordion-tabs').on('click', 'li > a', function(event) {
+        event.preventDefault();
+        if ($(this).hasClass('active')) {
+            return;
+        }
+
+        $('.accordion-tabs .open').removeClass('open').hide();
+        $(this).next().toggleClass('open').toggle();
+        $('.accordion-tabs').find('.active').removeClass('active');
+        $(this).addClass('active');
+
+    });
+};
 
 function reportError() {
     var selectedText = document.getSelection().toString();

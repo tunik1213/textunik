@@ -23,22 +23,32 @@
                                 <div class="form-group">
 
                                     <label for="name">Настоящее имя:</label>
-                                    <input type="text" name="name" value="{{$user->name}}" class="form-control"/>
+                                    <input type="text" name="name" value="{{$user->name}}" class="form-control" required/>
                                     <small class="form-text text-muted">Укажите ваши имя и фамилию, чтобы другие
                                         пользователи смогли узнать, как вас зовут
                                     </small>
                                 </div>
+
                                 <div class="form-group">
 
                                     <label for="name">Никнейм:</label>
                                     <input type="text" name="nick_name" value="{{$user->nick_name}}" class="form-control"/>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="specialization">Специализация:</label>
                                     <input type="text" name="specialization" value="{{$user->specialization}}"
                                            class="form-control"/>
                                     <small class="form-text text-muted">Укажите свою специализацию</small>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="contacts">Контакты:</label>
+                                    <input type="text" name="contacts" value="{{$user->contacts}}"
+                                           class="form-control"/>
+                                    <small class="form-text text-muted">Укажите как с Вами можно связаться. Эта информация будет видна всем на странице Вашего профиля</small>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="gender">Пол</label>
                                     <select class="browser-default custom-select" name="gender">

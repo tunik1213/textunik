@@ -23,7 +23,7 @@ class HomeController extends Controller
         return view('home.index',['user' => $user]);
     }
 
-    public function updateUser()
+    public function updateUser(Request $request)
     {
         $user = auth()->user();
         $user->name = $_POST['name'];
@@ -31,6 +31,7 @@ class HomeController extends Controller
         $user->specialization = $_POST['specialization'];
         $user->gender = ($_POST['gender']=='') ? null : (bool)$_POST['gender'];
         $user->short_info = $_POST['short_info'];
+        $user->contacts = $request->input('contacts');
 
         if (strtotime($_POST['birthdate']))
             $user->birthdate = $_POST['birthdate'];

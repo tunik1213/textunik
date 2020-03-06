@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'nick_name', 'email', 'password', 'gender', 'specialization', 'birthdate', 'avatar', 'avatar_mini', 'short_info'
+        'name', 'nick_name', 'email', 'password', 'gender', 'specialization', 'birthdate', 'avatar', 'avatar_mini', 'short_info','contacts'
     ];
 
     /**
@@ -41,6 +41,24 @@ class User extends Authenticatable
     public function getGenderAttribute($value)
     {
         return ($value === null) ? null : (bool)$value;
+    }
+
+    public function getContactsAttribute($value) : string
+    {
+        if(empty(trim($value))){
+            return 'Пользователь не опубликовал свои контакты';
+        } else {
+            return $value;
+        }
+    }
+
+    public function getShortInfoAttribute($value) : string
+    {
+        if(empty(trim($value))){
+            return 'Не указано';
+        } else {
+            return $value;
+        }
     }
 
     public function comments()

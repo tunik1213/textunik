@@ -10,69 +10,87 @@
 
 
     <div class="container col-md-9 article-content">
-        <h1>Профиль пользователя {{ $user->displayName() }}</h1>
+        <div id="profile-header">
+            <div id="avatar-profile-large">
+                <img src="{{route('avatarImage',['userId'=>$user->id])}}">
+            </div>
 
-        @if(!empty(trim($user->short_info)))
-            <div id="user-info">{{$user->short_info}}</div>
-        @endif
+            <div id="user-title">
+                <h1>{{$user->name}}</h1>
+                <span>{{$user->specialization}}</span>
+            </div>
+        </div>
 
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a data-toggle="tab" href="#articles" class="nav-link active">
-                    Публикации ({{$articles['public']->count()}})
+        <ul class="accordion-tabs">
+            <li class="tab-head-cont">
+                <a href="#" class="nav-link active">
+                    О себе
                 </a>
+                <section>
+                    {{$user->short_info}}
+                </section>
             </li>
 
-            <li class="nav-item">
-                <a data-toggle="tab" href="#comments" class="nav-link">
+            <li class="tab-head-cont">
+                <a href="#" class="nav-link">
+                    Публикации ({{$articles['public']->count()}})
+                </a>
+                <section>
+                    @if(count($articles['public'])>0)
+                        @foreach ($articles['public'] as $article)
+                            <div class="profile-article-title">
+                                <a href="{{$article->url()}}">{{ $article->title }}</a>
+                            </div>
+                        @endforeach
+                    @else
+                        Нет публикаций
+                    @endif
+                </section>
+            </li>
+
+            <li class="tab-head-cont">
+                <a href="#" class="nav-link">
                     Комментарии ({{$comments->count()}})
                 </a>
+                <section>
+                    @if(count($comments)>0)
+                        @include('article.comments',['comments'=>$comments, 'suppressRecursion'=>true])
+                    @else
+                        Нет комментариев
+                    @endif
+                </section>
+            </li>
+
+            <li class="tab-head-cont">
+                <a href="#" class="nav-link">
+                    Контакты
+                </a>
+                <section>
+                    {{$user->contacts}}
+                </section>
             </li>
 
             @if(isset($articles['draft']))
-                <li class="nav-item">
+                <li class="tab-head-cont profile-tab-own">
                     <a data-toggle="tab" href="#draft" class="nav-link">
                         Черновики ({{$articles['draft']->count()}})
                     </a>
+                    <section>
+                        @include('article.list',['articles'=>$articles['draft']])
+                    </section>
                 </li>
             @endif
 
             @if(isset($articles['moderation']))
-                <li class="nav-item">
+                <li class="tab-head-cont profile-tab-own">
                     <a data-toggle="tab" href="#moderation" class="nav-link">
                         Модерация ({{$articles['moderation']->count()}})
                     </a>
+                    <section>
+                        @include('article.list',['articles'=>$articles['moderation']])
+                    </section>
                 </li>
             @endif
         </ul>
-        <div class="tab-content">
-
-            <div id="articles" class="tab-pane fade in active show">
-{{--                @include('article.list',['articles'=>$articles['public']])--}}
-
-                @foreach ($articles['public'] as $article)
-                    <div class="profile-article-title">
-                        <a href="{{$article->url()}}">{{ $article->title }}</a>
-                    </div>
-                @endforeach
-            </div>
-
-            <div id="comments" class="tab-pane fade">
-                @include('article.comments',['comments'=>$comments, 'suppressRecursion'=>true])
-            </div>
-
-            @if(isset($articles['moderation']))
-                <div id="moderation" class="tab-pane fade">
-                    @include('article.list',['articles'=>$articles['moderation']])
-                </div>
-            @endif
-
-            @if(isset($articles['draft']))
-                <div id="draft" class="tab-pane fade">
-                    @include('article.list',['articles'=>$articles['draft']])
-                </div>
-            @endif
-
-        </div>
     </div>
 @endsection

@@ -8,7 +8,10 @@ $( document ).ready(function() {
 
     $(document).on('click', '.edit-comment-link', editComment);
 
+
 });
+
+
 
 var commentPost = function (e) {
     e.stopPropagation();
