@@ -646,4 +646,7 @@ ul.navbar-nav > li {
     #avatar-profile-large > img {
         max-width: 100%;
     }
+    #profile-header{
+        margin: -2.1rem -1rem 1rem;
+    }
 }
