@@ -17,6 +17,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
+Route::get('/article/howto', function () {
+    return view('staticPages.article_howto');
+})->name('article.howto');
+
 Route::get('/', 'ArticleController@feed');
 Route::get('/article/{id}', 'ArticleController@viewPost');
 Route::get('/images/{articleId}/{imgId}','ArticleController@getImage');
@@ -58,10 +62,6 @@ Route::get('/social-auth/{provider}/callback', 'Auth\SocialController@handleProv
 Route::get('mail/dailyReport', 'MailController@dailyReport')->middleware('localhostOnly');
 
 // Static pages
-Route::get('/article/howto', function () {
-    return view('staticPages.article_howto');
-})->name('article.howto');
-
 Route::get('/landing', function () {
     return view('staticPages.landing');
 })->name('landing');
