@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-22119625-3"></script>
     <script>
@@ -71,8 +70,8 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 <div id="logo1">TEXT</div>
                 <div id="logo2">уник</div>
-                <div id="logo3">уникальная информация</div>
-                <div id="logo4">О КОПИРАЙТИНГЕ</div>
+                <div id="logo3">коллективный блог</div>
+                <div id="logo4">ДЛЯ КОПИРАЙТЕРОВ</div>
             </a>
 
             @include('home.right_header')
