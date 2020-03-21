@@ -12,7 +12,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'moderator'], function () {
         Route::get('/api/generateSlug/{text}',function(string $text){
-            return Str::slug($text);
+            return str_replace('\'','',Str::slug($text));
         });
     });
 });
