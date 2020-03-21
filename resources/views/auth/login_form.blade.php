@@ -1,6 +1,9 @@
 
             <div class="card">
-                <div class="card-header">Вход</div>
+                <div class="card-header">
+                    <h1>Присоединяйтесь!</h1>
+                    <span>Войдите чтобы иметь возможность писать посты и комментарии</span>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
