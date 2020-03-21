@@ -35,6 +35,7 @@ class ErrorReport extends Mailable
     {
         return $this
             ->subject('Сообщение об ошибке')
+            ->onQueue('low')
             ->view('mails.error_report');
     }
 }

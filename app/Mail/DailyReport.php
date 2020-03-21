@@ -53,6 +53,7 @@ class DailyReport extends Mailable
         return $this
             ->view('mails.daily_report')
             ->subject('Ежедневный отчет')
+            ->onQueue('low')
             ->with(
                 [
                     'disk_usage_percent' => $disk_usage_percent,
