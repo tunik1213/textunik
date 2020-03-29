@@ -14,5 +14,6 @@
   }
 </script>
 
-<iframe src="/landing.htm" scrolling="no" frameborder="0" style="width:100%;height:100%;overflow:hidden;margin-top: -1.6rem;" height="100%" width="100%" onload="resizeIframe(this)"></iframe>
+{{-- <iframe src="/landing.htm" scrolling="no" frameborder="0" style="width:100%;height:100%;overflow:hidden;margin-top: -1.6rem;" height="100%" width="100%" onload="resizeIframe(this)"></iframe> --}}
+<iframe src="/landing.htm" scrolling="yes" frameborder="0" style="width:100%;height:100%;margin-top: -1.6rem;" height="100%" width="100%" ></iframe>
 @endsection
