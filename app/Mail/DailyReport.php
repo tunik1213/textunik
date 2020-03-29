@@ -11,7 +11,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class DailyReport extends Mailable
+class DailyReport extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -54,6 +54,7 @@ class DailyReport extends Mailable
             ->view('mails.daily_report')
             ->subject('Ежедневный отчет')
             ->onQueue('low')
+	    ->from('support@textunik.com')
             ->with(
                 [
                     'disk_usage_percent' => $disk_usage_percent,
