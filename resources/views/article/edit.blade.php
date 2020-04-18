@@ -72,7 +72,7 @@
                 <textarea class="htmleditor" name="article-content"></textarea>
             </div>
 
-            <button type="submit" name="finished" value="1" class="btn btn-primary">Опубликовать</button>
+            <button id="publish-article" type="submit" name="finished" value="1" class="btn btn-primary">Опубликовать</button>
             @if(!$article->public())
                 <button type="submit" name="finished" value="0" name="save-draft" class="btn btn-secondary">Сохранить в
                     черновики
@@ -211,6 +211,11 @@
             // каждую минуту сохраняем данные формы на всякий случай
             window.setInterval(ajax_save, 60000);
             @endif
+
+            $('#publish-article').click(function(event){
+                 if( !confirm('Вы уверены что хотите опубликовать статью?') ) 
+                    event.preventDefault();
+            });
 
         });
 
