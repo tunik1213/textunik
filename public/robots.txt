@@ -1,2 +1,3 @@
 User-agent: *
+Disallow: /wordpress/
 Sitemap: https://textunik.com/sitemap.xml
