@@ -14,6 +14,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/api/generateSlug/{text}',function(string $text){
             return str_replace('\'','',Str::slug($text));
         });
+
+        Route::get('/admin','AdminController@index');
+        Route::get('/admin/users','AdminController@users');
     });
 });
 

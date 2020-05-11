@@ -98,4 +98,22 @@ class User extends Authenticatable
         return self::where('moderator', 1)->pluck('email')->toArray();
     }
 
+    public function gender_str(){
+        switch ($this->gender) {
+            case ($this->gender === null):
+                return '';
+                break;
+            case true:
+                return 'муж';
+                break;
+            case false:
+                return 'жен';
+                break;
+            default:
+                return '';
+                break;
+
+        }
+    }
+
 }
