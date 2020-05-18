@@ -41,6 +41,7 @@ Route::get('/login_form', 'AccessController@loginForm')->middleware('guest');
 Route::get('/error_report_form', function() {
     return view('ajaxForms.errorReport');
 });
+Route::get('/register/confirm/{id}/{token}','Auth\VerificationController@confirmEmail')->name('confirmEmail');
 Route::post('/sendErrorReport', 'MailController@errorReport');
 
 Route::get('sitemap.xml', 'ExportController@sitemap');

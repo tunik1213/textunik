@@ -7,6 +7,18 @@
 @endsection
 
 @section('content')
+
+@if(isset($message))
+    <div id="modal-startup-message" class="modal">
+        <div class="modal-dialog">
+            <div class="text-center">{{$message}}</div>
+        </div>
+        <button class="btn btn-primary modal-ok-button">
+            <a rel="modal:close">ОК</a>
+        </button>
+    </div>
+@endif
+
     <div class="container col-md-9">
         <div class="row justify-content-center">
             <div class="col-md-12">

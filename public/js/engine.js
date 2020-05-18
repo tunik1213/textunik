@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     expand_read_more_button();
 
@@ -9,19 +9,28 @@ $(document).ready(function () {
     $('body').on('mouseenter', '.user-mini-avatar', show_author_popup);
     $('body').on('mouseleave', '.user-mini-avatar', hide_author_popup);
 
-    $('body').on('focus','textarea.restrict',login_popup);
-    $('body').on('click','a.restrict',login_popup);
+    $('body').on('focus', 'textarea.restrict', login_popup);
+    $('body').on('click', 'a.restrict', login_popup);
 
-    $('body').on('keydown', function (e) {
+    $('body').on('keydown', function(e) {
         if (e.keyCode == 13 && e.ctrlKey) {
             reportError();
         }
     });
 
     accordionTabs();
+
+    show_startup_modal_message();
 });
 
-var accordionTabs = function(){
+var show_startup_modal_message = function() {
+    modal_block = $('#modal-startup-message');
+    if (modal_block.length == 0) return;
+
+    modal_block.modal();
+}
+
+var accordionTabs = function() {
     $('.accordion-tabs').children('li').first().children('a').addClass('active')
         .next().addClass('open').show();
     $('.accordion-tabs').on('click', 'li > a', function(event) {
@@ -41,7 +50,7 @@ var accordionTabs = function(){
 function reportError() {
     var selectedText = document.getSelection().toString();
 
-    $.get('/error_report_form', function (form) {
+    $.get('/error_report_form', function(form) {
         var _form = $(form);
         _form
             .appendTo('body')
@@ -53,16 +62,16 @@ function reportError() {
             .find('#selected-error-text')
             .text(selectedText);
 
-        _form.on('click','#send-error-report',function (event) {
+        _form.on('click', '#send-error-report', function(event) {
             $.ajax({
-                method:"POST",
-                url:"/sendErrorReport",
+                method: "POST",
+                url: "/sendErrorReport",
                 data: {
                     _token: $('meta[name="csrf-token"]').attr('content'),
                     selection: selectedText,
                     message: _form.find('textarea').val()
                 },
-                success: function () {
+                success: function() {
                     $.jGrowl("Спасибо! Ваше сообщение отправлено администрации");
                 }
             });
@@ -88,7 +97,7 @@ function show_author_popup() {
         .appendTo(profile_link)
         .show();
 
-    if ($('#footer').offset().top - preview.offset().top < 500){
+    if ($('#footer').offset().top - preview.offset().top < 500) {
         preview.css('bottom', '35px');
     }
 }
@@ -108,7 +117,7 @@ function getUserPreview(id) {
     $.ajax({
         url: "/profile/getPreview/" + id,
         async: false,
-        success: function (html_result) {
+        success: function(html_result) {
             $('body').append('<div class="user-preview-popup" userId="' + id + '"></div>');
             popup_block = $(popup_selector);
             popup_block.append(html_result);
@@ -119,10 +128,10 @@ function getUserPreview(id) {
 }
 
 function expand_read_more_button() {
-    $('.expand-read-more').each(function (i, link) {
+    $('.expand-read-more').each(function(i, link) {
         collapsable = "#" + $(link).attr('for');
         $(collapsable).hide();
-        $(link).on('click', function () {
+        $(link).on('click', function() {
             $("#" + $(this).attr('for')).toggle(200);
         });
     });
@@ -130,15 +139,15 @@ function expand_read_more_button() {
 
 function scroll_up_button() {
     var btn = $('#scroll-top-button');
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         if ($(window).scrollTop() > 300) {
             btn.show();
         } else {
             btn.hide();
         }
     });
-    btn.on('click', function (e) {
+    btn.on('click', function(e) {
         e.preventDefault();
-        $('html, body').animate({scrollTop: 0}, '300');
+        $('html, body').animate({ scrollTop: 0 }, '300');
     });
 }

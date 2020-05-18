@@ -10,19 +10,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Auth;
 
 class ConfirmEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
+
+    public $user;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -39,7 +42,7 @@ class ConfirmEmail extends Mailable implements ShouldQueue
 	        ->from('support@textunik.com')
             ->with(
                 [
-                    'user' => Auth::user()
+                    'user' => $this->user
                 ]);
     }
 }

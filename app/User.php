@@ -3,9 +3,10 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\ConfirmEmail;
+use Illuminate\Support\Facades\Mail;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'nick_name', 'email', 'password', 'gender', 'specialization', 'birthdate', 'avatar', 'avatar_mini', 'short_info','contacts'
+        'name', 'nick_name', 'email', 'password', 'gender', 'specialization', 'birthdate', 'avatar', 'avatar_mini', 'short_info','contacts', 'api_token'
     ];
 
     /**
@@ -98,7 +99,8 @@ class User extends Authenticatable
         return self::where('moderator', 1)->pluck('email')->toArray();
     }
 
-    public function gender_str(){
+    public function gender_str() : string
+    {
         switch ($this->gender) {
             case ($this->gender === null):
                 return '';
@@ -114,6 +116,12 @@ class User extends Authenticatable
                 break;
 
         }
+    }
+
+    public function sendConfirmEmail() : void
+    {
+        Mail::to($this->email)
+            ->queue(new ConfirmEmail($this));
     }
 
 }

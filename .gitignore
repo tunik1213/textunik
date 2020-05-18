@@ -17,3 +17,4 @@ app/Http/Controllers/TestController.php
 /public/google43e01675dcb5e57e.html
 composer.phar
 /public/wordpress/
+.vscode/

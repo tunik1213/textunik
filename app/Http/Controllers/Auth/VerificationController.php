@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class VerificationController extends Controller
 {
@@ -34,8 +36,20 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
-        $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    public function confirmEmail(int $userId, string $token)
+    {
+        $user = User::find($userId);
+        if (empty($user->api_token)) return abort(404);
+        if ($user->api_token <> $token) return abort(404);
+
+        $user->email_verified_at = time();
+        $user->save();
+
+        Auth::login($user);
+
+        $message = 'Спасибо, Ваш email успешно подтвержден!';
+        return view('home.index',['user' => $user, 'message' => $message]);
     }
 }
