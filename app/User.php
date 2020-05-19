@@ -120,8 +120,11 @@ class User extends Authenticatable
 
     public function sendConfirmEmail() : void
     {
+        $email = (new ConfirmEmail($this))
+            ->onQueue('high');
+            
         Mail::to($this->email)
-            ->queue(new ConfirmEmail($this));
+            ->queue($email);
     }
 
 }

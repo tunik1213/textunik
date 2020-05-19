@@ -12,7 +12,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Auth;
 
-class ConfirmEmail extends Mailable implements ShouldQueue
+class ConfirmEmail extends Mailable //implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -38,7 +38,6 @@ class ConfirmEmail extends Mailable implements ShouldQueue
         return $this
             ->view('mails.confirm_email')
             ->subject('Подтвердите свой e-mail на TEXT-уник')
-            ->onQueue('high')
 	        ->from('support@textunik.com')
             ->with(
                 [
