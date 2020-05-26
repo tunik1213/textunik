@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'nick_name', 'email', 'password', 'gender', 'specialization', 'birthdate', 'avatar', 'avatar_mini', 'short_info','contacts', 'api_token'
+        'name', 'nick_name', 'email', 'password', 'gender', 'specialization', 'birthdate', 'avatar', 'avatar_mini', 'short_info','contacts', 'api_token','comment_notifications','article_notifications'
     ];
 
     /**
@@ -125,6 +125,11 @@ class User extends Authenticatable
             
         Mail::to($this->email)
             ->queue($email);
+    }
+
+    public function emailConfirmed() : bool
+    {
+        return (!empty($this->email_verified_at));
     }
 
 }

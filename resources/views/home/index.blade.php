@@ -54,6 +54,25 @@
                                     <small class="form-text text-muted">Укажите свою специализацию</small>
                                 </div>
 
+                                <div class="form-group" style="border: 1px solid black;padding: 1rem;">
+
+                                    <p>Получать email-уведомления:</p>
+                                    @if(!$user->emailConfirmed())
+                                        <div class="alert alert-danger">Для получения уведомлений необходимо подтвердить свой email. Письмо с кнопкой подтверждения было отправлено на адрес <strong>{{$user->email}}</strong></div>
+                                    @endif
+
+                                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                        <input type="checkbox" class="custom-control-input" id="article_notifications" name="article_notifications" @if($user->article_notifications) checked @endif/>
+                                        <label class="custom-control-label" for="article_notifications">При появлении новых статей</label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                        <input type="checkbox" class="custom-control-input" id="comment_notifications" name="comment_notifications" @if($user->comment_notifications) checked @endif />
+                                        <label class="custom-control-label" for="comment_notifications">При появлении ответов на мои комментарии</label>
+                                    </div>
+
+                                </div>
+
                                 <div class="form-group">
                                     <label for="contacts">Контакты:</label>
                                     <input type="text" name="contacts" value="{{$user->contacts}}"

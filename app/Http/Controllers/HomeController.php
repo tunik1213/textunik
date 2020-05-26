@@ -33,6 +33,9 @@ class HomeController extends Controller
         $user->short_info = $_POST['short_info'];
         $user->contacts = $request->input('contacts');
 
+        $user->article_notifications = isset($_POST['article_notifications']);
+        $user->comment_notifications = isset($_POST['comment_notifications']);
+
         if (strtotime($_POST['birthdate']))
             $user->birthdate = $_POST['birthdate'];
 
