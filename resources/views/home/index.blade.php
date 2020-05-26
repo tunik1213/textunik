@@ -3,7 +3,7 @@
 @section('head')
 
     <title>Личный кабинет пользователя {{$user->displayName()}}</title>
-
+    <script src="{{asset('js/lib/tinymce.js')}}" referrerpolicy="origin"></script>
 @endsection
 
 @section('content')
@@ -28,8 +28,6 @@
                     <div class="card-body">
                         <form method="POST" action="/home" enctype="multipart/form-data">
                             @csrf
-
-
 
                             <div id="main-form" class="col-md-6 col-sm-12 float-left">
                                 <div class="form-group">
@@ -95,20 +93,20 @@
                                     <input class="browser-default custom-select" type="date" name="birthdate"
                                            value="{{$user->birthdate}}"/>
                                 </div>
-                                <div class="form-group">
-                                    <label for="short_info">Краткая информация:</label>
-                                    <textarea type="text" name="short_info" rows="5" class="form-control">{{trim($user->short_info)}}</textarea>
-                                    <small class="form-text text-muted">Напишите вкратце о себе, эта информация будет выводиться в описании профиля</small>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                                
                             </div>
 
                             <div id="avatar-upload" class="col-md-6 col-sm-12 float-left">
                                 @include('home.avatar_upload')
                             </div>
 
+                            <div class="form-group" style="clear:both;">
+                                <label for="short_info">Краткая информация:</label>
+                                <textarea type="text" name="short_info" rows="5" class="form-control">{{trim($user->short_info)}}</textarea>
+                                <small class="form-text text-muted">Напишите вкратце о себе, эта информация будет выводиться в описании профиля</small>
+                            </div>
 
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
 
                         </form>
                     </div>
@@ -120,4 +118,32 @@
 
         </div>
     </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            function fillEditorContent(e) {
+                this.setContent(`{!! $user->short_info !!}`);
+            }
+
+            tinymce.init({
+                selector: 'textarea[name=short_info]',
+                language: 'ru',
+                language_url: '{{asset('js/lib/lang/tinymce-ru.js')}}',
+                plugins: "link, emoticons, lists, charmap, paste",
+                paste_as_text: true,
+                toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | indent outdent | charmap emoticons link',
+                menubar: false,
+                setup: function(editor) {
+                    editor.on('init', fillEditorContent);
+                },
+                contextmenu: false,
+                browser_spellcheck: true,
+                relative_urls: false,
+            });
+
+
+        });
+    </script>
 @endsection

@@ -27,7 +27,7 @@
                     О себе
                 </a>
                 <section>
-                    {{$user->short_info}}
+                    {!! $user->short_info !!}
                 </section>
             </li>
 

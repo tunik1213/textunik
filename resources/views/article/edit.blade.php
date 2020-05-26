@@ -300,9 +300,6 @@
         .modal-dialog {
             max-width: 90%;
         }
-        .tox-notifications-container, .tox-statusbar {
-            display: none !important;
-        }
         .tox-collection__item-label blockquote:after{
             top: 10px !important;
             left: 0px !important;
