@@ -59,15 +59,25 @@
                                         <div class="alert alert-danger">Для получения уведомлений необходимо подтвердить свой email. Письмо с кнопкой подтверждения было отправлено на адрес <strong>{{$user->email}}</strong></div>
                                     @endif
 
-                                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                                        <input type="checkbox" class="custom-control-input" id="article_notifications" name="article_notifications" @if($user->article_notifications) checked @endif/>
-                                        <label class="custom-control-label" for="article_notifications">При появлении новых статей</label>
+                                    {{-- <div class="form-group">
+                                        <input type="checkbox" name="article_notifications" @if($user->article_notifications) checked @endif/>
+                                        <label for="article_notifications">При появлении новых статей</label>
                                     </div>
 
-                                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                                        <input type="checkbox" class="custom-control-input" id="comment_notifications" name="comment_notifications" @if($user->comment_notifications) checked @endif />
-                                        <label class="custom-control-label" for="comment_notifications">При появлении ответов на мои комментарии</label>
-                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="comment_notifications" @if($user->comment_notifications) checked @endif />
+                                        <label for="comment_notifications">При появлении ответов на мои комментарии</label>
+                                    </div> --}}
+
+                                    <label class="checkbox-label">При появлении новых статей
+                                        <input type="checkbox" name="article_notifications" @if($user->article_notifications) checked @endif/>
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <label class="checkbox-label">При появлении ответов на мои комментарии
+                                        <input type="checkbox" name="comment_notifications" @if($user->comment_notifications) checked @endif/>
+                                        <span class="checkmark"></span>
+                                    </label>
 
                                 </div>
 
