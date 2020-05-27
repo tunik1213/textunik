@@ -93,4 +93,11 @@
             @endif
         </ul>
     </div>
+
+
+
+    <style>
+        ul ul {list-style-type: initial;margin-block-end: 1em;}
+    </style>
+
 @endsection
