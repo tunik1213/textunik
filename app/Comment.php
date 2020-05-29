@@ -2,8 +2,11 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ArticleCommentNotification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Article;
 
 class Comment extends Model
 {
@@ -24,6 +27,11 @@ class Comment extends Model
         return $this->hasMany('app\Comment', 'parentId');
     }
 
+    public function parent()
+    {
+        return $this->belongsTo('app\Comment', 'parentId');
+    }
+
     public function article()
     {
         return $this->belongsTo('App\Article', 'articleId');
@@ -42,5 +50,23 @@ class Comment extends Model
             return true;
 
         return false;
+    }
+
+    public function sendNotificationEmail() : void
+    {
+        if ($this->parentId == 0) {
+            $receiver = $this->article->author;
+        } else {
+            $receiver = $this->parent->author;
+        }
+
+        if (!$receiver->comment_notifications) return;
+        if ($receiver->id == $this->author->id) return;
+
+        $email = (new ArticleCommentNotification($this))
+            ->onQueue('low');
+        
+        Mail::to($receiver)
+            ->queue($email);
     }
 }

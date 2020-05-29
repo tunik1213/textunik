@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use App\Article;
 use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
@@ -37,6 +38,9 @@ class CommentsController extends Controller
         ]);
 
         $comment->save();
+
+        $comment->sendNotificationEmail();
+
         return view('article.comments',['comments' => [$comment]]);
     }
 

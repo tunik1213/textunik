@@ -5,6 +5,17 @@
     #header{
         background-color: #041e42;
     }
+    .email-action-button{
+        background-color: #041e42 !important;
+        color: #fff; 
+        padding: 10px; 
+        cursor: pointer; 
+        text-decoration: none; 
+        border-radius: 5px; 
+        margin: 10px; 
+        display:inline-block;
+    }
+    
 </style>
 </head>
 
@@ -18,9 +29,11 @@
     @yield('content')
 </div>
 
+<hr/>
+
 <div id="footer">
     <p>С уважением, дружный коллектив Text-уник</p>
-    <p>Пользуйтесь c удовольствием!</p>
+    <strong>Для связи с нами Вы можете просто ответить на это письмо</strong>
 </div>
 
 </body>

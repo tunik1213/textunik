@@ -2,7 +2,7 @@
 
     @php($author = $comment->author)
 
-    <div class="comment" comment-id="{{$comment->id}}">
+    <div class="comment" comment-id="{{$comment->id}}" id="comment{{$comment->id}}">
         <div class="comment-header">
             @include('home.user_link',['user'=>$author])
             <span class="nowrap">{{ \Carbon\Carbon::createFromTimeStamp(strtotime($comment->created_at))->diffForHumans() }}</span>

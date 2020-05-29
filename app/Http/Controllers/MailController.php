@@ -32,4 +32,18 @@ class MailController extends Controller
         Mail::to($receivers)
             ->queue($report);
     }
+
+    public function unsubscribeArticleComments(int $userId, string $token)
+    {
+        $user = User::find($userId);
+        if (empty($user->api_token)) return abort(404);
+        if ($user->api_token <> $token) return abort(404);
+
+        $user->comment_notifications = false;
+        $user->save();
+
+        Auth::login($user);
+
+        return view('staticPages.unsubscribed');
+    }
 }

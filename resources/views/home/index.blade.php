@@ -59,22 +59,12 @@
                                         <div class="alert alert-danger">Для получения уведомлений необходимо подтвердить свой email. Письмо с кнопкой подтверждения было отправлено на адрес <strong>{{$user->email}}</strong></div>
                                     @endif
 
-                                    {{-- <div class="form-group">
-                                        <input type="checkbox" name="article_notifications" @if($user->article_notifications) checked @endif/>
-                                        <label for="article_notifications">При появлении новых статей</label>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="checkbox" name="comment_notifications" @if($user->comment_notifications) checked @endif />
-                                        <label for="comment_notifications">При появлении ответов на мои комментарии</label>
-                                    </div> --}}
-
                                     <label class="checkbox-label">При появлении новых статей
                                         <input type="checkbox" name="article_notifications" @if($user->article_notifications) checked @endif/>
                                         <span class="checkmark"></span>
                                     </label>
 
-                                    <label class="checkbox-label">При появлении ответов на мои комментарии
+                                    <label class="checkbox-label">При появлении ответов на мои статьи и комментарии
                                         <input type="checkbox" name="comment_notifications" @if($user->comment_notifications) checked @endif/>
                                         <span class="checkmark"></span>
                                     </label>
