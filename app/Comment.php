@@ -60,6 +60,7 @@ class Comment extends Model
             $receiver = $this->parent->author;
         }
 
+        if (!$receiver->emailConfirmed()) return;
         if (!$receiver->comment_notifications) return;
         if ($receiver->id == $this->author->id) return;
 
