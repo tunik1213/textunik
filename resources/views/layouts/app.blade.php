@@ -71,10 +71,11 @@
     <nav id="header" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container col-md-9">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <div id="logo1">TEXT</div>
-                <div id="logo2">уник</div>
-                <div id="logo3">коллективный блог</div>
-                <div id="logo4">ДЛЯ КОПИРАЙТЕРОВ</div>
+                <img id="logo-image" src="{{asset('/images/textunik_logo.jpg')}}">
+{{--                <div id="logo1">TEXT</div>--}}
+{{--                <div id="logo2">уник</div>--}}
+{{--                <div id="logo3">коллективный блог</div>--}}
+{{--                <div id="logo4">КОПИРАЙТЕРОВ</div>--}}
             </a>
 
             @include('home.right_header')

@@ -128,43 +128,8 @@ button.modal-ok-button {
     width: 170px;
     min-width: 170px;
 }
-
-#logo1 {
-    font-size: 2.5rem;
-    font-style: italic;
-    float: left;
-    color: #3ec5e6;
-    display: block;
-    position: absolute;
-    top: -12px;
-    left: -7px;
-}
-
-#logo2 {
-    color: #ffc220;
-    font-size: 2rem;
-    position: absolute;
-    top: 0px;
-    right: 0;
-    text-align: right;
-}
-
-#logo3 {
-    position: absolute;
-    top: 2.4rem;
-    font-size: 0.9rem;
-    right: 0;
-    text-align: right;
-    color: white;
-}
-
-#logo4 {
-    top: 63px;
-    color: #ffc220;
-    font-size: medium;
-    position: absolute;
-    right: 0;
-    text-align: right;
+img#logo-image{
+    margin-top: -6px;
 }
 
 
@@ -289,6 +254,7 @@ h6 {
 nav#header {
     display: block;
     background-color: #041e42 !important;
+    min-height: 100px;
 }
 
 nav#header a,
