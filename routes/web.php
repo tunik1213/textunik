@@ -30,7 +30,7 @@ Route::get('/images/{articleId}/{imgId}','ArticleController@getImage');
 
 Route::get('/comments/getByParent/{parentId}','CommentsController@getByParent');
 
-Route::get('/user/getAvatarImage/{id?}', 'HomeController@getAvatarImage')->name('avatarImage');
+Route::get('/user/getAvatarImage/{userId?}', 'HomeController@getAvatarImage')->name('avatarImage');
 Route::get('/user/getMiniAvatarImage/{userId?}', 'HomeController@getMiniAvatarImage')->name('miniAvatarImage');
 Route::get('/profile/{userId}', 'HomeController@profile')->name('profile');
 Route::get('/profile/getPreview/{userId}', 'HomeController@profilePreview')->name('profilePreview');
