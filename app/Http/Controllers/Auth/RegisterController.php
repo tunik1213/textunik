@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Rules\GoogleRecaptcha;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -53,6 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'g-recaptcha-response' => ['required', new GoogleRecaptcha]
         ], $this->messages());
     }
 
@@ -61,7 +63,8 @@ class RegisterController extends Controller
         return [
             'password.min' => 'Пароль слишком короткий',
             'email.unique' => 'Пользователь с таким email уже зарегистрирован',
-            'password.confirmed' => 'Введённые пароли не совпадают'
+            'password.confirmed' => 'Введённые пароли не совпадают',
+            'g-recaptcha-response.required' => 'Пройдите капчу',
         ];
     }
 

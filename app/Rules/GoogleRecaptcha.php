@@ -26,7 +26,7 @@ class GoogleRecaptcha implements Rule
      */
     public function passes($attribute, $capcha_response)
     {
-        $api_response = Http::Post('https://www.google.com/recaptcha/api/siteverify', [
+        $api_response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => env('CAPTCHA_SERVER_KEY'),
             'response' => $capcha_response,
         ])->json();
