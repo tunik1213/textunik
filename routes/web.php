@@ -70,3 +70,7 @@ Route::get('/unsubscribe/articleComments/{userId}/{userToken}', 'MailController@
 Route::get('/landing', function () {
     return view('staticPages.landing');
 })->name('landing');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

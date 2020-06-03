@@ -99,9 +99,6 @@
                     <a href="/about">О проекте</a>
                 </li>
                 <li>
-                    <a href="/forums">Форум</a>
-                </li>
-                <li>
                     <a href="http://textunik.reformal.ru/" onclick="Reformal.widgetOpen();return false;" rel="nofollow" target="_blank">Оставить отзыв</a>
                 </li>
             </ul>

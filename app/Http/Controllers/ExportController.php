@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\User;
 use Carbon\Carbon;
-use DevDojo\Chatter\Models\Category;
-use DevDojo\Chatter\Models\Discussion;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
@@ -17,10 +15,6 @@ class ExportController extends Controller
         $articles = Article::where('moderatedBy','<>',null)
             ->orderBy('id', 'desc')
             ->get();
-
-        $forum_categories = Category::all();
-
-        $forum_discussions = Discussion::all();
 
         $authors = DB::select( DB::raw("
         select
@@ -43,8 +37,6 @@ class ExportController extends Controller
         $contents = View::make('sitemap')->with(
             [
                 'articles' => $articles,
-                'forum_categories' => $forum_categories,
-                'forum_discussions' => $forum_discussions,
                 'authors' => $authors
             ]
         );

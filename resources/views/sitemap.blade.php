@@ -26,31 +26,6 @@
         </url>
     @endforeach
 
-    <url>
-        <loc>{{ url( '/forums' ) }}</loc>
-        <lastmod>2019-11-19T06:04:41+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    @foreach ($forum_categories as $category)
-        <url>
-            <loc>{{ url( '/forums/category/'.$category->slug) }}</loc>
-            <lastmod>{{ $category->updated_at->tz('GMT')->toAtomString() }}</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.1</priority>
-        </url>
-    @endforeach
-
-    @foreach ($forum_discussions as $discussion)
-        <url>
-            <loc>{{ url( '/forums/discussion/'.$discussion->category->slug.'/'.$discussion->slug) }}</loc>
-            <lastmod>{{ $discussion->updated_at->tz('GMT')->toAtomString() }}</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.1</priority>
-        </url>
-    @endforeach
-
     @foreach($authors as $author)
         <url>
             <loc>{{ url( '/profile/'.$author->id )}}</loc>
