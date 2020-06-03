@@ -254,7 +254,6 @@ h6 {
 nav#header {
     display: block;
     background-color: #011741 !important;
-    min-height: 100px;
 }
 
 nav#header a,
