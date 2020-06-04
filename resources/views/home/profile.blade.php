@@ -27,7 +27,7 @@
                     О себе
                 </a>
                 <section>
-                    {!! $user->short_info !!}
+                    {!! make_links_clickable($user->short_info) !!}
                 </section>
             </li>
 
