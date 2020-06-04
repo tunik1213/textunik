@@ -18,15 +18,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 
-        'nick_name', 
-        'email', 
+        'name',
+        'nick_name',
+        'email',
         'password',
-        'gender', 
-        'specialization', 
-        'birthdate', 
-        'avatar', 
-        'avatar_mini', 
+        'gender',
+        'specialization',
+        'birthdate',
+        'avatar',
+        'avatar_mini',
         'short_info',
         'contacts',
         'api_token',
@@ -114,28 +114,19 @@ class User extends Authenticatable
 
     public function gender_str() : string
     {
-        switch ($this->gender) {
-            case ($this->gender === null):
-                return '';
-                break;
-            case true:
+        if ($this->gender === true)
                 return 'муж';
-                break;
-            case false:
+        elseif ($this->gender === false)
                 return 'жен';
-                break;
-            default:
-                return '';
-                break;
 
-        }
+        return '';
     }
 
     public function sendConfirmEmail() : void
     {
         $email = (new ConfirmEmail($this))
             ->onQueue('high');
-            
+
         Mail::to($this->email)
             ->queue($email);
     }
