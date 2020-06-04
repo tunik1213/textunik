@@ -7,6 +7,7 @@ use App\SocialAccount;
 use App\User;
 use Intervention\Image\ImageManagerStatic as Image;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
 
 class SocialController extends Controller
 {
@@ -41,7 +42,7 @@ class SocialController extends Controller
         $user = User::create([
             'name' => $socialiteUser->getName(),
             'email' => $socialiteUser->getEmail(),
-            'password' => bcrypt(str_random(25)),
+            'password' => bcrypt(Str::random(25)),
             'nick_name' => $socialiteUser->nickname,
             'avatar' => Image::make($socialiteUser->avatar_original)
                 ->fit(800)
@@ -49,7 +50,10 @@ class SocialController extends Controller
             'avatar_mini' => Image::make($socialiteUser->avatar)
                 ->fit(50)
                 ->encode('jpg', 75),
+            'api_token' => Str::random(60),
         ]);
+
+        $user->sendConfirmEmail();
 
         $this->addSocialAccount($provider, $user, $socialiteUser);
 

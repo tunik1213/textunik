@@ -32,10 +32,9 @@
                             <div id="main-form" class="col-md-6 col-sm-12 float-left">
                                 <div class="form-group">
 
-                                    <label for="name">Настоящее имя:</label>
+                                    <label for="name">Как вас зовут?</label>
                                     <input type="text" name="name" value="{{$user->name}}" class="form-control" required/>
-                                    <small class="form-text text-muted">Укажите ваши имя и фамилию, чтобы другие
-                                        пользователи смогли узнать, как вас зовут
+                                    <small class="form-text text-muted">Укажите ваши имя и фамилию
                                     </small>
                                 </div>
 
@@ -93,7 +92,7 @@
                                     <input class="browser-default custom-select" type="date" name="birthdate"
                                            value="{{$user->birthdate}}"/>
                                 </div>
-                                
+
                             </div>
 
                             <div id="avatar-upload" class="col-md-6 col-sm-12 float-left">
