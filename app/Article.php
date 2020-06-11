@@ -7,6 +7,8 @@ Use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewArticleNotification;
 
 class Article extends Model
 {
@@ -73,5 +75,19 @@ class Article extends Model
             'authorId'=>Auth::user()->id,
             'finished'=>false
         ]);
+    }
+
+    // отправляет всем подписчикам письмо о том что появилась новая статья
+    public function newArticleEmailNotification() : void
+    {
+        $receivers = User::where('article_notifications','=',true)->get();
+        foreach ($receivers as $receiver) {
+            $email = (new NewArticleNotification($this, $receiver))
+                ->onQueue('low');
+
+            Mail::to($receiver)
+                ->queue($email);
+        }
+
     }
 }

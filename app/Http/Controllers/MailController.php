@@ -46,4 +46,19 @@ class MailController extends Controller
 
         return view('staticPages.unsubscribed');
     }
+
+    public function unsubscribeArticleNotifications(int $userId, string $token)
+    {
+        $user = User::find($userId);
+        if (empty($user->api_token)) return abort(404);
+        if ($user->api_token <> $token) return abort(404);
+
+        $user->article_notifications = false;
+        $user->save();
+
+        Auth::login($user);
+
+        return view('staticPages.unsubscribed');
+    }
+
 }

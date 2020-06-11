@@ -22,7 +22,10 @@
     <td>Email</td>
         <td>Еmail подтв.</td>
     <td>Дата рождения</td>
-    <td>Пол</td></tr>
+    <td>Пол</td>
+    <td>Подписка на статьи</td>
+    <td>Подписка на комменты</td>
+    </tr>
     </thead>
     @foreach ($users as $user)
 
@@ -31,9 +34,11 @@
         <td>{{$user->name}}</td>
         <td>{{$user->created_at}}</td>
         <td>{{$user->email}}</td>
-        <td>@if($user->emailConfirmed())Да@elseНет@endif</td>
+        <td>{{view_bool($user->emailConfirmed())}}</td>
         <td>{{$user->birthdate}}</td>
         <td>{{$user->gender_str()}}</td>
+        <td>{{view_bool($user->article_notifications)}}</td>
+        <td>{{view_bool($user->comment_notifications)}}</td>
     </tr>
 
     @endforeach

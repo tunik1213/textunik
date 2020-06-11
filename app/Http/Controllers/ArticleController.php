@@ -69,7 +69,7 @@ class ArticleController extends Controller
 
         $finished = (bool)$request->input('finished', false);
 
-        if (!$article->finished && $finished) { // это первая публикация
+        if (!$article->finished && $finished) { // первая публикация автором - статья ожидает модерацию
             $article->created_at = time();
         }
 
@@ -79,6 +79,10 @@ class ArticleController extends Controller
 
             if (!$article->public()){
                 $article->slug = $request->input('slug');
+            }
+
+            if (!$article->finished && $finished) { // это первая публикация модератором - статья становится публичной и попадает в ленту
+                $article->newArticleEmailNotification();
             }
         }
 

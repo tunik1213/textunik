@@ -65,6 +65,7 @@ Route::get('/social-auth/{provider}/callback', 'Auth\SocialController@handleProv
 // Email related routes
 Route::get('mail/dailyReport', 'MailController@dailyReport')->middleware('localhostOnly');
 Route::get('/unsubscribe/articleComments/{userId}/{userToken}', 'MailController@unsubscribeArticleComments')->name('unsubscribeArticleComments');
+Route::get('/unsubscribe/articleNotifications/{userId}/{userToken}', 'MailController@unsubscribeArticleNotifications')->name('unsubscribeArticleNotifications');
 
 // Static pages
 Route::get('/landing', function () {
