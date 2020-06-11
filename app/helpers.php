@@ -37,3 +37,7 @@ function view_bool(bool $value)
 {
     return ($value) ? 'Да' : 'Нет';
 }
+
+function make_absolute_urls_for_emails($text){
+    return preg_replace('/((?:src|href)=")\/(.*?)"/im','$1'.env('APP_URL').'/$2"',$text);
+}
