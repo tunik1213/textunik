@@ -38,7 +38,6 @@ class ConfirmEmail extends Mailable //implements ShouldQueue
         return $this
             ->view('mails.confirm_email')
             ->subject('Подтвердите свой e-mail на TEXT-уник')
-	        ->from('support@textunik.com')
             ->with(
                 [
                     'user' => $this->user

@@ -41,7 +41,6 @@ class ArticleCommentNotification extends Mailable
         return $this
             ->view("mails.$view")
             ->subject($subject)
-	        ->from('support@textunik.com')
             ->with(
                 [
                     'comment' => $this->comment

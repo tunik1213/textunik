@@ -54,7 +54,6 @@ class DailyReport extends Mailable implements ShouldQueue
             ->view('mails.daily_report')
             ->subject('Ежедневный отчет')
             ->onQueue('low')
-	    ->from('support@textunik.com')
             ->with(
                 [
                     'disk_usage_percent' => $disk_usage_percent,
