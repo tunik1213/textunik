@@ -8,7 +8,7 @@
     }
     .email-action-button{
         background-color: #041e42 !important;
-        color: #fff;
+        color: #fff !important;
         padding: 10px;
         cursor: pointer;
         text-decoration: none;
