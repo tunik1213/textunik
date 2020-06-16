@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/admin','AdminController@index');
         Route::get('/admin/users','AdminController@users');
+        Route::get('/admin/articles','AdminController@articles');
     });
 });
 

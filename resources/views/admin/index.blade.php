@@ -10,6 +10,10 @@
     <div class="container col-md-9 padding-0-phone">
         <h1>Админка</h1>
 
-        <a href="/admin/users">СписокПользователей</a>
+        <a href="/admin/users">Пользователи</a>
+        <br/>
+
+        <a href="/admin/articles">Статьи</a>
+
     </div>
 @endsection
