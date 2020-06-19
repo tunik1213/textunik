@@ -7,8 +7,6 @@
     <title>{{$pageTitle}}</title>
 
     <meta name="article-id" content="{{$article->id}}"/>
-
-    <script src="{{asset('js/lib/tinymce.js')}}" referrerpolicy="origin"></script>
 @endsection
 
 @section('content')
@@ -213,7 +211,7 @@
             @endif
 
             $('#publish-article').click(function(event){
-                 if( !confirm('Вы уверены что хотите опубликовать статью?') ) 
+                 if( !confirm('Вы уверены что хотите опубликовать статью?') )
                     event.preventDefault();
             });
 

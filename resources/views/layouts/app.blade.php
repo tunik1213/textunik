@@ -29,6 +29,7 @@
         <script src="{{ asset('js/lib/popper.min.js') }}"></script>
         <script src="{{ asset('js/lib/mdb.js') }}"></script>
         <script src="{{ asset('js/lib/jquery.jgrowl.js') }}"></script>
+        <script src="{{asset('js/lib/tinymce.js')}}" referrerpolicy="origin"></script>
         <script src="{{ asset('js/engine.js') }}"></script>
         <script src="{{ asset('js/article.js') }}"></script>
 

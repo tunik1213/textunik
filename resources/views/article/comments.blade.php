@@ -13,7 +13,7 @@
             @endif
         </div>
         <div class="comment-content">
-            <span>{{ html_entity_decode($comment->text) }}</span>
+            <span> {!! html_entity_decode($comment->text) !!}</span>
         </div>
 
         @if (!($suppressRecursion ?? false))

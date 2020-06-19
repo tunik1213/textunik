@@ -24,6 +24,7 @@ cat \
     "${js_root}/lib/bootstrap.bundle.js"\
     "${js_root}/lib/popper.min.js"\
     "${js_root}/lib/mdb.js"\
+    "${js_root}/lib/tinymce.js"\
     "${js_root}/engine.js"\
     "${js_root}/article.js"\
 | uglifyjs --compress --mangle -o "${build_root}/${build_name}.js"

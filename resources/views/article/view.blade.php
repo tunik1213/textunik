@@ -50,17 +50,15 @@
             @if($article->public())
                 @include('article.social_share')
 
+                <br />
+                    <label>Оставить комментарий:</label>
                 <div id="comments-container" article-id="{{$article->id}}">
 
-                    <div class="md-form add-comment-form">
-                        <i class="fas fa-pencil-alt prefix"></i>
-                        <textarea id="form10" class="md-textarea form-control @guest restrict @endguest"
-                                  rows="3"></textarea>
-                        <label for="form10" class="comment-placeholder">Оставить комментарий</label>
-                        <button class="post-comment btn btn-primary">Отправить</button>
+                    <div id="comments-container-input">
+                        {{-- здесь будет размещен редактор комментария --}}
                     </div>
 
-                    <br>
+                    <br />
 
 
                     <div id="comments-list">
@@ -78,5 +76,12 @@
     <script type="text/javascript">
         $("#toc").toc({content: "div.article-text", headings: "h2,h3,h4"});
     </script>
+
+    <div id="comment-input-sample" style="display:none">
+        <div class="add-comment-form">
+            <textarea class="form-control @guest restrict @endguest" rows="3"></textarea>
+            <button class="post-comment btn btn-primary">Отправить</button>
+        </div>
+    </div>
 
 @endsection

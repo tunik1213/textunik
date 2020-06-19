@@ -3,7 +3,6 @@
 @section('head')
 
     <title>Личный кабинет пользователя {{$user->displayName()}}</title>
-    <script src="{{asset('js/lib/tinymce.js')}}" referrerpolicy="origin"></script>
 @endsection
 
 @section('content')

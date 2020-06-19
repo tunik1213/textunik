@@ -8,15 +8,48 @@ $( document ).ready(function() {
 
     $(document).on('click', '.edit-comment-link', editComment);
 
+    create_comment_input('#comments-container-input','');
 
 });
 
 
+var create_comment_input = function(selector,value)
+{
+    commentInput = $('#comment-input-sample > .add-comment-form').clone()
+    var target = $(selector);
+    var childrenSelector = (selector+' > .comment-children');
+    if ($(childrenSelector).length > 0)
+        commentInput.insertBefore(childrenSelector);
+    else
+        commentInput.appendTo(selector);
+
+    tinymce.init({
+        selector: selector + ' > .add-comment-form > textarea',
+        language: 'ru',
+        language_url: '/js/lib/lang/tinymce-ru.js',
+        plugins: "link, emoticons, lists, charmap, paste",
+        paste_as_text: true,
+        toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | indent outdent | charmap emoticons link',
+        menubar: false,
+        contextmenu: false,
+        browser_spellcheck: true,
+        relative_urls: false,
+        setup: function (editor) {
+            editor.on('init', function (e) {
+                editor.setContent(value);
+            });
+        }
+    });
+
+    return commentInput;
+}
 
 var commentPost = function (e) {
+
     e.stopPropagation();
     e.preventDefault();
 
+    tinymce.triggerSave();
     var textarea = $(this).parent().find('textarea');
     var comment = textarea.val();
     textarea.val('').blur();
@@ -42,6 +75,11 @@ var commentPost = function (e) {
                 .append(response);
             $('#comments-list .add-comment-form')
                 .remove();
+            tinymce.editors[0].setContent('');
+            scrollTop = (parent_container.is('#comments-list')) ? $(document).height() : parent_container.last('.comment').offset().top;
+            $([document.documentElement, document.body]).animate({
+                scrollTop: scrollTop
+            }, 300);
         }
     })
 }
@@ -51,39 +89,29 @@ var commentRespond = function (e) {
 
     $('#comments-list .add-comment-form').remove();
 
-    $('#comments-container > .add-comment-form')
-        .clone()
-        .insertAfter(this)
-        .find('textarea')
-        .focus();
+    create_comment_input('#'+this.closest('.comment').id);
+
 }
 
 var editComment = function(e) {
     e.preventDefault();
 
     var comment = $(this).closest('.comment');
-    var commentId = comment.attr('comment-id');
-    var commentVal = $('.comment[comment-id='+commentId+'] > .comment-content > span').text();
+    var commentId = comment.attr('id');
+    var commentVal = $('#'+commentId + ' > .comment-content > span').html();
 
     $('#comments-list .add-comment-form').remove();
 
-    var commentForm = $('#comments-container > .add-comment-form').clone();
-    commentForm
-        .insertBefore(comment)
-        .find('textarea')
-        .val(commentVal)
-        .focus()
-
-    commentForm
-        .find('label.comment-placeholder')
-        .text('Редактировать комментарий');
+    var commentForm = create_comment_input('#'+commentId,commentVal);
 
     commentForm
         .find('button.post-comment')
         .attr('commentId',commentId)
         .on('click',function (e) {
             e.stopImmediatePropagation();
-            var commentId = $(this).attr('commentId');
+            tinymce.triggerSave();
+
+            var commentId = $(this).closest('.comment').attr('comment-id');
             var commentText = $(this)
                 .closest('.add-comment-form')
                 .find('textarea')
@@ -99,7 +127,7 @@ var editComment = function(e) {
                 method: "POST",
                 success: function (response) {
                     $('.comment[comment-id='+commentId+'] > .comment-content > span')
-                        .text(commentText);
+                        .html(commentText);
                     $('#comments-list .add-comment-form')
                         .remove();
                 }
