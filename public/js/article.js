@@ -38,6 +38,10 @@ var create_comment_input = function(selector,value)
             editor.on('init', function (e) {
                 editor.setContent(value);
             });
+            editor.on('focus', function(e) {
+                if ($(editor.getElement()).is('.restrict'))
+                    login_popup(e);
+            });
         }
     });
 
@@ -89,7 +93,7 @@ var commentRespond = function (e) {
 
     $('#comments-list .add-comment-form').remove();
 
-    create_comment_input('#'+this.closest('.comment').id);
+    create_comment_input('#'+this.closest('.comment').id,'');
 
 }
 
