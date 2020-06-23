@@ -1,5 +1,6 @@
 div.comment-content{
     padding: 10px;
+    overflow-x:hidden;
 }
 div.comment{
     padding-top: 1em;
