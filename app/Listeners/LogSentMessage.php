@@ -25,6 +25,6 @@ class LogSentMessage
      */
     public function handle(MessageSent $event)
     {
-        Log::info($event->message);
+        //Log::info($event->message);
     }
 }
