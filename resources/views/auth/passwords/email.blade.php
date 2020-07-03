@@ -12,33 +12,34 @@
                         <div class="alert alert-success" role="alert">
                             Письмо со ссылкой на сброс пароля успешно отправлено
                         </div>
-                    @endif
+                    @else
+                        <form method="POST" action="{{ route('password.email') }}">
+                            @csrf
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+                            <div class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">Ваш e-mail:</label>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Ваш e-mail:</label>
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
+                                    @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Отправить ссылку сброса пароля
-                                </button>
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Отправить ссылку сброса пароля
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    @endif
+
                 </div>
             </div>
         </div>

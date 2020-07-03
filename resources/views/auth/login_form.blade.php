@@ -42,11 +42,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     Войти
                                 </button>
-
-                                {{--                                TODO восстановление пароля--}}
-                                {{--                                <a class="btn btn-link" href="{{ route('password.request') }}">--}}
-                                {{--                                    Забыли пароль?--}}
-                                {{--                                </a>--}}
+                                                                <a class="btn btn-link" href="{{ route('password.request') }}" style="padding: 1rem 2px;">
+                                                                    Забыли пароль?
+                                                                </a>
                             </div>
                         </div>
                     </form>
