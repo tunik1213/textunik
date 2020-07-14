@@ -79,11 +79,13 @@ class ArticleController extends Controller
 
             if (!$article->public()){
                 $article->slug = $request->input('slug');
+
+                if ($finished) { // это первая публикация модератором - статья становится публичной и попадает в ленту
+                    $article->created_at = time();
+                    $article->newArticleEmailNotification();
+                }
             }
 
-            if (!$article->finished && $finished) { // это первая публикация модератором - статья становится публичной и попадает в ленту
-                $article->newArticleEmailNotification();
-            }
         }
 
         if (!$article->finished) {
