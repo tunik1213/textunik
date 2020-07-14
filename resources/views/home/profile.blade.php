@@ -37,9 +37,12 @@
                 </a>
                 <section>
                     @if(count($articles['public'])>0)
-                        @foreach ($articles['public'] as $article)
+                        @foreach ($articles['public'] as $npp=>$article)
                             <div class="profile-article-title">
-                                <a href="{{$article->url()}}">{{ $article->title }}</a>
+                                <a href="{{$article->url()}}">
+                                    <span class="list-index">{{$npp+1}}.&nbsp;</span>
+                                    {{ $article->title }}
+                                </a>
                             </div>
                         @endforeach
                     @else

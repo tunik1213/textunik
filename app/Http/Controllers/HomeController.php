@@ -90,7 +90,7 @@ class HomeController extends Controller
 
         $articles['public'] = Article::where('moderatedBy','<>',null)
             ->where('authorId','=',$user->id)
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->get();
 
         $comments = Comment::where('authorId','=',$user->id)
