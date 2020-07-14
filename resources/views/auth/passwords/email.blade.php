@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@section('head')
+
+    <title>Сброс пароля</title>
+    <meta name="robots" content="noindex">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -28,6 +35,15 @@
                                     </span>
                                     @enderror
                                 </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right">
+                                    @error('g-recaptcha-response')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </label>
+                                <div class="g-recaptcha col-md-6" data-sitekey="{{env('CAPTCHA_CLIENT_KEY')}}"></div>
                             </div>
 
                             <div class="form-group row mb-0">
