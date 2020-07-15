@@ -22,7 +22,7 @@
 </div>
 
 
-<{{$titleTag}}><a href="{{$article->url()}}">{{ $article->title }}</a></{{$titleTag}}>
+<{{$titleTag}}><a class="article-title" href="{{$article->url()}}">{{ $article->title }}</a></{{$titleTag}}>
 
 <div class="article-annotation">
     {!! $article->annotation !!}

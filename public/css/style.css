@@ -217,6 +217,11 @@ h6 {
     flex-grow: 1;
     word-break: break-word;
 }
+.article-title{
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.75rem;
+}
 
 .article-content,
 .trumbowyg-editor {
