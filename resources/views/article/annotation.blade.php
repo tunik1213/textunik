@@ -1,5 +1,6 @@
 @php
-    $author = $article->author
+    $author = $article->author;
+    $titleTag = $titleTag ?? 'h1';
 @endphp
 
 
@@ -21,7 +22,7 @@
 </div>
 
 
-<h1><a href="{{$article->url()}}">{{ $article->title }}</a></h1>
+<{{$titleTag}}><a href="{{$article->url()}}">{{ $article->title }}</a></{{$titleTag}}>
 
 <div class="article-annotation">
     {!! $article->annotation !!}

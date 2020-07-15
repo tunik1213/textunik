@@ -3,7 +3,7 @@
 
         @foreach ($articles as $article)
 
-            @include('article.annotation')
+            @include('article.annotation',['titleTag' =>'h2'])
             <br/>
 
             @if(!empty(trim($article->content)) && $article->public())
