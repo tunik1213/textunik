@@ -72,7 +72,7 @@ class HomeController extends Controller
     public function getMiniAvatarImage($userId = null)
     {
         $user = ($userId === null) ? auth()->user() : User::find($userId);
-        $avatar = $user->avatar_mini;
+        $avatar = $user->avatar_mini ?? null;
         if ($avatar == null) {
             $avatar = file_get_contents(public_path().'/avatars/no_foto_mini.jpeg');
         }
