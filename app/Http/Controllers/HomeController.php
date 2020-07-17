@@ -87,6 +87,7 @@ class HomeController extends Controller
     public function profile($userId)
     {
         $user = User::find($userId);
+        if (empty($user)) return abort(404);
 
         $articles['public'] = Article::where('moderatedBy','<>',null)
             ->where('authorId','=',$user->id)
