@@ -20,7 +20,7 @@
     @foreach ($articles as $article)
         <url>
             <loc>{{ url( $article->url()) }}</loc>
-            <lastmod>{{ $article->updated_at->tz('GMT')->toAtomString() }}</lastmod>
+            <lastmod>{{ $article->lastModificationDate()->tz('GMT')->toAtomString() }}</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
         </url>

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewArticleNotification;
+use App\Comment;
 
 class Article extends Model
 {
@@ -89,5 +90,22 @@ class Article extends Model
                 ->queue($email);
         }
 
+    }
+
+    public function lastComment() : ?Comment
+    {
+        return Comment::where('articleId',$this->id)
+            ->orderBy('id','desc')
+            ->take(1)
+            ->get()[0] ?? null;
+
+    }
+
+    public function lastModificationDate() : Carbon
+    {
+        return max(
+            $this->updated_at,
+            $this->lastComment()->updated_at ?? null
+        );
     }
 }
