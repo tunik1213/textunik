@@ -125,6 +125,8 @@ class User extends Authenticatable
 
     public function sendConfirmEmail() : void
     {
+        if (empty($this->email)) return;
+
         $email = (new ConfirmEmail($this))
             ->onQueue('high');
 
