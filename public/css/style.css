@@ -573,6 +573,15 @@ ul.navbar-nav>li {
 
 
 /* ======= mobile */
+@media screen and (max-width: 1024px) {
+    .social-entrance {
+        font-size: smaller;
+        padding: 10px 10px;
+        margin: 1rem auto;
+        display: block;
+        text-align: center;
+    }
+}
 
 @media screen and (max-width: 767px) {
     .social-icons-container>.social-icon {
@@ -586,13 +595,7 @@ ul.navbar-nav>li {
     .page-link {
         font-size: 1rem !important;
     }
-    .social-entrance {
-        font-size: smaller;
-        padding: 10px 10px;
-        margin: 0 auto;
-        display: block;
-        text-align: center;
-    }
+
     #reformal_tab {
         display: none !important;
     }
