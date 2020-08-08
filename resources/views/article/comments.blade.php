@@ -17,6 +17,9 @@
         </div>
 
         @if (!($suppressRecursion ?? false))
+
+            @include('article.voting',['object'=>$comment])
+
             <div class="comment-bottom-nav">
                 <a href="#" class="comment-response @guest restrict @endguest">Ответить</a>
             </div>

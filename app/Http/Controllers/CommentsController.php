@@ -54,4 +54,22 @@ class CommentsController extends Controller
         $comment->text = $newText;
         $comment->save();
     }
+
+    public function vote(request $request)
+    {
+        $commentId = $request->input('comment');
+        $comment = Comment::find($commentId);
+        if (empty($comment)) abort('404');
+
+        $action = $request->input('action');
+        if ($action == 'up') {
+            $comment->voteUp();
+        } elseif ($action == 'down') {
+            $comment->voteDown();
+        }
+
+        return view('article.voting', [
+            'object' => $comment
+        ]);
+    }
 }

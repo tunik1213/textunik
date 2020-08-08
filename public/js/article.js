@@ -10,8 +10,60 @@ $( document ).ready(function() {
 
     create_comment_input('#comments-container-input','');
 
+    $('#article-votes').on('click', '.vote-container .thumb-icon.far', article_vote);
+
+    $('#comments-list').on('click','.thumb-icon.far', comment_vote);
 });
 
+var article_vote = function (e) {
+    if ($(this).is('.restrict')) {
+        login_popup(e);
+        return;
+    }
+
+    var current_container = $(this).closest('.vote-container');
+    var action_type = $(this).attr('vote-action');
+
+    $.ajax({
+        url: "/votes/article/",
+        async: false,
+        data: {
+            _token:$('meta[name="csrf-token"]').attr('content'),
+            article:article_id(),
+            action:action_type
+        },
+        method: "POST",
+        success: function (response) {
+            current_container.replaceWith(response);
+        }
+    })
+}
+
+var comment_vote = function (e) {
+
+    if ($(this).is('.restrict')) {
+        login_popup(e);
+        return;
+    }
+
+    var current_container = $(this).closest('.vote-container');
+    var action_type = $(this).attr('vote-action');
+    var id = $(this).closest('.comment').attr('comment-id');
+
+    $.ajax({
+        url: "/votes/comment/",
+        async: false,
+        data: {
+            _token:$('meta[name="csrf-token"]').attr('content'),
+            comment:id,
+            action:action_type
+        },
+        method: "POST",
+        success: function (response) {
+            current_container.replaceWith(response);
+        }
+    })
+}
 
 var create_comment_input = function(selector,value)
 {
@@ -70,7 +122,7 @@ var commentPost = function (e) {
         data: {
             _token:$('meta[name="csrf-token"]').attr('content'),
             comment:comment,
-            article:$("#comments-container").attr('article-id'),
+            article:article_id(),
             parent_id: parent_id
         },
         method: "POST",
@@ -86,6 +138,10 @@ var commentPost = function (e) {
             }, 300);
         }
     })
+}
+
+var article_id = function () {
+    return $("#comments-container").attr('article-id');
 }
 
 var commentRespond = function (e) {

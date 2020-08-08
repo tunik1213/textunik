@@ -183,4 +183,22 @@ class ArticleController extends Controller
         echo($img);
         exit;
     }
+
+    public function vote(request $request)
+    {
+        $articleId = $request->input('article');
+        $article = Article::find($articleId);
+        if (empty($article)) abort('404');
+
+        $action = $request->input('action');
+        if ($action == 'up') {
+            $article->voteUp();
+        } elseif ($action == 'down') {
+            $article->voteDown();
+        }
+
+        return view('article.voting', [
+            'object' => $article
+        ]);
+    }
 }

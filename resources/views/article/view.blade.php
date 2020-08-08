@@ -48,7 +48,12 @@
             <hr/>
 
             @if($article->public())
-                @include('article.social_share')
+
+                <div id="article-votes">
+                    @include('article.voting',['object'=>$article])
+                </div>
+
+                    @include('article.social_share')
 
                 <br />
                     <label>Оставить комментарий:</label>

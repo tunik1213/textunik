@@ -7,11 +7,14 @@ Use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewArticleNotification;
 use App\Comment;
+use App\Interfaces\Votable;
+use App\ArticleVote;
 
-class Article extends Model
+class Article extends Model Implements Votable
 {
     protected $fillable = array(
         'authorId',
@@ -107,5 +110,67 @@ class Article extends Model
             $this->updated_at,
             $this->lastComment()->updated_at ?? null
         );
+    }
+
+
+    public function getVotesUp(): int
+    {
+        return $this->votes_up;
+    }
+
+    public function getVotesDown(): int
+    {
+        return -$this->votes_down;
+    }
+
+    public function getUserVote() : ?int
+    {
+        $authorId = Auth::User()->id ?? null;
+        if (empty($authorId)) return null;
+
+        $vote = ArticleVote::where(['article_id' => $this->id, 'author_id' => $authorId])
+            ->pluck('value');
+
+        return $vote[0] ?? null;
+    }
+
+    public function voteUp(): void
+    {
+        $this->saveVote(SELF::DEFAULT_VALUE);
+    }
+
+    public function voteDown(): void
+    {
+        $this->saveVote(-SELF::DEFAULT_VALUE);
+    }
+
+    private function saveVote(int $value) : void
+    {
+        $authorId = Auth::User()->id ?? null;
+        if (empty($authorId)) return;
+
+        // найдем существующий голос если есть
+        $vote = ArticleVote::firstOrNew(['article_id' => $this->id, 'author_id' => $authorId]);
+
+        // вычтем его из статьи
+        if ($vote->value > 0) {
+            $this->votes_up -= $vote->value;
+        } else {
+            $this->votes_down -= $vote->value;
+        }
+
+        // добавим в статью новый голос
+        if ($value > 0) {
+            $this->votes_up += $value;
+        } else {
+            $this->votes_down += $value;
+        }
+
+        $vote->value = $value;
+
+        DB::beginTransaction();
+            $vote->save();
+            $this->save();
+        DB::commit();
     }
 }

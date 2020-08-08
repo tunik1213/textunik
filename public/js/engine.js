@@ -80,6 +80,7 @@ function reportError() {
 }
 
 function login_popup(event) {
+
     event.preventDefault();
     event.stopPropagation();
     this.blur();

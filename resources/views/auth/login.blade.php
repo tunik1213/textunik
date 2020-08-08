@@ -10,7 +10,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-9">
+            <div class="col-md-6">
     @include('auth.login_form')
             </div>
         </div>

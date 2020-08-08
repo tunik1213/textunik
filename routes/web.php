@@ -60,8 +60,13 @@ Route::get('/privacy', function() {
     return view('staticPages.privacy');
 });
 
+// social
 Route::get('/social-auth/{provider}', 'Auth\SocialController@redirectToProvider')->name('auth.social');
 Route::get('/social-auth/{provider}/callback', 'Auth\SocialController@handleProviderCallback')->name('auth.social.callback');
+
+// voting
+Route::post('/votes/article/','ArticleController@vote');
+Route::post('/votes/comment/','CommentsController@vote');
 
 // Email related routes
 Route::get('mail/dailyReport', 'MailController@dailyReport')->middleware('localhostOnly');

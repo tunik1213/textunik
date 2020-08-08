@@ -40,3 +40,42 @@ div.comment-header{
 .comment-placeholder{
     white-space: nowrap;
 }
+
+/* votes */
+#article-votes{
+    font-size: 1.5rem;
+}
+.vote-container {
+    padding: 1rem 3rem;
+}
+.vote-container > span {
+    position: relative;
+}
+.vote-container > span .thumb-icon {
+    position: absolute;
+    cursor: pointer;
+}
+.votes-separator {
+    font-size: 5px;
+    vertical-align: middle;
+    padding: 0.5rem;
+}
+.votes-up {
+    color: #C45911;
+}
+.votes-up > i.thumb-icon {
+    left: -40px;
+    top: -1px;
+}
+.votes-down {
+    color: #011741;
+}
+.votes-down > i.thumb-icon {
+    position: absolute;
+    right: -40px;
+    top: 6px;
+}
+.votes-count {
+
+}
+/* /votes */

@@ -570,17 +570,18 @@ ul.navbar-nav>li {
         padding: 0.75em 0.809em;
     }
 }
+.social-entrance {
+    font-size: smaller;
+    padding: 10px 10px;
+    margin: 1rem auto;
+    display: block;
+    text-align: center;
+}
 
 
 /* ======= mobile */
 @media screen and (max-width: 1024px) {
-    .social-entrance {
-        font-size: smaller;
-        padding: 10px 10px;
-        margin: 1rem auto;
-        display: block;
-        text-align: center;
-    }
+
 }
 
 @media screen and (max-width: 767px) {
