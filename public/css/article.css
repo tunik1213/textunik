@@ -46,7 +46,10 @@ div.comment-header{
     font-size: 1.5rem;
 }
 .vote-container {
-    padding: 1rem 3rem;
+    padding-top: 0;
+    padding-right: 3rem;
+    padding-bottom: 1rem;
+    padding-left: 3rem;
 }
 .vote-container > span {
     position: relative;
