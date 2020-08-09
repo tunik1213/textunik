@@ -75,12 +75,12 @@ class Comment extends Model implements Votable
 
     public function getVotesUp(): int
     {
-        return $this->votes_up;
+        return $this->votes_up ?? 0;
     }
 
     public function getVotesDown(): int
     {
-        return -$this->votes_down;
+        return -$this->votes_down ?? 0;
     }
 
     public function getUserVote() : ?int
