@@ -25,7 +25,7 @@ var article_vote = function (e) {
     var action_type = $(this).attr('vote-action');
 
     $.ajax({
-        url: "/votes/article/",
+        url: "/votes/article",
         async: false,
         data: {
             _token:$('meta[name="csrf-token"]').attr('content'),
@@ -51,7 +51,7 @@ var comment_vote = function (e) {
     var id = $(this).closest('.comment').attr('comment-id');
 
     $.ajax({
-        url: "/votes/comment/",
+        url: "/votes/comment",
         async: false,
         data: {
             _token:$('meta[name="csrf-token"]').attr('content'),
