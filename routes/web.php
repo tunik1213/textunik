@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/admin','AdminController@index');
         Route::get('/admin/users','AdminController@users');
         Route::get('/admin/articles','AdminController@articles');
+        Route::resource('admin/tags','TagsController',);
     });
 });
 
@@ -77,7 +78,5 @@ Route::get('/unsubscribe/articleNotifications/{userId}/{userToken}', 'MailContro
 Route::get('/landing', function () {
     return view('staticPages.landing');
 })->name('landing');
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

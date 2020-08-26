@@ -46,6 +46,10 @@ q {
     quotes: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 blockquote:after {
     content: '”';
     position: absolute;

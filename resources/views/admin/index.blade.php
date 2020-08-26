@@ -14,6 +14,11 @@
         <br/>
 
         <a href="/admin/articles">Статьи</a>
+        <br/>
+
+        <a href="/admin/tags">Теги</a>
+        <br/>
+
 
     </div>
 @endsection

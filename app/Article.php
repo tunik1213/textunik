@@ -26,6 +26,11 @@ class Article extends Model Implements Votable
         'moderatedBy'
     );
 
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
+
     public function url() : string
     {
         if (empty($this->slug))
