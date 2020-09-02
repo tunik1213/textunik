@@ -60,6 +60,7 @@ class TagsController extends Controller
         }
 
         $tag->name = $request->input('name');
+        $tag->slug = $request->input('slug');
         $tag->save();
         return redirect(route('tags.index'));
     }

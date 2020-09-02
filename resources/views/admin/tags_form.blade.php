@@ -20,7 +20,11 @@
             <input type="hidden" name="id" value="{{$tag->id}}" />
 
             <label for="name">Имя:</label>
-            <input type="text" name="name" value="{{$tag->name}}" autofocus/>
+            <input type="text" name="name" value="{{$tag->name}}" autofocus required/>
+            <br />
+
+            <label for="slug">URL:</label>
+            <input type="text" name="slug" value="{{$tag->slug}}" required>
 
             <input type="submit" value="сохранить" />
 
