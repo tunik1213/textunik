@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tag;
+use phpDocumentor\Reflection\Types\Array_;
 
 class TagsController extends Controller
 {
@@ -13,6 +14,17 @@ class TagsController extends Controller
         $allTags = Tag::all();
 
         return view('admin.tags',['tags' => $allTags]);
+    }
+
+    public function tagsjson()
+    {
+        $allTags = Tag::all();
+
+        foreach ($allTags as $i => $tag) {
+            $data[$i]['id'] = $tag->id;
+            $data[$i]['name'] = $tag->name;
+        }
+        return $data;
     }
 
     public function create()

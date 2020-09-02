@@ -1,8 +1,17 @@
-@php($user=\Illuminate\Support\Facades\Auth::user())
+@php
+    $user=\Illuminate\Support\Facades\Auth::user();
+
+    $allTags = App\Tag::all();
+    $selected_tags_array = $article->tags()->pluck('id')->toArray();
+@endphp
 
 @extends('layouts.app')
 
 @section('head')
+
+    <script src="{{ asset('js/lib/chosen.jquery.min.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ asset('css/lib/chosen.min.css') }}" />
 
     <title>{{$pageTitle}}</title>
 
@@ -25,6 +34,16 @@
                 <small class="form-text text-muted">Заголовок должен быть наполнен смыслом, чтобы можно было понять, о
                     чем будет публикация.
                 </small>
+            </div>
+
+            <div class="form-group">
+                <label for="tags">Метки:</label>
+{{--                <input type="text" name="tags" class="form-control" AUTOCOMPLETE="off" id="tags-input" />--}}
+                <select name="tags[]" id="tags-input" class="form-control"  multiple="multiple" data-placeholder="Отметьте теги для статьи">
+                    @foreach($allTags as $tag)
+                        <option value="{{$tag->id}}" @if(array_search($tag->id,$selected_tags_array) !== false) selected @endif>{{$tag->name}}</option>
+                    @endforeach
+                </select>
             </div>
 
             @if($user->moderator)
@@ -109,6 +128,8 @@
         var submit = false;
 
         $(document).ready(function () {
+
+            $('#tags-input').chosen();
 
             function fillEditorContent(e) {
                 if ($(this).attr('id') == 'article-content')

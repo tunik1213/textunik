@@ -51,6 +51,9 @@ class ArticleController extends Controller
 
     public function editPost(request $request, int $articleId)
     {
+
+        //var_dump($_POST);return
+
         $article = Article::find($articleId);
         if (!$article->canEdit())
             abort(403);
@@ -87,6 +90,8 @@ class ArticleController extends Controller
             }
 
         }
+
+        $article->tags()->sync($request->input('tags'));
 
         if (!$article->finished) {
             $article->finished = $finished;
