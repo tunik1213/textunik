@@ -1,7 +1,7 @@
 @php
     $user=\Illuminate\Support\Facades\Auth::user();
 
-    $allTags = App\Tag::all();
+    $allTags = App\Tag::orderBy('name')->get();
     $selected_tags_array = $article->tags()->pluck('id')->toArray();
 @endphp
 

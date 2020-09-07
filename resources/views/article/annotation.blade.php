@@ -24,6 +24,13 @@
 
 <{{$titleTag}}><a class="article-title" href="{{$article->url()}}">{{ $article->title }}</a></{{$titleTag}}>
 
+<div class="tags-links-container">
+@foreach($article->tags()->get() as $tag)
+    <a class="tag-link" href="{{route('tag',['tagslug'=>$tag->slug])}}" rel="nofollow">{{$tag->name}}</a>
+    &nbsp;
+@endforeach
+</div>
+
 <div class="article-annotation">
     {!! $article->annotation !!}
 </div>

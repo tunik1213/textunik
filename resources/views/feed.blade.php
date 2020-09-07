@@ -127,6 +127,7 @@
                 {
                     url: '?page=' + page,
                     type: "get",
+                    async: false,
                     beforeSend: function () {
                         $('.ajax-load').show();
                     }
@@ -143,7 +144,8 @@
                         $(".feed").append(data.html);
                     })
                     .fail(function (jqXHR, ajaxOptions, thrownError) {
-
+                        console.log(thrownError);
+                        stopAjaxPagination = true;
                     });
             };
     </script>

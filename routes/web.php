@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/api/alltags','TagsController@tagsjson')->name('api.alltags');
+Route::get('/tag/{tagslug}','ArticleController@tag')->name('tag');
 
 Route::get('/article/howto', function () {
     return view('staticPages.article_howto');

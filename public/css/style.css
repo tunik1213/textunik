@@ -59,6 +59,21 @@ blockquote:after {
     line-height: 1;
 }
 
+.tags-links-container {
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+}
+.tags-links-container > a {
+    color: grey;
+    font-size: smaller;
+}
+.tags-links-container > a:after {
+    content: ",";
+}
+.tags-links-container > a:last-child:after {
+    content: "";
+}
+
 #mobile-header-about-link {
     margin-top: -30px;
     padding-bottom: 15px;
@@ -144,7 +159,7 @@ img#logo-image{
 }
 
 h1 {
-    padding: 1rem 0;
+    padding: 0;
     font-size: 1.75rem;
 }
 

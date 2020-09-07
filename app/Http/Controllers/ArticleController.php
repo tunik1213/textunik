@@ -5,19 +5,17 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Comment;
 use App\Image;
+use App\Tag;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Redirect;
 use Intervention\Image\ImageManagerStatic as LibImage;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class ArticleController extends Controller
 {
-    public function feed(request $request)
+    private function render_feed(request $request,Paginator $articles)
     {
-        $articles = Article::where('moderatedBy', '<>', null)
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
-
         if ($request->ajax()) {
 
             $view = view('article.list_data',
@@ -27,6 +25,27 @@ class ArticleController extends Controller
         }
 
         return view('feed', ['articles' => $articles]);
+    }
+
+    public function feed(request $request)
+    {
+        $articles = Article::where('moderatedBy', '<>', null)
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        return $this->render_feed($request,$articles);
+    }
+
+    public function tag(request $request, string $tagslug)
+    {
+        $tag = Tag::where('slug',$tagslug)->first();
+        if ($tag == null) abort(404);
+
+        $articles = $tag->articles()
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        return $this->render_feed($request,$articles);
     }
 
     public function editForm(int $articleId = null)
