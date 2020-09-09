@@ -42,6 +42,7 @@ class ArticleController extends Controller
         if ($tag == null) abort(404);
 
         $articles = $tag->articles()
+            ->where('moderatedBy', '<>', null)
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
