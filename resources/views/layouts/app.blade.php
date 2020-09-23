@@ -62,6 +62,8 @@
 
     <link rel="shortcut icon" href="{{asset('/favicon.ico')}}">
 
+    <script src="//code-ya.jivosite.com/widget/dNWvZCLiAf" async></script>
+
 </head>
 <body>
 <div id="app">
