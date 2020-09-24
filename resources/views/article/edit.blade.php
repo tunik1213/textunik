@@ -328,6 +328,9 @@
             padding: 10px;
             margin: 20px 0;
         }
+        .tox-fullscreen {
+            z-index: 2147483648 !important;
+        }
     </style>
 
 @endsection
