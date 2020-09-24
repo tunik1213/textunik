@@ -80,6 +80,17 @@
             </div>
 
             <div class="right-banner-content">
+                <h3>Популярное</h3>
+                <ul id="most-popular-tags">
+                @foreach(\App\Tag::mostPopular() as $tag)
+                    <li>
+                        <a class="popular-tag-link" href="{{route('tag',['tagslug'=>$tag->slug])}}" rel="nofollow">{{$tag->name}}</a>
+                    </li>
+                @endforeach
+                </ul>
+            </div>
+
+            <div class="right-banner-content">
                 <p class="text-main center">Словарь копирайтера</p>
                 <p><strong>Копирайтер</strong> – автор коммерческих текстов.</p>
                 <p><strong>Копирайтинг</strong> – разработка коммерческих текстов.</p>
