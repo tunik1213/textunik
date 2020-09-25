@@ -59,6 +59,8 @@
 
         <a class="dropdown-item" href="{{ route('profile', ['userId' => Auth::user()->id]) }}">Мой профиль</a>
 
+        <a class="dropdown-item" href="/about">О проекте</a>
+
         <a id="logout-link" class="dropdown-item" href="{{ route('logout') }}"
            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
             <i class="fas fa-sign-out-alt"></i>Выйти
