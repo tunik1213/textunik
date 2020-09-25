@@ -64,6 +64,8 @@
 
     <script src="//code-ya.jivosite.com/widget/dNWvZCLiAf" async></script>
 
+    <script data-ad-client="ca-pub-9397290056752587" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
 </head>
 <body>
 <div id="app">
