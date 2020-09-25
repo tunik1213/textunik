@@ -1,3 +1,6 @@
+var right_banner_height;
+var right_banner_width;
+
 $(document).ready(function() {
 
     expand_read_more_button();
@@ -21,7 +24,23 @@ $(document).ready(function() {
     accordionTabs();
 
     show_startup_modal_message();
+
+
+    right_banner_height = $('.right-banner').height();
+    right_banner_width = $('.right-banner').width();
+    $(window).scroll(fix_right_banner);
+
 });
+
+
+var fix_right_banner = function() {
+
+    $('.right-banner').css(
+        $(window).scrollTop()+$(window).height()-130 > right_banner_height
+            ? { 'position': 'fixed', 'bottom': '0','top': 'auto', 'width': right_banner_width }
+            : { 'position': 'absolute', 'top': '0', 'bottom': 'auto' }
+    );
+};
 
 var show_startup_modal_message = function() {
     modal_block = $('#modal-startup-message');

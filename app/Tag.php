@@ -18,7 +18,7 @@ class Tag extends Model
             ->join('article_tag','article_tag.tag_id','=','tags.id')
             ->groupBy('name','slug')
             ->orderByRaw('count(*) DESC')
-            ->limit(10)
+            ->limit(15)
             ->havingRaw('count(*)>0')
             ->get();
     }

@@ -373,14 +373,22 @@ ul.navbar-nav>li {
     top: 10px;
 }
 
+.title-secondary {
+    font-size: 1.5rem;
+}
+
 .feed {
     float: left;
     padding: 0;
 }
 
-.right-banner {
+.right-banner-container {
     float: right;
-    padding: 0 20px;
+    position: relative;
+}
+.right-banner {
+    position: absolute;
+    top: 0;
 }
 
 .right-banner-content {
@@ -399,7 +407,7 @@ ul#most-popular-tags{
     padding-left: 0;
 }
 ul#most-popular-tags > li {
-    padding-top: 0.5rem;
+    padding-bottom: 0.6rem;
 }
 
 .expand-read-more {
