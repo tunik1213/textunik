@@ -614,8 +614,10 @@ ul#most-popular-tags > li {
 
 
 /* ======= mobile */
-@media screen and (max-width: 1024px) {
-
+@media screen and (max-width: 1200px) {
+    .right-banner-content {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -634,8 +636,8 @@ ul#most-popular-tags > li {
     #reformal_tab {
         display: none !important;
     }
-    .display-desktop,
-    .right-banner-content {
+    .display-desktop
+    {
         display: none;
     }
     .display-mobile {
