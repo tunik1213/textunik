@@ -389,6 +389,12 @@ ul.navbar-nav>li {
 .right-banner {
     position: absolute;
     top: 0;
+    bottom: auto;
+}
+.right-banner.fixed {
+    position: fixed;
+    bottom: 0;
+    top: auto;
 }
 
 .right-banner-content {
