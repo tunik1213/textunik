@@ -13,6 +13,7 @@ use App\Mail\NewArticleNotification;
 use App\Comment;
 use App\Interfaces\Votable;
 use App\ArticleVote;
+use phpDocumentor\Reflection\Types\Array_;
 
 class Article extends Model Implements Votable
 {
@@ -177,5 +178,16 @@ class Article extends Model Implements Votable
             $vote->save();
             $this->save();
         DB::commit();
+    }
+
+    public function annotationImage() : string // возвращает url первой картинки из текста статьи до ката
+    {
+        $matches = array();
+        preg_match('/<img.*?src="(.*?)"/',$this->annotation,$matches);
+        $result = "";
+        if (count($matches) > 1) {
+            $result = $matches[1];
+        }
+        return $result;
     }
 }

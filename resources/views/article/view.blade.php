@@ -9,6 +9,8 @@
 
     <script src="{{ asset('js/lib/jquery.toc.min.js') }}"></script>
 
+    <meta property="og:image" content="{{ asset($article->annotationImage()) }}" />
+
 @endsection
 
 
