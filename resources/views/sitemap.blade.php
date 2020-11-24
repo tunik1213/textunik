@@ -7,14 +7,14 @@
         <loc>{{ url( '/' ) }}</loc>
         <lastmod>{{$articles->first()->updated_at->tz('GMT')->toAtomString()}}</lastmod>
         <changefreq>daily</changefreq>
-        <priority>1</priority>
+        <priority>0.1</priority>
     </url>
 
     <url>
         <loc>{{ url( '/about' ) }}</loc>
         <lastmod>2019-11-19T06:04:41+00:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.1</priority>
     </url>
 
     @foreach ($articles as $article)
@@ -31,7 +31,7 @@
             <loc>{{ url( '/profile/'.$author->id )}}</loc>
             <lastmod>{{ $author->lastmod->tz('GMT')->toAtomString() }}</lastmod>
             <changefreq>daily</changefreq>
-            <priority>0.3</priority>
+            <priority>0.1</priority>
         </url>
     @endforeach
 
