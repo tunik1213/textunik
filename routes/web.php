@@ -83,3 +83,7 @@ Route::get('/landing', function () {
 })->name('landing');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/policy', function() {
+    return view('staticPages.policy');
+});
