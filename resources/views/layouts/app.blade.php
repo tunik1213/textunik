@@ -28,12 +28,14 @@
         <script src="{{asset('js/lib/tinymce.js')}}" referrerpolicy="origin"></script>
         <script src="{{ asset('js/engine.js') }}"></script>
         <script src="{{ asset('js/article.js') }}"></script>
+        <script src="{{ asset('js/quiz.js') }}"></script>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link href="{{ asset('css/lib/mdb.css') }}" rel="stylesheet">
         <link href="{{ asset('css/lib/jquery.jgrowl.css') }}" rel="stylesheet">
         <link href="{{ asset('css/article.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/quiz.css') }}" rel="stylesheet">
     @else
         @include('layouts.production_asserts')
     @endif

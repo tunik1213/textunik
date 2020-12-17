@@ -30,6 +30,12 @@ $(document).ready(function() {
     right_banner_width = $('.right-banner').width();
     header_height = $('.right-banner').offset().top;
 
+    $('body').on('click','.radio-item',function (e){
+        $(this).parent().find('.radio-item input[type=radio]')
+            .prop('checked', false);
+        $(this).find('input[type=radio]').prop('checked', true);
+    })
+
 });
 
 

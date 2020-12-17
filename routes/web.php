@@ -77,6 +77,11 @@ Route::get('mail/dailyReport', 'MailController@dailyReport')->middleware('localh
 Route::get('/unsubscribe/articleComments/{userId}/{userToken}', 'MailController@unsubscribeArticleComments')->name('unsubscribeArticleComments');
 Route::get('/unsubscribe/articleNotifications/{userId}/{userToken}', 'MailController@unsubscribeArticleNotifications')->name('unsubscribeArticleNotifications');
 
+// quiz
+Route::get('/quiz/get','QuizController@get');
+Route::post('/quiz/answer/','QuizController@answer');
+
+
 // Static pages
 Route::get('/landing', function () {
     return view('staticPages.landing');

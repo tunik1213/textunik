@@ -41,6 +41,15 @@
                     </script>
                 </div>
 
+                <div class="right-banner-content" id="quiz-banner"">
+                    <div id="quiz-header">
+                        <span>Делаете ли вы ошибки в этих словах?</span>
+                    </div>
+                    <div id="quiz-container" >
+
+                    </div>
+                </div>
+
                 <div class="right-banner-content">
                     <p class="title-secondary">Популярное</p>
                     <ul id="most-popular-tags">
