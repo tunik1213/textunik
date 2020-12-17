@@ -27,7 +27,7 @@ $( document ).ready(function() {
     $('#quiz-banner').on('click', '#quiz-answer-button', function (e){
         var id = $('#quiz-answers').attr('quiz-id');
         $.ajax({
-            url: "/quiz/answer/",
+            url: "/quiz/answer",
             async: true,
             method: 'POST',
             data: {_token: $('meta[name="csrf-token"]').attr('content'),questionId: id},
