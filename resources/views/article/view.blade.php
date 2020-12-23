@@ -9,6 +9,43 @@
 
     <script src="{{ asset('js/lib/jquery.toc.min.js') }}"></script>
 
+@endsection
+
+@section('markup')
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{$article->url()}}"
+      },
+      "headline": "{{$article->title}}",
+      "description": "{{$article->meta_description}}",
+      "image": "{{ asset($article->annotationImage()) }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{$article->author->name}}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "textunik",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://textunik.com/images/textunik_logo.jpg"
+        }
+      },
+      "datePublished": "{{$article->created_at}}",
+      "dateModified": "{{$article->updated_at}}"
+    }
+    </script>
+
+    <meta property="og:title" content="{{$article->title}}">
+    <meta property="og:site_name" content="Text-уник">
+    <meta property="og:url" content="{{$article->url()}}">
+    <meta property="og:description" content="{{$article->meta_description}}">
+    <meta property="og:type" content="article">
     <meta property="og:image" content="{{ asset($article->annotationImage()) }}" />
 
 @endsection

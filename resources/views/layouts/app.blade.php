@@ -69,6 +69,8 @@
     <script data-ad-client="ca-pub-9397290056752587" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
+    @yield('markup')
+
 </head>
 <body>
 <div id="app">
