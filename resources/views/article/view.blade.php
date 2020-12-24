@@ -91,7 +91,7 @@
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
 
-
+<br />
 
             <div class="article-text">
                 {!! $article->content !!}
