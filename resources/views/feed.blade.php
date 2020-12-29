@@ -10,6 +10,13 @@
     <div class="container col-md-9 padding-0-phone">
 
         <div class="container col-xl-8 col-lg-12 feed">
+
+            @if(!empty($title))
+                <div class="container feed-title">
+                    {!! $title !!}
+                </div>
+            @endif
+
             @include('article.list',['articles'=>$articles])
 
             <div class="ajax-load text-center" style="display:none">

@@ -425,6 +425,11 @@ ul.navbar-nav>li {
     padding: 0;
     min-height: 100rem;
 }
+.feed-title{
+    background: white;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
 
 .right-banner-container {
     float: right;

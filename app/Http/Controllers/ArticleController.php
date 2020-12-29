@@ -14,7 +14,7 @@ use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class ArticleController extends Controller
 {
-    private function render_feed(request $request,Paginator $articles)
+    private function render_feed(request $request,Paginator $articles, string $title = '')
     {
         if ($request->ajax()) {
 
@@ -24,7 +24,7 @@ class ArticleController extends Controller
             return response()->json(['html' => $view]);
         }
 
-        return view('feed', ['articles' => $articles]);
+        return view('feed', ['articles' => $articles, 'title' => $title]);
     }
 
     public function feed(request $request)
@@ -47,7 +47,7 @@ class ArticleController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        return $this->render_feed($request,$articles);
+        return $this->render_feed($request,$articles,$tag->description);
     }
 
     public function editForm(int $articleId = null)
