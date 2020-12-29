@@ -30,6 +30,7 @@ class ArticleController extends Controller
     public function feed(request $request)
     {
         $articles = Article::where('moderatedBy', '<>', null)
+            ->where('feed',1)
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 

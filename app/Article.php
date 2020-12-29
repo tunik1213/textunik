@@ -24,7 +24,8 @@ class Article extends Model Implements Votable
         'annotation',
         'content',
         'finished',
-        'moderatedBy'
+        'moderatedBy',
+        'feed'
     );
 
     public function tags()
