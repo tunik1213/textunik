@@ -50,6 +50,7 @@ var fix_right_banner = function() {
         right_banner.removeClass('fixed');
     };
 
+    if (right_banner_width == 0) right_banner_width = $('.right-banner').width();
     right_banner.css({'width': right_banner_width });
 
 };
