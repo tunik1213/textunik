@@ -43,7 +43,7 @@
 
                 <div class="right-banner-content" id="quiz-banner"">
                     <div id="quiz-header">
-                        <span>Делаете ли вы ошибки в этих словах?</span>
+                        <span>Делаете ли вы эти ошибки?</span>
                     </div>
                     <div id="quiz-container" >
 
