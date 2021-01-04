@@ -106,7 +106,9 @@ class ArticleController extends Controller
 
                 if ($finished) { // это первая публикация модератором - статья становится публичной и попадает в ленту
                     $article->created_at = time();
-                    $article->newArticleEmailNotification();
+                    if ($article->feed) {
+                        $article->newArticleEmailNotification();
+                    }
                 }
             }
 
