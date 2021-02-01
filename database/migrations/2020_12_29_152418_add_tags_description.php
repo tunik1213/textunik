@@ -14,7 +14,7 @@ class AddTagsDescription extends Migration
     public function up()
     {
         Schema::table('tags', function (Blueprint $table) {
-            $table->longText('description');
+            $table->longText('description')->nullable();
         });
     }
 
