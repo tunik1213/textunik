@@ -58,15 +58,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="title">Keywords:</label>
+                        <label for="keywords">Keywords:</label>
                         <input type="text" name="keywords" value="{{$article->meta_keywords}}" class="form-control"
                                AUTOCOMPLETE="off" required/>
                     </div>
 
                     <div class="form-group">
-                        <label for="title">Description:</label>
+                        <label for="description">Description:</label>
                         <input type="text" name="description" value="{{$article->meta_description}}" class="form-control"
                                AUTOCOMPLETE="off" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feed">Отображать в ленте:</label>
+                        <input type="checkbox" name="feed" @if($article->feed) checked @endif />
                     </div>
 
                 </div>

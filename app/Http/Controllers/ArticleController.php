@@ -100,6 +100,7 @@ class ArticleController extends Controller
         if ($user->moderator) {
             $article->meta_keywords = $request->input('keywords');
             $article->meta_description = $request->input('description');
+            $article->feed = !empty($request->input('feed') ?? false);
 
             if (!$article->public()){
                 $article->slug = $request->input('slug');
