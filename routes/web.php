@@ -92,3 +92,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/policy', function() {
     return view('staticPages.policy');
 });
+
+Route::get('/popular', function(){return view('article.popular-tags-page');})->name('popular');

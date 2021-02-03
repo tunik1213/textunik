@@ -15,12 +15,14 @@
             </li>
 
             <li class="nav-item">
-                <noindex>
                 <a href="{{ route('article.howto') }}" class="accurate-button write-article-button display-desktop" rel="nofollow">
                     <i class="fas fa-pencil-alt prefix"></i>
                     Написать статью
                 </a>
-                </noindex>
+            </li>
+
+            <li class="nav-item display-mobile">
+                <a href="{{ route('popular') }}">Популярное</a>
             </li>
 
             <li class="nav-item">
@@ -60,6 +62,8 @@
         <a class="dropdown-item" href="{{ route('profile', ['userId' => Auth::user()->id]) }}">Мой профиль</a>
 
         <a class="dropdown-item" href="/about">О проекте</a>
+
+        <a class="dropdown-item" href="{{ route('popular') }}">Популярное</a>
 
         <a class="dropdown-item" href="/policy" rel="nofollow">Редполитика</a>
 
