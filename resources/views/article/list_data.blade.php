@@ -12,6 +12,23 @@
             @endif
 
             <br>
+
+            @if($loop->index == 1)
+    </div>
+                <div class="display-tablet container quiz-banner">
+                    <div class="quiz-header">
+                        <span>Делаете ли вы эти ошибки?</span>
+                    </div>
+
+                    <div class="quiz-container" >
+
+                    </div>
+                </div>
+
+    <div class="container article-content col-md-12">
+
+            @endif
+
         @endforeach
 
     </div>

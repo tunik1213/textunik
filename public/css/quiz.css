@@ -1,32 +1,38 @@
-#quiz-banner #quiz-header{
+.quiz-banner .quiz-header{
     color: #C45911;
     font-size: 1.2rem;
 }
-#quiz-banner ul {
+.quiz-banner ul {
     list-style: none;
 }
-#quiz-banner ul li {
+.quiz-banner ul li {
     position: relative;
     display: block;
     padding: .75rem 1.25rem;
     background-color: #fff;
 }
-#quiz-banner ul li * {
+.quiz-banner ul li * {
     cursor:pointer;
     padding:0;
     margin:0;
 }
-#quiz-banner ul li {
+.quiz-banner ul li {
     cursor: pointer;
     margin:0;
 }
-#quiz-banner ul li:hover{
+.quiz-banner ul li:hover{
     background-color: #f5f5f5;
 }
-#next-question-link {
+.next-question-link {
     display: none;
 }
-#quiz-result-message{
+.quiz-result-message{
     margin: 1rem;
     display: none;
+}
+.quiz-banner.display-tablet, .quiz-banner.display-tablet li {
+    background-color: #f8fafc;
+}
+.quiz-banner.display-tablet {
+    padding: 1rem;
 }

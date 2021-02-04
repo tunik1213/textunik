@@ -48,11 +48,11 @@
                     </script>
                 </div>
 
-                <div class="right-banner-content" id="quiz-banner"">
-                    <div id="quiz-header">
+                <div class="right-banner-content quiz-banner">
+                    <div class="quiz-header">
                         <span>Делаете ли вы эти ошибки?</span>
                     </div>
-                    <div id="quiz-container" >
+                    <div class="quiz-container" >
 
                     </div>
                 </div>

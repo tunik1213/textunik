@@ -51,7 +51,11 @@ var fix_right_banner = function() {
     };
 
     if (right_banner_width == 0) right_banner_width = $('.right-banner').width();
-    right_banner.css({'width': right_banner_width });
+    if (right_banner_width > 0) {
+        right_banner.css({'width': right_banner_width });
+    } else {
+        right_banner.css({'width': 'auto'});
+    }
 
 };
 
