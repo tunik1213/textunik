@@ -70,6 +70,12 @@ class ArticleController extends Controller
         ]);
     }
 
+    protected function filter_article_content(String $html) : string {
+        $result = remove_html_comments($html);
+        $result = make_external_links_nofollow($result);
+        return $result;
+    }
+
     public function editPost(request $request, int $articleId)
     {
 
@@ -84,12 +90,15 @@ class ArticleController extends Controller
         $article->title = remove_html_comments($request->input('title'));
 
         $annotation = $request->input('annotation');
-        if (!empty($annotation))
-            $article->annotation = remove_html_comments($annotation);
+        if (!empty($annotation)) {
+            $article->annotation = $this->filter_article_content($annotation);
+        }
 
         $content = $request->input('article-content');
-        if (!empty($content))
-            $article->content = remove_html_comments($content);
+        if (!empty($content)) {
+            $article->content = $this->filter_article_content($content);
+        }
+
 
         $finished = (bool)$request->input('finished', false);
 

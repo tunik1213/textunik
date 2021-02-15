@@ -41,3 +41,28 @@ function view_bool(bool $value)
 function make_absolute_urls_for_emails($text){
     return preg_replace('/((?:src|href)=")\/(.*?)"/im','$1'.env('APP_URL').'/$2"',$text);
 }
+
+function make_external_links_nofollow($html) {
+    $result =
+        preg_replace_callback('~<(a\s[^>]+)>~isU', function ($match) {
+            list($original, $tag) = $match;   // regex match groups
+
+            if (strpos($tag, 'rel="')) {
+                return $original;
+            }
+
+            if (strpos($tag, env('APP_URL'))) {
+                return $original;
+            }
+
+            if (strpos($tag, 'href="http')) {
+                return "<$tag rel=\"nofollow\">";
+            }
+
+            return $original;
+
+        }, $html);
+    return $result;
+}
+
+
