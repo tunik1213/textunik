@@ -143,16 +143,22 @@ class User extends Authenticatable
     public static function topAuthors()
     {
         $queryText = '
-with authors as (
-    select a.authorId id,count(*) co
+with articles as (
+    select a.authorId,count(*) co
     from articles a
     where a.moderatedBy is not null
     group by a.authorId
+),
+comments as (
+    select c.authorId,count(*) co
+    from comments c
+    group by c.authorId
 )
 select u.*
 from users u
-join authors a on a.id = u.id
-order by a.co desc
+join articles a on a.authorId = u.id
+left join comments c on c.authorId = u.id
+order by a.co desc, c.co desc
 ';
         $result = DB::select($queryText);
         return User::hydrate($result);

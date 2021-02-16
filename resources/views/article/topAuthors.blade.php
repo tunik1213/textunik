@@ -9,7 +9,7 @@
 @section('content')
 
     <div class="container article-content">
-        <H1 style="color:black;">Топ авторов Текст-уник</H1>
+        <H1 style="color:black;">Авторы «TEXT-уник»</H1>
 
         <ul class="author-list">
             @foreach($authors as $author)
