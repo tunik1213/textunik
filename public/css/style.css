@@ -147,6 +147,9 @@ ul.author-list > li {
 .comment-children {
     padding-left: 2rem;
 }
+.author-comment {
+    background-color: #ecf3ff;
+}
 
 .user-preview-popup {
     position: absolute;
