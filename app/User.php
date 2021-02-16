@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\ConfirmEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -139,4 +140,21 @@ class User extends Authenticatable
         return (!empty($this->email_verified_at));
     }
 
+    public static function topAuthors()
+    {
+        $queryText = '
+with authors as (
+    select a.authorId id,count(*) co
+    from articles a
+    where a.moderatedBy is not null
+    group by a.authorId
+)
+select u.*
+from users u
+join authors a on a.id = u.id
+order by a.co desc
+';
+        $result = DB::select($queryText);
+        return User::hydrate($result);
+    }
 }

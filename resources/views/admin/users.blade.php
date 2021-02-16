@@ -30,7 +30,7 @@
     @foreach ($users as $user)
 
     <tr>
-        <td>@include('home.user_link',['user'=>$user]);</td>
+        <td>@include('home.user_link',['user'=>$user])</td>
         <td>{{$user->name}}</td>
         <td>{{$user->created_at}}</td>
         <td>{{$user->email}}</td>

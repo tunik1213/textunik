@@ -134,9 +134,9 @@ function show_author_popup() {
         .appendTo(profile_link)
         .show();
 
-    if ($('#footer').offset().top - preview.offset().top < 500) {
-        preview.css('bottom', '35px');
-    }
+     if ($('#footer').offset().top - preview.offset().top < 500) {
+         preview.css('bottom', '0').css('left', '0');
+     }
 }
 
 function hide_author_popup() {

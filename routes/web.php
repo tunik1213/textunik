@@ -81,6 +81,9 @@ Route::get('/unsubscribe/articleNotifications/{userId}/{userToken}', 'MailContro
 Route::get('/quiz/get','QuizController@get');
 Route::post('/quiz/answer/','QuizController@answer');
 
+// top authors
+Route::get('/top-authors', 'ArticleController@topAuthors')->name('topAuthors');
+
 
 // Static pages
 Route::get('/landing', function () {

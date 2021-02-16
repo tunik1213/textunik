@@ -6,6 +6,7 @@ use App\Article;
 use App\Comment;
 use App\Image;
 use App\Tag;
+use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -237,6 +238,13 @@ class ArticleController extends Controller
 
         return view('article.voting', [
             'object' => $article
+        ]);
+    }
+
+    public function topAuthors(request $request)
+    {
+        return view('article.topAuthors', [
+            'authors' => User::TopAuthors()
         ]);
     }
 }

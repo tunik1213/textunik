@@ -102,6 +102,18 @@ blockquote:after {
     background: #004c97;
 }
 /* end radio input */
+.author-profile-link{
+    position: relative;
+}
+.user-preview-popup{
+    width: max-content;
+}
+ul.author-list {
+    list-style: decimal;
+}
+ul.author-list > li {
+    padding: 1rem;
+}
 
 .tags-links-container {
     margin-top: -1rem;
