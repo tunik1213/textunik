@@ -8,8 +8,8 @@
 
 @section('content')
 
-    <div class="container article-content">
-        <H1 style="color:black;">Авторы «TEXT-уник»</H1>
+    <div class="container">
+        <H1 class="color-blue">Авторы «TEXT-уник»</H1>
 
         <ul class="author-list">
             @foreach($authors as $author)

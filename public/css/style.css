@@ -22,6 +22,10 @@ body {
     color: #C45911;
 }
 
+.color-blue{
+    color: #011741;
+}
+
 *::selection {
     background-color: #041e42;
     color: white;

@@ -22,15 +22,19 @@
             </li>
 
             <li class="nav-item display-mobile">
-                <a href="{{ route('popular') }}">Популярное</a>
+                <a class="nav-link" href="{{ route('popular') }}">Популярное</a>
+            </li>
+
+            <li class="nav-item display-mobile">
+                <a class="nav-link" href="{{ route('topAuthors') }}">Наши авторы</a>
             </li>
 
             <li class="nav-item">
-                <noindex><a class="nav-link waves-effect waves-light" href="{{route('login')}}">Вход</a></noindex>
+                <a class="nav-link waves-effect waves-light" href="{{route('login')}}"><i class="fas fa-user"></i>&nbsp;Вход</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
+                <a class="nav-link" href="{{ route('register') }}"><i class="fas fa-user"></i>&nbsp;Регистрация</a>
             </li>
 
         </ul>
@@ -66,6 +70,8 @@
         <a class="dropdown-item" href="{{ route('popular') }}">Популярное</a>
 
         <a class="dropdown-item" href="/policy" rel="nofollow">Редполитика</a>
+
+        <a class="dropdown-item" href="{{ route('topAuthors') }}">Наши авторы</a>
 
         <a id="logout-link" class="dropdown-item" href="{{ route('logout') }}"
            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
