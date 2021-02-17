@@ -27,10 +27,14 @@
     <td>Подписка на комменты</td>
     </tr>
     </thead>
+
+        @php($totalUsers = $users->count())
+
+
     @foreach ($users as $user)
 
     <tr>
-        <td>{{$loop->index+1}} @include('home.user_link',['user'=>$user])</td>
+        <td>{{$totalUsers}} @include('home.user_link',['user'=>$user])</td>
         <td>{{$user->name}}</td>
         <td>{{$user->created_at}}</td>
         <td>{{$user->email}}</td>
@@ -39,6 +43,8 @@
         <td>{{$user->gender_str()}}</td>
         <td>{{view_bool($user->article_notifications)}}</td>
         <td>{{view_bool($user->comment_notifications)}}</td>
+
+        @php($totalUsers -= 1)
     </tr>
 
     @endforeach
