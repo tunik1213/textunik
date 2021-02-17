@@ -1,10 +1,15 @@
+@php
+    $articleAuthor = null;
+    if (isset($article)) $articleAuthor = $article->author ?? null;
+@endphp
+
 @foreach ($comments as $comment)
 
     @php($author = $comment->author)
 
     <div class="comment" comment-id="{{$comment->id}}" id="comment{{$comment->id}}">
         <div class="comment-header">
-            <div @if($author==$article->author)class="author-comment"@endif>
+            <div @if($author==$articleAuthor)class="author-comment"@endif>
             @include('home.user_link',['user'=>$author])
             <span class="nowrap">{{ \Carbon\Carbon::createFromTimeStamp(strtotime($comment->created_at))->diffForHumans() }}</span>
             @if(!($suppressRecursion ?? false))
