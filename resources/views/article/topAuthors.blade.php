@@ -14,7 +14,7 @@
         <ul class="author-list">
             @foreach($authors as $author)
                 <li>
-                    @include('home.user_link',['user'=>$author]);
+                    @include('home.user_link',['user'=>$author])
                     <br/>
                 </li>
             @endforeach
