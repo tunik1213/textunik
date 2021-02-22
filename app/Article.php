@@ -91,10 +91,13 @@ class Article extends Model Implements Votable
     // отправляет всем подписчикам письмо о том что появилась новая статья
     public function newArticleEmailNotification() : void
     {
+        $when = Carbon::now()->addMinutes(60);
+
         $receivers = User::where('article_notifications','=',true)->get();
         foreach ($receivers as $receiver) {
             $email = (new NewArticleNotification($this, $receiver))
-                ->onQueue('low');
+                ->onQueue('low')
+                ->delay($when);
 
             Mail::to($receiver)
                 ->queue($email);
