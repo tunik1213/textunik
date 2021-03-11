@@ -80,7 +80,7 @@
 
             </ul>
 
-
+            @if($article->public())
                 <ins class="adsbygoogle"
                      style="display:block; text-align:center;"
                      data-ad-layout="in-article"
@@ -90,6 +90,7 @@
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
+            @endif
 
 <br />
 
