@@ -13,17 +13,9 @@
 
             <br>
 
-            @if($loop->index == 0)
+            @if($loop->index == 0 || $loop->index%5 == 0)
                 <div  class="display-tablet ">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-9397290056752587"
-                     data-ad-slot="2170069470"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                @include('ads.google')
                 </div>
             @endif
 
