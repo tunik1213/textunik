@@ -38,6 +38,9 @@ $(document).ready(function() {
 
 });
 
+var csrf_token = function() {
+    return $('meta[name="csrf-token"]').attr('content');
+}
 
 var fix_right_banner = function() {
 

@@ -3,5 +3,5 @@
     $gz = (substr_count($accept_encoding, 'gzip')) ? 'gz' : '';
 @endphp
 
-<link href="{{ asset('build/20210311155119.css') }}{{$gz}}" rel="stylesheet">
-<script src="{{ asset('build/20210311155119.js') }}{{$gz}}"></script>
+<link href="{{ asset('build/20210312115013.css') }}{{$gz}}" rel="stylesheet">
+<script src="{{ asset('build/20210312115013.js') }}{{$gz}}"></script>

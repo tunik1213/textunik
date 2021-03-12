@@ -79,9 +79,13 @@ var create_comment_input = function(selector,value)
         selector: selector + ' > .add-comment-form > textarea',
         language: 'ru',
         language_url: '/js/lib/lang/tinymce-ru.js',
-        plugins: "link, emoticons, lists, charmap, paste",
+        plugins: "link, emoticons, lists, charmap, paste, image",
+        file_picker_types: 'file image media',
+        images_upload_url: '/upload',
+        automatic_uploads: true,
+        images_upload_handler: uploadImage,
         paste_as_text: true,
-        toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | indent outdent | charmap emoticons link',
+        toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | indent outdent | charmap emoticons link image',
         menubar: false,
         contextmenu: false,
         browser_spellcheck: true,
@@ -181,7 +185,7 @@ var editComment = function(e) {
                 url: "/comments/edit/"+commentId,
                 async: false,
                 data: {
-                    _token:$('meta[name="csrf-token"]').attr('content'),
+                    _token:csrf_token(),
                     comment:commentText,
                 },
                 method: "POST",
@@ -210,4 +214,38 @@ var toggle_toc = function(e) {
     }
 
     $('#toc li').toggle();
+
+}
+
+var uploadImage = function(blobInfo, success, failure) {
+    var xhr, formData;
+
+    xhr = new XMLHttpRequest();
+    xhr.withCredentials = false;
+    xhr.open('POST', '/upload');
+
+    xhr.onload = function() {
+        var json;
+
+        if (xhr.status != 200) {
+            failure('HTTP Error: ' + xhr.status);
+            return;
+        }
+
+        json = JSON.parse(xhr.responseText);
+
+        if (!json || typeof json.url != 'string') {
+            failure('Invalid JSON: ' + xhr.responseText);
+            return;
+        }
+
+        success(json.url);
+    };
+
+    formData = new FormData();
+    formData.append('filename', blobInfo.blob(), blobInfo.filename());
+    formData.append('_token',csrf_token());
+    formData.append('articleId', article_id());
+
+    xhr.send(formData);
 }

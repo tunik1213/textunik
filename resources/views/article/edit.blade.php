@@ -274,37 +274,8 @@
             });
         }
 
-        function uploadImage(blobInfo, success, failure) {
-            var xhr, formData;
-
-            xhr = new XMLHttpRequest();
-            xhr.withCredentials = false;
-            xhr.open('POST', '/upload');
-
-            xhr.onload = function() {
-                var json;
-
-                if (xhr.status != 200) {
-                    failure('HTTP Error: ' + xhr.status);
-                    return;
-                }
-
-                json = JSON.parse(xhr.responseText);
-
-                if (!json || typeof json.url != 'string') {
-                    failure('Invalid JSON: ' + xhr.responseText);
-                    return;
-                }
-
-                success(json.url);
-            };
-
-            formData = new FormData();
-            formData.append('filename', blobInfo.blob(), blobInfo.filename());
-            formData.append('_token','{{ csrf_token() }}');
-            formData.append('articleId', {{ $article->id }});
-
-            xhr.send(formData);
+        var article_id = function() {
+            return {{$article->id}};
         }
 
     </script>
