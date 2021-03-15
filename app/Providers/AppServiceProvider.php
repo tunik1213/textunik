@@ -26,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     {
         setlocale(LC_ALL, 'ru_RU.utf8');
         setlocale(LC_TIME, "ru_RU");
+        Paginator::useBootstrap();
     }
 }
