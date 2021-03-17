@@ -15,7 +15,7 @@ use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class ArticleController extends Controller
 {
-    private function render_feed(request $request,Paginator $articles, string $title = '')
+    private function render_feed(request $request,Paginator $articles, ?string $title = '')
     {
         if ($request->ajax()) {
 
