@@ -75,10 +75,11 @@
 
             <div id="cut"></div>
 
-            <ul id="toc">
-                <div id="toc-title">Содержание [<a id="toc-toggle" class="toc-visible" href="#">скрыть</a>]</div>
-
-            </ul>
+            @if(preg_match('/<h\d/m', $article->content)) {{-- если есть заголовоки то есть смысл сгенерить содержание --}}
+                <ul id="toc">
+                    <div id="toc-title">Содержание [<a id="toc-toggle" class="toc-visible" href="#">скрыть</a>]</div>
+                </ul>
+            @endif
 
             @if($article->public())
                 @include('ads.google')
