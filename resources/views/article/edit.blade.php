@@ -60,13 +60,13 @@
                     <div class="form-group">
                         <label for="keywords">Keywords:</label>
                         <input type="text" name="keywords" value="{{$article->meta_keywords}}" class="form-control"
-                               AUTOCOMPLETE="off" required/>
+                               AUTOCOMPLETE="off"/>
                     </div>
 
                     <div class="form-group">
                         <label for="description">Description:</label>
                         <input type="text" name="description" value="{{$article->meta_description}}" class="form-control"
-                               AUTOCOMPLETE="off" required/>
+                               AUTOCOMPLETE="off"/>
                     </div>
 
                     <div class="form-group">
