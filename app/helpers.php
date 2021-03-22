@@ -42,27 +42,31 @@ function make_absolute_urls_for_emails($text){
     return preg_replace('/((?:src|href)=")\/(.*?)"/im','$1'.env('APP_URL').'/$2"',$text);
 }
 
-function make_external_links_nofollow($html) {
-    $result =
-        preg_replace_callback('~<(a\s[^>]+)>~isU', function ($match) {
-            list($original, $tag) = $match;   // regex match groups
+function prepare_external_links(string $html) : string
+{
+    $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
 
-            if (strpos($tag, 'rel="')) {
-                return $original;
-            }
+    $dom = new DOMDocument;
+    @$dom->loadHTML($html);
+    $links = $dom->getElementsByTagName('a');
 
-            if (strpos($tag, env('APP_URL'))) {
-                return $original;
-            }
+    foreach ($links as $link){
+        $url = $link->getAttribute('href');
+        if (url_is_internal($url)) continue;
 
-            if (strpos($tag, 'href="http')) {
-                return "<$tag rel=\"nofollow\">";
-            }
+        $link->setAttribute('target','_blank');
+        $link->setAttribute('rel','nofollow');
+    }
 
-            return $original;
+    return $dom->saveHTML();
 
-        }, $html);
-    return $result;
 }
 
+function url_is_internal(string $url) : bool
+{
+    $url = trim($url);
+    if($url[0]==='/') return true;
+    if(strpos($url,env('APP_URL'))===0) return true;
 
+    return false;
+}

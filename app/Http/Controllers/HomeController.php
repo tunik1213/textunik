@@ -30,7 +30,7 @@ class HomeController extends Controller
         $user->nick_name = $_POST['nick_name'];
         $user->specialization = $_POST['specialization'];
         $user->gender = ($_POST['gender']=='') ? null : (bool)$_POST['gender'];
-        $user->short_info = $_POST['short_info'];
+        $user->short_info = prepare_external_links($_POST['short_info']);
         $user->contacts = $request->input('contacts');
 
         $user->article_notifications = isset($_POST['article_notifications']);

@@ -73,7 +73,7 @@ class ArticleController extends Controller
 
     protected function filter_article_content(String $html) : string {
         $result = remove_html_comments($html);
-        $result = make_external_links_nofollow($result);
+        $result = prepare_external_links($result);
         return $result;
     }
 
