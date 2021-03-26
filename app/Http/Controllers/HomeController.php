@@ -49,7 +49,8 @@ class HomeController extends Controller
         }
 
         $user->save();
-        return view('home.index',['user' => $user]);
+        //return view('home.index',['user' => $user]);
+        return redirect()->route('profile', ['userId' => $user->id]);
     }
 
     public function getAvatarImage(int $userId = null)
