@@ -34,12 +34,36 @@ $(document).ready(function() {
         $(this).parent().find('.radio-item input[type=radio]')
             .prop('checked', false);
         $(this).find('input[type=radio]').prop('checked', true);
-    })
+    });
+
+    $('.search-mobile').on('click','i',toggle_mobile_search_input);
+
+    $('.search__input').on('keydown', function(e) {
+        if (e.keyCode == 13) search($(this).val());
+    });
 
 });
 
 var csrf_token = function() {
     return $('meta[name="csrf-token"]').attr('content');
+}
+
+var search = function(query_text) {
+    window.location.replace('/search/'+query_text);
+}
+
+var toggle_mobile_search_input = function(e) {
+
+    if ($('.search-mobile-input').is(':visible'))
+        $('.search-mobile-input').slideUp();
+    else {
+        $('.search-mobile-input').slideDown()
+            .find('input').focus();
+    } 
+
+        
+
+
 }
 
 var fix_right_banner = function() {

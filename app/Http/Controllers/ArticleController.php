@@ -247,4 +247,17 @@ class ArticleController extends Controller
             'authors' => User::TopAuthors()
         ]);
     }
+
+    public function search(request $request, string $query)
+    {
+        $articles = Article::whereRaw(
+            "MATCH(title) AGAINST(?)", 
+            array($query)
+        )->paginate(10);
+
+        $search_title = 'Результаты поиска по запросу <strong>'.htmlspecialchars($query).'</strong>';
+
+        return $this->render_feed($request,$articles,$search_title);
+
+    }
 }

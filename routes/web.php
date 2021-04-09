@@ -97,3 +97,5 @@ Route::get('/policy', function() {
 });
 
 Route::get('/popular', function(){return view('article.popular-tags-page');})->name('popular');
+
+Route::get('/search/{query}','ArticleController@search')->name('search');

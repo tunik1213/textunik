@@ -47,16 +47,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
 
     @yield('head')
-    @if( Request::is( Config::get('chatter.routes.home')) )
-        <title>Форум копирайтеров / Текст-уник</title>
-        <meta name="robots" content="noindex">
-    @elseif( Request::is( Config::get('chatter.routes.home') . '/' . Config::get('chatter.routes.category') . '/*' ) && isset( $discussion ) )
-        <title>{{ $discussion->category->name }} / форум копирайтеров Текст-уник</title>
-        <meta name="robots" content="noindex">
-    @elseif( Request::is( Config::get('chatter.routes.home') . '/*' ) && isset($discussion->title))
-        <title>{{ $discussion->title }} / форум копирайтеров Текст-уник</title>
-        <meta name="robots" content="noindex">
-    @endif
 
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
@@ -78,13 +68,24 @@
         <div class="container col-md-9">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img id="logo-image" src="{{asset('/images/textunik_logo.jpg')}}">
-{{--                <div id="logo1">TEXT</div>--}}
-{{--                <div id="logo2">уник</div>--}}
-{{--                <div id="logo3">коллективный блог</div>--}}
-{{--                <div id="logo4">КОПИРАЙТЕРОВ</div>--}}
             </a>
 
+            <div class="search search-desktop">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Поиск" class="search__input form-control">
+            </div>
+
+            <div class="search-mobile">
+                <i class="fas fa-search"></i>
+            </div>
+
             @include('home.right_header')
+
+            <div id="header-mobile-separator"></div>
+
+            <div class="search-mobile-input">
+                <input type="text" placeholder="Поиск" class="search__input form-control">
+            </div>
 
         </div>
     </nav>
