@@ -66,16 +66,17 @@ blockquote:after {
     position: relative;
 }
 .search__input {
-    padding: 0 0 0 35px;
+    padding-left: 35px;
     background-color: #a2b0c9;
     border: none;
+    height: auto;
 } 
 .search__input::placeholder {
  //color: white;
 }
 .search .fa-search {
     position: absolute;
-    top: 13px;
+    top: 10px;
     left: 7px;
 }
 .search-mobile {
