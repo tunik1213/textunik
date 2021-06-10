@@ -79,7 +79,7 @@
             @endif
 
             <div class="form-group">
-                <label for="annotation">Текст до ката</label>
+                <label for="annotation">Аннотация</label>
                 <textarea class="htmleditor" name="annotation"></textarea>
             </div>
 
@@ -90,7 +90,7 @@
             </div>
 
             <div class="form-group">
-                <label for="content">Текст после ката</label>
+                <label for="content">Основной текст</label>
                 <textarea class="htmleditor" name="article-content"></textarea>
             </div>
 
