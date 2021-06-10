@@ -194,4 +194,21 @@ class Article extends Model Implements Votable
         }
         return $result;
     }
+
+    public function readAlso() {
+
+        $result = DB::select('
+            select distinct a.* 
+            from article_tag at1
+            join article_tag at2 on at2.tag_id = at1.tag_id 
+            join articles a on a.id = at2.article_id
+            where at1.article_id = ?
+            and a.moderatedBy is not null
+            order by rand()
+            limit 5
+            ',[$this->id]);
+
+         return Self::hydrate($result); 
+
+    }
 }

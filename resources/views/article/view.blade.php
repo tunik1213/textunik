@@ -101,6 +101,18 @@
 
                     @include('article.social_share')
 
+                <div class="read-also">
+                    <br/>
+                    <span>Читайте также:</span>
+                    <ul>
+                        @foreach($article->readAlso() as $a)
+                        <li>
+                            <a href="{{$a->url()}}">{{$a->title}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+
                 <br />
                     <label>Оставить комментарий:</label>
                 <div id="comments-container" article-id="{{$article->id}}">
