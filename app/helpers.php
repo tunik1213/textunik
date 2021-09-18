@@ -58,8 +58,8 @@ function prepare_external_links(string $html) : string
         $link->setAttribute('rel','nofollow');
     }
 
-    return $dom->saveHTML();
-
+    $result = $dom->saveHTML();
+    return mb_convert_encoding($result,'UTF-8','HTML-ENTITIES');
 }
 
 function url_is_internal(string $url) : bool
